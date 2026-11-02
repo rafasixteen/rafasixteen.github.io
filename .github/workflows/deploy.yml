@@ -27,6 +27,7 @@ jobs:
             - run: npm test
             - run: npm run build
               env:
+                  GITHUB_ACTIONS: "true"
                   NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/
             - uses: actions/upload-pages-artifact@v3
               with:

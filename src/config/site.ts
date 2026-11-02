@@ -1,19 +1,9 @@
 import { profile } from "@/content/profile";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
-if (!siteUrl) {
-	throw new Error("NEXT_PUBLIC_SITE_URL must be configured before building the site.");
-}
-
-function profileLink(label: string): string | undefined {
-	return profile.links.find((link) => link.label === label)?.url;
-}
-
 export const site = {
 	name: profile.name,
 	shortName: "RR",
-	url: siteUrl,
+	url: getSiteUrl(),
 	author: {
 		name: profile.name,
 		email: profile.email,
@@ -25,3 +15,21 @@ export const site = {
 		portfolio: profileLink("Portfolio"),
 	},
 } as const;
+
+function getSiteUrl(): string {
+	const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+	if (configuredSiteUrl) {
+		return configuredSiteUrl;
+	}
+
+	if (process.env.GITHUB_ACTIONS === "true") {
+		throw new Error("NEXT_PUBLIC_SITE_URL must be configured for GitHub Pages builds.");
+	}
+
+	return "http://localhost";
+}
+
+function profileLink(label: string): string | undefined {
+	return profile.links.find((link) => link.label === label)?.url;
+}
