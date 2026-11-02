@@ -89,8 +89,7 @@
 						"title": "Event operations",
 						"description": "The platform covers the workflows CAL uses for registration, battles, judging, rankings, and results."
 					}
-				],
-				"media": {}
+				]
 			},
 			"cal-judge": {
 				"summary": "A native Android app I am building for Calisthenics Alliance judges. It connects to the CAL event platform and supports battles, routines, timers, and judging on site.",
@@ -102,8 +101,7 @@
 					"Built the screens for battle selection, judging, timers, set and repetition progress, and settings.",
 					"Connected the app to the API and the local Wi-Fi network used at the venue.",
 					"Kept the controls native to Android, including hardware volume-button input, while leaving room for a future native iOS app."
-				],
-				"media": {}
+				]
 			}
 		},
 		"skills": {

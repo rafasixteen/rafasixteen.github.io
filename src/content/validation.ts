@@ -5,14 +5,7 @@ import { localizedContent, assembleContent } from "./portfolio";
 import { portfolioContentSchema, type PortfolioContent } from "./portfolio-content";
 import { projects } from "./project";
 import { skillGroups } from "./skill-group";
-
-function asRecord(value: unknown): Record<string, unknown> | undefined {
-	if (!value || typeof value !== "object" || Array.isArray(value)) {
-		return undefined;
-	}
-
-	return value as Record<string, unknown>;
-}
+import { asRecord } from "@/lib/record";
 
 export function assertTranslationKeys(
 	locale: string,
@@ -82,12 +75,17 @@ export function validateContent(): Record<Locale, PortfolioContent> {
 		assertTranslationKeys(locale, "projects", projects, translations.projects);
 
 		for (const project of projects) {
-			assertTranslationKeys(
-				locale,
-				`projects.${project.translationKey}.media`,
-				project.media,
-				translations.projects[project.translationKey].media,
-			);
+			const projectTranslation = asRecord(translations.projects[project.translationKey]);
+			const mediaTranslations = asRecord(projectTranslation?.media) ?? {};
+
+			if (project.media.length > 0) {
+				assertTranslationKeys(
+					locale,
+					`projects.${project.translationKey}.media`,
+					project.media,
+					mediaTranslations,
+				);
+			}
 		}
 
 		assertTranslationKeys(locale, "skills", skillGroups, translations.skills);

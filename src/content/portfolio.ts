@@ -2,18 +2,19 @@ import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
+import { asRecord } from "@/lib/record";
 import { education, type EducationTranslations } from "./education";
 import { experience, type ExperienceTranslations } from "./experience";
-import type { PortfolioContent } from "./portfolio-content";
+import { localizedProjectSchema, type PortfolioContent } from "./portfolio-content";
 import { profile, type ProfileTranslation } from "./profile";
-import { projects, type ProjectTranslations } from "./project";
+import { projects } from "./project";
 import { skillGroups, type SkillGroupTranslations } from "./skill-group";
 
 type PortfolioTranslations = {
 	profile: ProfileTranslation;
 	experience: ExperienceTranslations;
 	education: EducationTranslations;
-	projects: ProjectTranslations;
+	projects: Record<string, unknown>;
 	skills: SkillGroupTranslations;
 };
 
@@ -59,13 +60,13 @@ export function assembleContent(locale: Locale): PortfolioContent {
 		experience: experience.map((entry) => ({ ...entry, ...translations.experience[entry.translationKey] })),
 		education: education.map((entry) => ({ ...entry, ...translations.education[entry.translationKey] })),
 		projects: projects.map((entry) => {
-			const translation = translations.projects[entry.translationKey];
+			const translation = asRecord(translations.projects[entry.translationKey]) ?? {};
+			const mediaTranslations = asRecord(translation.media) ?? {};
 
-			return {
+			return localizedProjectSchema.parse({
 				...entry,
-				...translation,
-				media: entry.media.map((media) => ({ ...media, ...translation.media[media.translationKey] })),
-			};
+				media: entry.media.map((media) => ({ ...media, ...asRecord(mediaTranslations[media.translationKey]) })),
+			});
 		}),
 		skills: skillGroups.map((entry) => ({ ...entry, ...translations.skills[entry.translationKey] })),
 	};

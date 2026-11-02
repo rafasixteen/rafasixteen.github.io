@@ -1,4 +1,4 @@
-import type { ProjectMedia } from "@/content/project";
+import type { LocalizedProjectMedia } from "@/content/portfolio-content";
 import { url } from "@/lib/url";
 import { AspectRatio, Card, CardContent, CardFooter } from "@/components/ui";
 
@@ -6,7 +6,7 @@ function mediaSource(source: string): string {
 	return source.startsWith("http://") || source.startsWith("https://") ? source : url(source);
 }
 
-export function ProjectMediaItem({ media }: { media: ProjectMedia }) {
+export function ProjectMediaItem({ media }: { media: LocalizedProjectMedia }) {
 	const source = mediaSource(media.src);
 
 	return (
@@ -27,7 +27,9 @@ export function ProjectMediaItem({ media }: { media: ProjectMedia }) {
 					)}
 				</AspectRatio>
 			</CardContent>
-			{media.caption ? <CardFooter className="px-4 py-3 text-sm text-muted-foreground">{media.caption}</CardFooter> : null}
+			{media.caption ? (
+				<CardFooter className="px-4 py-3 text-sm text-muted-foreground">{media.caption}</CardFooter>
+			) : null}
 		</Card>
 	);
 }

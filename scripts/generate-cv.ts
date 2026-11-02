@@ -12,8 +12,20 @@ await mkdir(output, { recursive: true });
 
 for (const locale of routing.locales) {
 	const messages = (await import(`../src/translations/${locale}.json`)).default;
-	const t = createTranslator({ locale, messages });
-	const document = createCvDocument(portfolioContent[locale], t);
+
+	const t = createTranslator({
+		locale,
+		messages,
+	});
+
+	const projectT = createTranslator({
+		locale,
+		messages,
+		namespace: "portfolio.projects",
+	});
+
+	const document = createCvDocument(portfolioContent[locale], t, projectT);
 	const pdf = await renderToBuffer(document);
+
 	await writeFile(path.join(output, `cv-${locale}.pdf`), pdf);
 }

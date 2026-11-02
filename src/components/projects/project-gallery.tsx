@@ -1,8 +1,8 @@
-import type { ProjectMedia } from "@/content/project";
+import type { LocalizedProjectMedia } from "@/content/portfolio-content";
 import { ProjectMediaItem } from "./project-media";
 
 interface ProjectGalleryProps {
-	items: readonly ProjectMedia[];
+	items: readonly LocalizedProjectMedia[];
 }
 
 export function ProjectGallery({ items }: ProjectGalleryProps) {

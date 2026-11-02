@@ -1,4 +1,4 @@
-import { CardGrid } from "@/components/sections/card-grid";
+import { ProjectsGrid } from "@/components/sections/projects-grid";
 import { EducationTimeline } from "@/components/sections/education-timeline";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { Hero } from "@/components/sections/hero";
@@ -17,7 +17,7 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
 			<Hero locale={content.locale} profile={content.profile} />
 			<EducationTimeline locale={content.locale} education={content.education} />
 			<ExperienceTimeline locale={content.locale} experience={content.experience} />
-			<CardGrid projects={content.projects} />
+			<ProjectsGrid projects={content.projects} />
 			<SkillGroups skills={content.skills} />
 		</>
 	);

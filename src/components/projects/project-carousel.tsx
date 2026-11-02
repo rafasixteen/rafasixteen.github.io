@@ -1,11 +1,11 @@
 "use client";
 
-import type { ProjectMedia } from "@/content/project";
+import type { LocalizedProjectMedia } from "@/content/portfolio-content";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui";
 import { ProjectMediaItem } from "./project-media";
 
 interface ProjectCarouselProps {
-	items: readonly ProjectMedia[];
+	items: readonly LocalizedProjectMedia[];
 	label: string;
 }
 

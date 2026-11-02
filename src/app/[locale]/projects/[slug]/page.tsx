@@ -5,6 +5,7 @@ import { localeAlternates, routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 export const dynamicParams = false;
 export const generateStaticParams = projectRouteParams;
@@ -31,9 +32,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 	const { locale: value, slug } = await params;
 	const { locale, project } = getProject(value, slug);
 
+	const t = await getTranslations({
+		locale,
+		namespace: `portfolio.projects.${project.translationKey}`,
+	});
+
 	return {
 		title: `${project.name} - ${site.name}`,
-		description: project.summary,
+		description: t("summary"),
 		alternates: localeAlternates(locale, `/projects/${slug}`),
 	};
 }

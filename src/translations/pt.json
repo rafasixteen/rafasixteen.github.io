@@ -89,8 +89,7 @@
 						"title": "Operação dos eventos",
 						"description": "A plataforma reúne os fluxos que a CAL utiliza para inscrições, battles, avaliação, rankings e resultados."
 					}
-				],
-				"media": {}
+				]
 			},
 			"cal-judge": {
 				"summary": "Uma aplicação Android nativa que estou a desenvolver para os juízes da Calisthenics Alliance, a liga portuguesa de Endurance. Liga-se à plataforma de eventos e suporta battles, rotinas, temporizadores e avaliação no local.",
@@ -102,8 +101,7 @@
 					"Criei os ecrãs para seleção de battles, avaliação, temporizadores, progresso de séries e repetições e definições.",
 					"Liguei a aplicação à API e à rede Wi-Fi local usada no recinto.",
 					"Mantive os controlos nativos Android, incluindo os botões físicos de volume, deixando espaço para uma futura aplicação iOS nativa."
-				],
-				"media": {}
+				]
 			}
 		},
 		"skills": {
