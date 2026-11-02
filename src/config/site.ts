@@ -7,8 +7,7 @@ function profileLink(label: string): string | undefined {
 export const site = {
 	name: profile.name,
 	shortName: "RR",
-	// TODO: Set NEXT_PUBLIC_SITE_URL for the production deployment.
-	url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://rafasixteen.github.io/portfolio/",
+	url: process.env.NEXT_PUBLIC_SITE_URL,
 	author: {
 		name: profile.name,
 		email: profile.email,
