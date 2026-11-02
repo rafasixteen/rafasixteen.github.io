@@ -11,7 +11,6 @@ export const profileSharedDataSchema = z.object({
 export const profileTranslationSchema = z.object({
 	role: z.string().min(1),
 	summary: z.string().min(1),
-	availability: z.string().min(1),
 });
 
 export const profileSchema = profileSharedDataSchema.extend(profileTranslationSchema.shape);
@@ -29,5 +28,6 @@ export const profile: ProfileSharedData = {
 	links: [
 		{ label: "LinkedIn", url: "https://www.linkedin.com/in/rafasixteen" },
 		{ label: "GitHub", url: "https://github.com/rafasixteen" },
+		{ label: "Instagram", url: "https://www.instagram.com/rafasixteen" },
 	],
 };

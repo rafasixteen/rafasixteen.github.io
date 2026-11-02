@@ -1,8 +1,9 @@
-import { SectionTitle } from "@/components/shared/section-title";
-import { Button, Card, CardContent } from "@/components/ui";
+import { Button } from "@/components/ui";
+import { SocialLinks } from "@/components/shared/social-links";
 import type { Profile } from "@/content/profile";
 import type { Locale } from "@/i18n/routing";
 import { url } from "@/lib/url";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 interface HeroProps {
@@ -12,47 +13,96 @@ interface HeroProps {
 
 export function Hero({ locale, profile }: HeroProps) {
 	const t = useTranslations();
+	const { nameLines, accentIndex } = getHeroNameLayout(profile.name);
 
 	return (
-		<section
-			className="mx-auto grid min-h-[min(44rem,calc(100vh-4.5rem))] w-full max-w-6xl items-end gap-12 px-5 py-20 lg:grid-cols-[minmax(0,1.8fr)_minmax(15rem,.7fr)]"
-			id="home">
-			<div>
-				<SectionTitle>{profile.location}</SectionTitle>
-				<h1 className="max-w-[13ch] text-5xl leading-none font-semibold tracking-[-0.04em] sm:text-7xl lg:text-8xl">
-					{t("portfolio.profile.role")}
-				</h1>
-				<p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-					{t("portfolio.profile.summary")}
-				</p>
-				<div className="mt-12 flex flex-wrap items-center gap-4">
-					<Button asChild>
-						<a href={url(`/cv/cv-${locale}.pdf`)}>{t("action.downloadCv")}</a>
-					</Button>
-					<Button asChild variant="ghost">
-						<a href={`mailto:${profile.email}`}>{t("action.email")}</a>
-					</Button>
+		<section className="relative isolate overflow-hidden bg-background text-foreground" id="home">
+			<div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_72%_42%,hsl(3_85%_62%_/_0.2),transparent_30%),linear-gradient(120deg,transparent_38%,hsl(3_85%_62%_/_0.08)_38%,transparent_67%)]" />
+			<div className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 h-px bg-primary/20" />
+			<div className="mx-auto grid min-h-[min(52rem,calc(100vh-4.5rem))] w-full max-w-7xl items-center gap-8 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(22rem,1.1fr)] lg:gap-4 lg:px-10 lg:py-16">
+				<div className="relative z-10 max-w-2xl">
+					<div className="mb-8 flex items-center gap-3 text-xs font-semibold tracking-[0.24em] text-primary uppercase sm:mb-10">
+						<span className="h-px w-10 bg-primary" />
+						<p>{profile.location}</p>
+					</div>
+					<h1 className="max-w-[8ch] text-[clamp(4rem,13vw,9.5rem)] leading-[0.78] font-black tracking-[-0.08em] uppercase">
+						{nameLines.map((line, index) => (
+							<span
+								className={cn("block", index === accentIndex && "text-primary")}
+								key={`${line}-${index}`}>
+								{line}
+							</span>
+						))}
+					</h1>
+					<p className="mt-8 max-w-sm text-sm font-semibold tracking-[0.12em] text-foreground/80 uppercase sm:text-base">
+						{t("portfolio.profile.role")}
+					</p>
+					<p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+						{t("portfolio.profile.summary")}
+					</p>
+					<div className="mt-9 flex flex-wrap items-center gap-3">
+						<Button asChild className="bg-primary text-primary-foreground hover:bg-primary">
+							<a href={url(`/cv/cv-${locale}.pdf`)}>{t("action.downloadCv")}</a>
+						</Button>
+						<a
+							className="inline-flex h-10 items-center px-4 text-sm font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
+							href={`mailto:${profile.email}`}>
+							{profile.email}
+						</a>
+					</div>
 				</div>
-			</div>
-			<Card className="py-0">
-				<CardContent className="p-4">
+
+				<div className="relative flex min-h-[22rem] items-end justify-center sm:min-h-[30rem] lg:min-h-[42rem]">
+					<div
+						aria-hidden="true"
+						className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-[clamp(4.5rem,13vw,12rem)] leading-none font-black tracking-[-0.1em] text-primary/15 uppercase select-none">
+						Portfolio
+					</div>
+					<div aria-hidden="true" className="absolute top-[18%] right-0 h-px w-2/3 bg-primary/60" />
 					<img
-						className="aspect-square w-full rounded-lg object-cover"
-						src={url("/images/avatar.jpg")}
+						className="relative z-10 max-h-[min(70vh,48rem)] w-full max-w-[34rem] object-contain object-bottom"
+						src={url("/images/avatar-cutout.png")}
 						alt={profile.name}
 					/>
-					<p className="mt-6 text-sm text-muted-foreground">{t("portfolio.profile.availability")}</p>
-					<ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
-						{profile.links.map((link) => (
-							<li key={link.url}>
-								<a className="text-primary underline-offset-4 hover:underline" href={link.url}>
-									{link.label}
-								</a>
-							</li>
-						))}
-					</ul>
-				</CardContent>
-			</Card>
+				</div>
+
+				<div className="col-span-full flex flex-wrap items-center justify-end gap-4 border-t border-foreground/15 pt-5 text-xs font-semibold tracking-[0.16em] text-muted-foreground uppercase">
+					<SocialLinks links={profile.links} className="text-foreground/70 [&_a:hover]:text-primary" />
+				</div>
+			</div>
 		</section>
 	);
+}
+
+interface HeroNameLayout {
+	nameWords: string[];
+	nameLines: string[];
+	accentIndex: number;
+}
+
+/**
+ * Converts a profile name into the editorial hero layout.
+ *
+ * Names with three or more words keep the first word and surname on their
+ * own lines, grouping any middle names together. The middle display line is
+ * selected as the accent line.
+ *
+ * @example
+ * const { nameWords, nameLines, accentIndex } = getHeroNameLayout("Rafael Da Silva Rego");
+ * // nameWords: ["Rafael", "Da", "Silva", "Rego"]
+ * // nameLines: ["Rafael", "Da Silva", "Rego"]
+ * // accentIndex: 1
+ */
+export function getHeroNameLayout(name: string): HeroNameLayout {
+	const nameWords = name.trim().split(/\s+/).filter(Boolean);
+	const nameLines =
+		nameWords.length > 2
+			? [nameWords[0], nameWords.slice(1, -1).join(" "), nameWords[nameWords.length - 1]]
+			: nameWords;
+
+	return {
+		nameWords,
+		nameLines,
+		accentIndex: Math.floor(nameLines.length / 2),
+	};
 }
