@@ -1,0 +1,15 @@
+# Installed package dependencies.
+node_modules/
+
+# Next.js build cache and static export output.
+.next/
+out/
+
+# TypeScript incremental compilation metadata.
+*.tsbuildinfo
+
+# Next.js-generated TypeScript references.
+next-env.d.ts
+
+# Generated résumé PDFs; source content lives in src/ and translations/.
+public/cv/*.pdf

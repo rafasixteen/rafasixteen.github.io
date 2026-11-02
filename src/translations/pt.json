@@ -1,0 +1,89 @@
+{
+	"nav": {
+		"home": "Início",
+		"experience": "Experiência",
+		"projects": "Projetos",
+		"contact": "Contacto"
+	},
+	"action": {
+		"downloadCv": "Descarregar CV",
+		"email": "Enviar email",
+		"visit": "Ver projeto"
+	},
+	"section": {
+		"about": "Sobre",
+		"experience": "Experiência",
+		"projects": "Projetos selecionados",
+		"skills": "Competências",
+		"education": "Educação",
+		"contact": "Contacto"
+	},
+	"label": {
+		"present": "Atual",
+		"technologies": "Tecnologias",
+		"language": "Idioma"
+	},
+	"cv": {
+		"experience": "Experiência",
+		"education": "Educação",
+		"skills": "Competências",
+		"projects": "Projetos",
+		"contact": "Contacto"
+	},
+	"portfolio": {
+		"profile": {
+			"role": "Programador de software",
+			"summary": "Estudante do Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos, com experiência prática em estágios de desenvolvimento de software e tecnologias informáticas.",
+			"availability": "Disponível para colaborações ponderadas de produto e engenharia."
+		},
+		"experience": {
+			"vitalis": {
+				"role": "Estagiário",
+				"summary": "Concluí um estágio internacional de 300 horas em desenvolvimento web, redes, automação de casas inteligentes, modelação 3D, eletrónica e automação de bases de dados.",
+				"highlights": [
+					"Desenvolvi um website para documentar a experiência de estágio e reforcei bases de HTML e CSS.",
+					"Configurei redes, sistemas de casas inteligentes, segurança e iluminação, incluindo router e cablagem.",
+					"Modelei, imprimi, liguei e programei um projeto de semáforos controlado por Arduino.",
+					"Criei formulários no FileMaker Pro e automatizei fluxos de contactos, encomendas, stock, propostas e faturas."
+				]
+			},
+			"janela-digital": {
+				"role": "Estagiário",
+				"summary": "Concluí um estágio de desenvolvimento de software de 300 horas, focado em aplicações web ASP.NET para casos de utilização imobiliários.",
+				"highlights": [
+					"Desenvolvi um projeto de aprendizagem ASP.NET para marcação de almoços.",
+					"Contribuí para uma aplicação web imobiliária com autenticação, perfis, anúncios, vistas de mapa e lista e filtros.",
+					"Utilizei ASP.NET Core MVC, Razor Pages, Bootstrap, HttpContext.Session e Git num contexto de equipa."
+				]
+			}
+		},
+		"education": {
+			"ulo-tesp": {
+				"credential": "Estudante de TesP na Universidade de Leiria e Oeste (ULO)",
+				"detail": "Atualmente no segundo ano."
+			},
+			"raul-proenca": {
+				"credential": "Curso Profissional de Programação de Sistemas de Informação (PSI)",
+				"detail": "Concluído entre o 10.º e o 12.º ano do ensino secundário português."
+			}
+		},
+		"projects": {
+			"personal-portfolio": {
+				"summary": "Um portfólio pessoal bilingue construído como aplicação estática Next.js App Router, com rotas em inglês e português, conteúdo validado e CVs em PDF gerados.",
+				"impact": "Reúne a experiência de estágios, competências e trabalho futuro num único portfólio fácil de manter."
+			},
+			"real-estate-platform": {
+				"summary": "Um projeto de equipa de estágio para um website imobiliário com autenticação, perfis, anúncios, vistas de mapa e lista e filtros definidos pelos utilizadores.",
+				"impact": "Aplicou ASP.NET Core MVC, Razor Pages, Bootstrap, estado de sessão e Git numa aplicação web específica do domínio."
+			},
+			"traffic-light-system": {
+				"summary": "Um modelo de semáforos de quatro vias desenhado no FreeCAD, impresso em 3D, ligado com LEDs e controlado por um Arduino Mega.",
+				"impact": "Combinou modelação, impressão, eletrónica, gestão de cabos e programação num protótipo físico funcional."
+			}
+		},
+		"skills": {
+			"web-development": { "name": "Desenvolvimento web" },
+			"technical-practice": { "name": "Prática técnica" }
+		}
+	}
+}

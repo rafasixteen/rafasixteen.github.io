@@ -1,0 +1,89 @@
+{
+	"nav": {
+		"home": "Home",
+		"experience": "Experience",
+		"projects": "Projects",
+		"contact": "Contact"
+	},
+	"action": {
+		"downloadCv": "Download CV",
+		"email": "Email me",
+		"visit": "Visit project"
+	},
+	"section": {
+		"about": "About",
+		"experience": "Experience",
+		"projects": "Selected projects",
+		"skills": "Skills",
+		"education": "Education",
+		"contact": "Contact"
+	},
+	"label": {
+		"present": "Present",
+		"technologies": "Technologies",
+		"language": "Language"
+	},
+	"cv": {
+		"experience": "Experience",
+		"education": "Education",
+		"skills": "Skills",
+		"projects": "Projects",
+		"contact": "Contact"
+	},
+	"portfolio": {
+		"profile": {
+			"role": "Software developer",
+			"summary": "Student in the Professional Course in Computer Systems Management and Programming, with practical internship experience in software development and IT technologies.",
+			"availability": "Open to thoughtful product and engineering collaborations."
+		},
+		"experience": {
+			"vitalis": {
+				"role": "Intern",
+				"summary": "Completed a 300-hour international internship across web development, networking, smart-home automation, 3D modeling, electronics, and database automation.",
+				"highlights": [
+					"Built a website documenting the internship experience while strengthening HTML and CSS foundations.",
+					"Configured networking, smart-home, security, and lighting systems, including router and cabling work.",
+					"Designed, printed, wired, and programmed an Arduino-controlled traffic-light project.",
+					"Created FileMaker Pro forms and automated workflows for contacts, orders, stock, offers, and invoices."
+				]
+			},
+			"janela-digital": {
+				"role": "Intern",
+				"summary": "Completed a 300-hour software-development internship focused on ASP.NET web applications for real-estate use cases.",
+				"highlights": [
+					"Built an ASP.NET learning project for lunch scheduling.",
+					"Contributed to a real-estate web application with authentication, profiles, property listings, map and list views, and filters.",
+					"Used ASP.NET Core MVC, Razor Pages, Bootstrap, HttpContext.Session, and Git in a team setting."
+				]
+			}
+		},
+		"education": {
+			"ulo-tesp": {
+				"credential": "TesP student at Universidade de Leiria e Oeste (ULO)",
+				"detail": "Currently in the second year."
+			},
+			"raul-proenca": {
+				"credential": "Professional Course in Information Systems Programming (PSI)",
+				"detail": "Completed across the 10th, 11th, and 12th years of Portuguese secondary education."
+			}
+		},
+		"projects": {
+			"personal-portfolio": {
+				"summary": "A bilingual personal portfolio built as a static Next.js App Router application, with English and Portuguese routes, validated content, and generated CV PDFs.",
+				"impact": "Brings internship experience, skills, and future work into one maintainable portfolio."
+			},
+			"real-estate-platform": {
+				"summary": "An internship team project for a real-estate website with authentication, profiles, property listings, map and list views, and user-defined filters.",
+				"impact": "Applied ASP.NET Core MVC, Razor Pages, Bootstrap, session state, and Git to a domain-specific web application."
+			},
+			"traffic-light-system": {
+				"summary": "A four-way traffic-light model designed in FreeCAD, 3D printed, wired with LEDs, and controlled with an Arduino Mega.",
+				"impact": "Combined modeling, printing, electronics, cable management, and programming in a functional physical prototype."
+			}
+		},
+		"skills": {
+			"web-development": { "name": "Web development" },
+			"technical-practice": { "name": "Technical practice" }
+		}
+	}
+}
