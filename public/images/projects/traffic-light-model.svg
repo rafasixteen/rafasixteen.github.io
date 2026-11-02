@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
+  <rect width="1200" height="675" fill="#071b1d"/>
+  <path d="M220 492 600 294l380 198-380 140-380-140Z" fill="#183f42" stroke="#6de2ce" stroke-width="2"/>
+  <path d="m600 294 380 198v48L600 675v-43L220 492v-48l380-150Z" fill="#123438"/>
+  <path d="m220 492 380 140v43L220 540v-48Z" fill="#0d292b"/>
+  <g stroke="#6de2ce" stroke-width="14" stroke-linecap="round"><path d="M600 336v248"/><path d="m434 420 332 164"/><path d="m766 420-332 164"/></g>
+  <g fill="#1c494b" stroke="#6f9694" stroke-width="4"><rect x="565" y="222" width="70" height="128" rx="20"/><rect x="336" y="365" width="70" height="128" rx="20"/><rect x="794" y="365" width="70" height="128" rx="20"/></g>
+  <g fill="#6de2ce"><circle cx="600" cy="258" r="12"/><circle cx="371" cy="401" r="12"/><circle cx="829" cy="401" r="12"/></g>
+  <text x="76" y="100" fill="#6de2ce" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">3D MODEL MOCK</text>
+</svg>

@@ -58,7 +58,15 @@ export function assembleContent(locale: Locale): PortfolioContent {
 		profile: { ...profile, ...translations.profile },
 		experience: experience.map((entry) => ({ ...entry, ...translations.experience[entry.translationKey] })),
 		education: education.map((entry) => ({ ...entry, ...translations.education[entry.translationKey] })),
-		projects: projects.map((entry) => ({ ...entry, ...translations.projects[entry.translationKey] })),
+		projects: projects.map((entry) => {
+			const translation = translations.projects[entry.translationKey];
+
+			return {
+				...entry,
+				...translation,
+				media: entry.media.map((media) => ({ ...media, ...translation.media[media.translationKey] })),
+			};
+		}),
 		skills: skillGroups.map((entry) => ({ ...entry, ...translations.skills[entry.translationKey] })),
 	};
 }

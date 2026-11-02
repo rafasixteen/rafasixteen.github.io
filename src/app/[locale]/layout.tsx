@@ -1,7 +1,9 @@
+import "@/app/globals.css";
+
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Footer, Navbar } from "@/components/layout";
 import { site } from "@/config/site";
@@ -54,11 +56,11 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 export default async function LocaleLayout({ children, params }: { children: ReactNode } & LocaleProps) {
 	const { locale: value } = await params;
 
-	if (!hasLocale(routing.locales, value)) notFound();
+	if (!hasLocale(routing.locales, value)) {
+		notFound();
+	}
 
 	const content = portfolioContent[value];
-	setRequestLocale(value);
-
 	const messages = await getMessages();
 
 	return (

@@ -8,7 +8,10 @@
 	"action": {
 		"downloadCv": "Descarregar CV",
 		"email": "Enviar email",
-		"visit": "Ver projeto"
+		"visit": "Ver projeto",
+		"viewDetails": "Ver detalhes",
+		"backToProjects": "Voltar aos projetos",
+		"viewRepository": "Ver repositório"
 	},
 	"section": {
 		"about": "Sobre",
@@ -22,6 +25,14 @@
 		"present": "Atual",
 		"technologies": "Tecnologias",
 		"language": "Idioma"
+	},
+	"projectDetail": {
+		"caseStudy": "Estudo de caso",
+		"overview": "Visão geral",
+		"contributions": "O que fiz",
+		"media": "Multimédia do projeto",
+		"technologies": "Tecnologias",
+		"links": "Ligações do projeto"
 	},
 	"cv": {
 		"experience": "Experiência",
@@ -70,15 +81,47 @@
 		"projects": {
 			"personal-portfolio": {
 				"summary": "Um portfólio pessoal bilingue construído como aplicação estática Next.js App Router, com rotas em inglês e português, conteúdo validado e CVs em PDF gerados.",
-				"impact": "Reúne a experiência de estágios, competências e trabalho futuro num único portfólio fácil de manter."
+				"impact": "Reúne a experiência de estágios, competências e trabalho futuro num único portfólio fácil de manter.",
+				"overview": "Este portefólio é um espaço focado para o meu trabalho, pensado para tornar a história de cada projeto tão clara como o resultado final. É exportado estaticamente para um alojamento fiável, mantendo uma experiência de navegação localizada e semelhante a uma aplicação.",
+				"contributions": [
+					"Desenhei um modelo de conteúdo que separa dados partilhados dos conteúdos editoriais traduzidos.",
+					"Criei navegação adaptada ao idioma e rotas estáticas para visitantes em inglês e português.",
+					"Adicionei validação e geração automática de CV para manter o conteúdo publicado consistente."
+				],
+				"media": {
+					"home": { "alt": "Vista simulada da página inicial do portefólio num computador.", "caption": "Composição simulada da página inicial." },
+					"locales": { "alt": "Comparação simulada das rotas do portefólio em inglês e português.", "caption": "Vista simulada das rotas localizadas." },
+					"cv": { "alt": "Pré-visualização simulada de um documento de CV gerado.", "caption": "Pré-visualização simulada do CV gerado." }
+				}
 			},
 			"real-estate-platform": {
 				"summary": "Um projeto de equipa de estágio para um website imobiliário com autenticação, perfis, anúncios, vistas de mapa e lista e filtros definidos pelos utilizadores.",
-				"impact": "Aplicou ASP.NET Core MVC, Razor Pages, Bootstrap, estado de sessão e Git numa aplicação web específica do domínio."
+				"impact": "Aplicou ASP.NET Core MVC, Razor Pages, Bootstrap, estado de sessão e Git numa aplicação web específica do domínio.",
+				"overview": "Desenvolvido durante um estágio em equipa, este projeto explorou a jornada imobiliária desde a autenticação à descoberta. O produto reúne anúncios, perfis, mapas e filtros para ajudar os visitantes a reduzir um catálogo amplo a opções úteis.",
+				"contributions": [
+					"Trabalhei com ASP.NET Core MVC e Razor Pages num fluxo de trabalho colaborativo com Git.",
+					"Contribuí para experiências autenticadas, perfis de utilizador e vistas de anúncios de propriedades.",
+					"Ajudei a desenvolver filtros e a exploração por mapa/lista para necessidades reais de pesquisa imobiliária."
+				],
+				"media": {
+					"search": { "alt": "Interface simulada de pesquisa imobiliária com filtros e cartões de propriedades.", "caption": "Vista simulada de pesquisa e filtragem." },
+					"filters": { "alt": "Marcador GIF animado para uma interação de filtragem.", "caption": "Recurso GIF animado remoto de teste." },
+					"demo": { "alt": "Vídeo de teste usado para verificar a reprodução no carrossel.", "caption": "Recurso de vídeo remoto de teste com poster local." }
+				}
 			},
 			"traffic-light-system": {
 				"summary": "Um modelo de semáforos de quatro vias desenhado no FreeCAD, impresso em 3D, ligado com LEDs e controlado por um Arduino Mega.",
-				"impact": "Combinou modelação, impressão, eletrónica, gestão de cabos e programação num protótipo físico funcional."
+				"impact": "Combinou modelação, impressão, eletrónica, gestão de cabos e programação num protótipo físico funcional.",
+				"overview": "Este protótipo físico transforma um cruzamento de quatro vias num sistema compacto e funcional. O projeto juntou modelação digital, fabrico, eletrónica e programação embarcada numa única construção testável no mundo real.",
+				"contributions": [
+					"Modelei as peças dos semáforos em FreeCAD e preparei-as para impressão 3D.",
+					"Liguei LEDs e organizei as ligações físicas em torno de um Arduino Mega.",
+					"Programei a sequência de luzes e testei o sistema como um protótipo completo."
+				],
+				"media": {
+					"model": { "alt": "Vista isométrica simulada de um modelo de semáforos de quatro vias.", "caption": "Vista simulada do modelo 3D." },
+					"wiring": { "alt": "Diagrama de ligações simulado entre um Arduino e seis unidades de semáforos.", "caption": "Diagrama de ligações simulado." }
+				}
 			}
 		},
 		"skills": {

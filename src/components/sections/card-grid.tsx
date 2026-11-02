@@ -1,6 +1,10 @@
+import { ArrowUpRight } from "lucide-react";
+import { ProjectPoster } from "@/components/projects/project-poster";
 import { SectionTitle } from "@/components/shared/section-title";
-import { Card } from "@/components/ui";
-import type { Project } from "@/content/project";
+import { TechnologyPill } from "@/components/shared/technology-pill";
+import { AspectRatio, Button, Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui";
+import { projectSlug, type Project } from "@/content/project";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 interface CardGridProps {
@@ -11,28 +15,54 @@ export function CardGrid({ projects }: CardGridProps) {
 	const t = useTranslations();
 
 	return (
-		<section className="section shell" id="projects">
-			<SectionTitle>{t("section.projects")}</SectionTitle>
-			<div className="card-grid">
-				{projects.map((project) => (
-					<Card key={project.translationKey}>
-						<ul className="content-tags" aria-label={t("label.technologies")}>
-							{project.technologies.map((technology) => (
-								<li key={technology.name}>
-									{technology.icon}
-									{technology.name}
-								</li>
-							))}
-						</ul>
-						<h2>{project.name}</h2>
-						<p>{project.summary}</p>
-						<p className="impact">{project.impact}</p>
-						<a href={project.url}>
-							{t("action.visit")}
-							<span className="sr-only">: {project.name}</span> →
-						</a>
-					</Card>
-				))}
+		<section className="border-t border-border py-20" id="projects">
+			<div className="mx-auto w-full max-w-6xl px-5">
+				<SectionTitle>{t("section.projects")}</SectionTitle>
+				<div className="grid gap-4 md:grid-cols-2">
+					{projects.map((project) => {
+						const href = `/projects/${projectSlug(project)}`;
+						const poster = project.media[0];
+
+						return (
+							<Card key={project.translationKey} className="group h-full gap-0 overflow-hidden py-0 transition-colors hover:border-primary/60">
+								{poster ? (
+									<Link href={href} className="block overflow-hidden border-b border-border focus-visible:ring-inset" aria-label={`${t("action.viewDetails")}: ${project.name}`}>
+										<AspectRatio ratio={16 / 10} className="bg-muted">
+											<ProjectPoster media={poster} />
+											<div className="pointer-events-none absolute inset-0 bg-linear-to-t from-background/70 via-transparent to-transparent" />
+										</AspectRatio>
+									</Link>
+								) : null}
+								<CardHeader className="gap-2 px-5 pt-5">
+									<CardTitle className="text-xl leading-tight">
+										<Link href={href} className="inline-flex items-center gap-2 hover:text-primary">
+											{project.name}
+											<ArrowUpRight aria-hidden="true" className="size-4 transition-transform motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5" />
+										</Link>
+									</CardTitle>
+								</CardHeader>
+								<CardContent className="px-5 pt-4 text-sm leading-relaxed text-muted-foreground">
+									<p>{project.summary}</p>
+									<ul className="mt-5 flex flex-wrap gap-2" aria-label={t("label.technologies")}>
+										{project.technologies.map((technology) => (
+											<li key={technology.name}>
+												<TechnologyPill technology={technology} />
+											</li>
+										))}
+									</ul>
+								</CardContent>
+								<CardFooter className="mt-auto px-5 pt-5 pb-5">
+									<Button asChild variant="link" className="px-0">
+										<Link href={href}>
+											{t("action.viewDetails")}
+											<span className="sr-only">: {project.name}</span> →
+										</Link>
+									</Button>
+								</CardFooter>
+							</Card>
+						);
+					})}
+				</div>
 			</div>
 		</section>
 	);

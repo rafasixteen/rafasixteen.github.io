@@ -8,7 +8,10 @@
 	"action": {
 		"downloadCv": "Download CV",
 		"email": "Email me",
-		"visit": "Visit project"
+		"visit": "Visit project",
+		"viewDetails": "View details",
+		"backToProjects": "Back to projects",
+		"viewRepository": "View repository"
 	},
 	"section": {
 		"about": "About",
@@ -22,6 +25,14 @@
 		"present": "Present",
 		"technologies": "Technologies",
 		"language": "Language"
+	},
+	"projectDetail": {
+		"caseStudy": "Case study",
+		"overview": "Overview",
+		"contributions": "What I did",
+		"media": "Project media",
+		"technologies": "Technology stack",
+		"links": "Project links"
 	},
 	"cv": {
 		"experience": "Experience",
@@ -70,15 +81,47 @@
 		"projects": {
 			"personal-portfolio": {
 				"summary": "A bilingual personal portfolio built as a static Next.js App Router application, with English and Portuguese routes, validated content, and generated CV PDFs.",
-				"impact": "Brings internship experience, skills, and future work into one maintainable portfolio."
+				"impact": "Brings internship experience, skills, and future work into one maintainable portfolio.",
+				"overview": "This portfolio is a focused home for my work, designed to make the story behind each project as clear as the final result. It is statically exported for dependable hosting while still providing a localized, app-like browsing experience.",
+				"contributions": [
+					"Designed a content model that separates shared project data from translated editorial content.",
+					"Built locale-aware navigation and static routes for English and Portuguese visitors.",
+					"Added validation and automated CV generation to keep the published content consistent."
+				],
+				"media": {
+					"home": { "alt": "Mock desktop view of the portfolio home page.", "caption": "Mock home-page composition." },
+					"locales": { "alt": "Mock comparison of English and Portuguese portfolio routes.", "caption": "Mock localized route view." },
+					"cv": { "alt": "Mock generated CV document preview.", "caption": "Mock generated CV preview." }
+				}
 			},
 			"real-estate-platform": {
 				"summary": "An internship team project for a real-estate website with authentication, profiles, property listings, map and list views, and user-defined filters.",
-				"impact": "Applied ASP.NET Core MVC, Razor Pages, Bootstrap, session state, and Git to a domain-specific web application."
+				"impact": "Applied ASP.NET Core MVC, Razor Pages, Bootstrap, session state, and Git to a domain-specific web application.",
+				"overview": "Built during an internship as part of a team, this project explored the real-estate journey from sign-in to discovery. The product brings listings, profiles, maps, and filters together so visitors can narrow a large catalogue into useful options.",
+				"contributions": [
+					"Worked with ASP.NET Core MVC and Razor Pages in a collaborative, Git-based workflow.",
+					"Contributed to authenticated experiences, user profiles, and property-listing views.",
+					"Helped shape filtering and map/list exploration around practical real-estate search needs."
+				],
+				"media": {
+					"search": { "alt": "Mock real-estate search interface with filters and property cards.", "caption": "Mock search and filtering view." },
+					"filters": { "alt": "Animated GIF placeholder for a filtering interaction.", "caption": "Remote animated GIF fixture." },
+					"demo": { "alt": "Sample video fixture used to test video playback in the carousel.", "caption": "Remote video fixture with a local poster." }
+				}
 			},
 			"traffic-light-system": {
 				"summary": "A four-way traffic-light model designed in FreeCAD, 3D printed, wired with LEDs, and controlled with an Arduino Mega.",
-				"impact": "Combined modeling, printing, electronics, cable management, and programming in a functional physical prototype."
+				"impact": "Combined modeling, printing, electronics, cable management, and programming in a functional physical prototype.",
+				"overview": "This physical prototype turns a four-way junction into a compact, working system. The project brought digital modelling, fabrication, electronics, and embedded programming into one build that could be tested in the real world.",
+				"contributions": [
+					"Modelled the traffic-light parts in FreeCAD and prepared them for 3D printing.",
+					"Wired LEDs and managed the physical connections around an Arduino Mega.",
+					"Programmed the light sequence and tested the system as a complete prototype."
+				],
+				"media": {
+					"model": { "alt": "Mock isometric view of a four-way traffic-light model.", "caption": "Mock 3D model view." },
+					"wiring": { "alt": "Mock wiring diagram linking an Arduino to six traffic-light units.", "caption": "Mock wiring diagram." }
+				}
 			}
 		},
 		"skills": {

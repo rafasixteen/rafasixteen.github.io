@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
+  <rect width="1200" height="675" fill="#071b1d"/>
+  <rect x="72" y="58" width="1056" height="560" rx="22" fill="#0d292b" stroke="#2c5d5e" stroke-width="2"/>
+  <rect x="72" y="58" width="1056" height="52" rx="22" fill="#123438"/>
+  <circle cx="110" cy="84" r="8" fill="#6de2ce"/><circle cx="136" cy="84" r="8" fill="#2d6d6d"/><circle cx="162" cy="84" r="8" fill="#2d6d6d"/>
+  <rect x="112" y="156" width="270" height="18" rx="9" fill="#6de2ce"/><rect x="112" y="194" width="432" height="52" rx="12" fill="#e4f5f1"/>
+  <rect x="112" y="272" width="330" height="14" rx="7" fill="#6f9694"/><rect x="112" y="298" width="268" height="14" rx="7" fill="#486f70"/>
+  <rect x="112" y="370" width="190" height="50" rx="10" fill="#6de2ce"/>
+  <rect x="620" y="156" width="416" height="312" rx="18" fill="#123438" stroke="#2c5d5e" stroke-width="2"/>
+  <rect x="660" y="202" width="160" height="12" rx="6" fill="#6de2ce"/><rect x="660" y="234" width="316" height="10" rx="5" fill="#6f9694"/>
+  <rect x="660" y="284" width="96" height="118" rx="12" fill="#1c494b"/><rect x="776" y="284" width="96" height="118" rx="12" fill="#1c494b"/><rect x="892" y="284" width="84" height="118" rx="12" fill="#1c494b"/>
+  <text x="112" y="520" fill="#6f9694" font-family="Arial, sans-serif" font-size="20" letter-spacing="4">MOCK PORTFOLIO HOME</text>
+</svg>

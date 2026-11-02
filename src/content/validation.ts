@@ -80,6 +80,16 @@ export function validateContent(): Record<Locale, PortfolioContent> {
 		assertTranslationKeys(locale, "experience", experience, translations.experience);
 		assertTranslationKeys(locale, "education", education, translations.education);
 		assertTranslationKeys(locale, "projects", projects, translations.projects);
+
+		for (const project of projects) {
+			assertTranslationKeys(
+				locale,
+				`projects.${project.translationKey}.media`,
+				project.media,
+				translations.projects[project.translationKey].media,
+			);
+		}
+
 		assertTranslationKeys(locale, "skills", skillGroups, translations.skills);
 
 		content[locale] = portfolioContentSchema.parse(assembleContent(locale));
