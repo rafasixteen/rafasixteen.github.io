@@ -36,7 +36,7 @@ The content loader discovers translation files automatically and rejects a missi
 ## Deploy to GitHub Pages
 
 1. Push this repository to GitHub and enable **Settings → Pages → GitHub Actions**.
-2. Ensure the default branch is `master`, or update `.github/workflows/deploy.yml`.
-3. Push to `master`; the workflow runs tests, exports `out/`, then deploys it.
+2. Ensure the default branch is `main`, or update `.github/workflows/deploy.yml`.
+3. Push to `main`; the workflow runs tests, exports `out/`, then deploys it.
 
-The Next config detects GitHub Actions’ `GITHUB_REPOSITORY`. It uses a `/repository-name` prefix for project Pages and no prefix for a `<owner>.github.io` root Pages repository. The workflow also supplies the deployed URL for canonical and `hreflang` metadata. For a custom domain, set `NEXT_PUBLIC_SITE_URL` to that URL in the build environment and configure the domain in GitHub Pages.
+The static export is configured for a GitHub Pages user site at the root URL. Local and deployed builds use the same root path. The workflow supplies the deployed URL for canonical and `hreflang` metadata. For a custom domain, set `NEXT_PUBLIC_SITE_URL` to that URL in the build environment and configure the domain in GitHub Pages.
