@@ -63,14 +63,14 @@
 		"projects": {
 			"cal-platform": {
 				"summary": "A plataforma que estou a desenvolver para a Calisthenics Alliance, a liga portuguesa de Endurance. Trata das inscrições, divisões, battles 1v1, avaliação, rankings, resultados e da administração dos eventos.",
-				"impact": "Está a ser usada para apoiar uma organização de competições real e tornar o dia do evento mais simples para a organização e para os juízes.",
+				"impact": "Está a ser usada para apoiar uma organização de competições real e tornar o dia do evento mais simples para a organização e para os júris.",
 				"organization": "Desenvolvida para a Calisthenics Alliance, uma liga criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha, em conjunto com clubes, atletas e organizações da comunidade portuguesa de calistenia.",
 				"overview": "A CAL está organizada em torno do Open CAL, quatro rounds regulares e uma Grand Final. Estou a desenvolver a plataforma para acompanhar esse formato, desde as inscrições e atribuição de divisões até à geração de battles, avaliação, rankings e resultados. Os serviços podem correr na rede local do recinto, o que torna a preparação do dia mais simples.",
 				"contributions": [
 					"Desenvolvi os serviços Go à volta das épocas, categorias, divisões, atletas, battles, avaliação, rankings e resultados da CAL.",
 					"Criei os ecrãs de administração para inscrições, atribuição de divisões, geração de battles e configuração dos eventos.",
 					"Liguei a plataforma à rede local do recinto e preparei os serviços Docker necessários para um evento.",
-					"Desenvolvi os fluxos que a organização e os juízes usam durante os eventos da CAL."
+					"Desenvolvi os fluxos que a organização e os júris usam durante os eventos da CAL."
 				],
 				"architecture": [
 					{
@@ -83,7 +83,7 @@
 					},
 					{
 						"title": "Rede local",
-						"description": "Os serviços correm na rede local do recinto com Docker, para que a organização e os juízes consigam aceder ao sistema durante o evento."
+						"description": "Os serviços correm na rede local do recinto com Docker, para que a organização e os júris consigam aceder ao sistema durante o evento."
 					},
 					{
 						"title": "Operação dos eventos",
@@ -92,10 +92,10 @@
 				]
 			},
 			"cal-judge": {
-				"summary": "Uma aplicação Android nativa que estou a desenvolver para os juízes da Calisthenics Alliance, a liga portuguesa de Endurance. Liga-se à plataforma de eventos e suporta battles, rotinas, temporizadores e avaliação no local.",
-				"impact": "Dá aos juízes uma ferramenta simples para o dia da competição e mantém o trabalho de avaliação ligado ao mesmo sistema usado pela organização.",
+				"summary": "Uma aplicação Android nativa que estou a desenvolver para os júris da Calisthenics Alliance, a liga portuguesa de Endurance. Liga-se à plataforma de eventos e suporta battles, rotinas, temporizadores e avaliação no local.",
+				"impact": "Dá aos júris uma ferramenta simples para o dia da competição e mantém o trabalho de avaliação ligado ao mesmo sistema usado pela organização.",
 				"organization": "Desenvolvida para a Calisthenics Alliance, liga portuguesa de Endurance criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha com a comunidade de calistenia.",
-				"overview": "A aplicação trata do lado da avaliação na CAL, onde os atletas competem em battles 1v1 dentro de categorias e divisões com os mesmos critérios da Comitiva Nacional de Júris. Estou a mantê-la próxima do que os juízes precisam no recinto: selecionar uma battle, acompanhar a rotina, registar cada repetição concluída e aumentar ou diminuir a contagem quando necessário, para conseguirem acompanhar o progresso do atleta através da API da CAL. Uma repetição é a execução completa de um exercício.",
+				"overview": "A aplicação trata do lado da avaliação na CAL, onde os atletas competem em battles 1v1 dentro de categorias e divisões com os mesmos critérios da Comitiva Nacional de Júris. Estou a mantê-la próxima do que os júris precisam no recinto: selecionar uma battle, acompanhar a rotina, registar cada repetição concluída e aumentar ou diminuir a contagem quando necessário, para conseguirem acompanhar o progresso do atleta através da API da CAL. Uma repetição é a execução completa de um exercício.",
 				"contributions": [
 					"Preparei o projeto Kotlin Multiplatform, as ferramentas Android e o processo de build e testes em emulador e APK de release.",
 					"Criei os ecrãs para seleção de battles, avaliação, temporizadores, progresso de séries e repetições e definições.",
