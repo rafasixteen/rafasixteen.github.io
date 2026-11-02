@@ -34,7 +34,7 @@ export const skillGroups: SkillGroupSharedData[] = [
 			{ name: "REST APIs", icon: <Network size={16} /> },
 			{ name: "PostgreSQL", icon: <Database size={16} /> },
 			{ name: "SQLite", icon: <Database size={16} /> },
-			{ name: "SQL / sqlc", icon: <Database size={16} /> },
+			{ name: "SQL", icon: <Database size={16} /> },
 			{ name: "ASP.NET Core MVC", icon: <Server size={16} /> },
 		],
 	},
@@ -45,13 +45,13 @@ export const skillGroups: SkillGroupSharedData[] = [
 			{ name: "React / Next.js", icon: <FileCode2 size={16} /> },
 			{ name: "HTML / CSS / Tailwind CSS", icon: <Braces size={16} /> },
 			{ name: "Go templ / Datastar", icon: <FileCode2 size={16} /> },
-			{ name: "Razor Pages / Bootstrap", icon: <FileCode2 size={16} /> },
+			{ name: "Razor Pages", icon: <FileCode2 size={16} /> },
 		],
 	},
 	{
 		translationKey: "mobile",
 		skills: [
-			{ name: "Kotlin / Kotlin Multiplatform", icon: <FileCode2 size={16} /> },
+			{ name: "Kotlin Multiplatform", icon: <FileCode2 size={16} /> },
 			{ name: "Android development", icon: <FileCode2 size={16} /> },
 		],
 	},
@@ -59,10 +59,9 @@ export const skillGroups: SkillGroupSharedData[] = [
 		translationKey: "devops",
 		skills: [
 			{ name: "Linux", icon: <Server size={16} /> },
-			{ name: "Docker / Compose", icon: <Server size={16} /> },
-			{ name: "Caddy / networking", icon: <Network size={16} /> },
+			{ name: "Docker", icon: <Server size={16} /> },
+			{ name: "Networking", icon: <Network size={16} /> },
 			{ name: "Git / GitHub Actions", icon: <GitBranch size={16} /> },
-			{ name: "Taskfile", icon: <FileCode2 size={16} /> },
 		],
 	},
 	{
@@ -71,7 +70,6 @@ export const skillGroups: SkillGroupSharedData[] = [
 			{ name: "Electronics / Arduino", icon: <Database size={16} /> },
 			{ name: "3D modeling / printing", icon: <FileCode2 size={16} /> },
 			{ name: "Smart-home automation", icon: <Network size={16} /> },
-			{ name: "FileMaker Pro", icon: <Database size={16} /> },
 		],
 	},
 	{

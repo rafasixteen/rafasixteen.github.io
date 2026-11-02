@@ -42,7 +42,7 @@ export type Project = ProjectSharedData;
 export const projects: ProjectSharedData[] = [
 	{
 		translationKey: "cal-platform",
-		name: "Calisthenics Alliance - Event Platform",
+		name: "CAL Platform",
 		details: CalPlatformDetail,
 		technologies: [
 			{ name: "Go", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
@@ -54,7 +54,7 @@ export const projects: ProjectSharedData[] = [
 	},
 	{
 		translationKey: "cal-judge",
-		name: "CAL Judge - Native Judging App",
+		name: "CAL Judge",
 		details: CalJudgeDetail,
 		technologies: [
 			{ name: "Kotlin Multiplatform", icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} /> },
