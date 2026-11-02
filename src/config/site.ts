@@ -1,5 +1,11 @@
 import { profile } from "@/content/profile";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!siteUrl) {
+	throw new Error("NEXT_PUBLIC_SITE_URL must be configured before building the site.");
+}
+
 function profileLink(label: string): string | undefined {
 	return profile.links.find((link) => link.label === label)?.url;
 }
@@ -7,7 +13,7 @@ function profileLink(label: string): string | undefined {
 export const site = {
 	name: profile.name,
 	shortName: "RR",
-	url: process.env.NEXT_PUBLIC_SITE_URL,
+	url: siteUrl,
 	author: {
 		name: profile.name,
 		email: profile.email,
