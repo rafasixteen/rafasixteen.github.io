@@ -67,7 +67,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 		<html lang={value}>
 			<body>
 				<NextIntlClientProvider locale={value} messages={messages}>
-					<Navbar />
+					<Navbar locale={value} />
 					<main>{children}</main>
 					<Footer profile={content.profile} />
 				</NextIntlClientProvider>

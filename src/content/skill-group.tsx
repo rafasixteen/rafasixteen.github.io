@@ -28,58 +28,57 @@ export type SkillGroupTranslations = Record<string, SkillGroupTranslation>;
 
 export const skillGroups: SkillGroupSharedData[] = [
 	{
-		translationKey: "web-development",
+		translationKey: "backend",
 		skills: [
-			{
-				name: "HTML and CSS",
-				icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "ASP.NET Core MVC",
-				icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Razor Pages",
-				icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Git",
-				icon: <GitBranch aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
+			{ name: "Go", icon: <Server size={16} /> },
+			{ name: "REST APIs", icon: <Network size={16} /> },
+			{ name: "PostgreSQL", icon: <Database size={16} /> },
+			{ name: "SQLite", icon: <Database size={16} /> },
+			{ name: "SQL / sqlc", icon: <Database size={16} /> },
+			{ name: "ASP.NET Core MVC", icon: <Server size={16} /> },
+		],
+	},
+	{
+		translationKey: "frontend",
+		skills: [
+			{ name: "TypeScript", icon: <Braces size={16} /> },
+			{ name: "React / Next.js", icon: <FileCode2 size={16} /> },
+			{ name: "HTML / CSS / Tailwind CSS", icon: <Braces size={16} /> },
+			{ name: "Go templ / Datastar", icon: <FileCode2 size={16} /> },
+			{ name: "Razor Pages / Bootstrap", icon: <FileCode2 size={16} /> },
+		],
+	},
+	{
+		translationKey: "mobile",
+		skills: [
+			{ name: "Kotlin / Kotlin Multiplatform", icon: <FileCode2 size={16} /> },
+			{ name: "Android development", icon: <FileCode2 size={16} /> },
+		],
+	},
+	{
+		translationKey: "devops",
+		skills: [
+			{ name: "Linux", icon: <Server size={16} /> },
+			{ name: "Docker / Compose", icon: <Server size={16} /> },
+			{ name: "Caddy / networking", icon: <Network size={16} /> },
+			{ name: "Git / GitHub Actions", icon: <GitBranch size={16} /> },
+			{ name: "Taskfile", icon: <FileCode2 size={16} /> },
 		],
 	},
 	{
 		translationKey: "technical-practice",
 		skills: [
-			{
-				name: "Networking",
-				icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Smart home automation",
-				icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "3D modeling and printing",
-				icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "FileMaker Pro",
-				icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
+			{ name: "Electronics / Arduino", icon: <Database size={16} /> },
+			{ name: "3D modeling / printing", icon: <FileCode2 size={16} /> },
+			{ name: "Smart-home automation", icon: <Network size={16} /> },
+			{ name: "FileMaker Pro", icon: <Database size={16} /> },
 		],
 	},
 	{
 		translationKey: "languages",
 		skills: [
-			{
-				name: "Portuguese (native speaker)",
-				icon: <Languages aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "English (proficient)",
-				icon: <Languages aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
+			{ name: "Portuguese (native)", icon: <Languages size={16} /> },
+			{ name: "English (proficient)", icon: <Languages size={16} /> },
 		],
 	},
 ];

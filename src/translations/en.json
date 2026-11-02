@@ -23,8 +23,9 @@
 		"language": "Language"
 	},
 	"projectDetail": {
-		"caseStudy": "Case study",
+		"organization": "Organization",
 		"overview": "Overview",
+		"architecture": "Architecture",
 		"contributions": "What I did",
 		"media": "Project media",
 		"technologies": "Technology stack",
@@ -39,7 +40,7 @@
 	},
 	"portfolio": {
 		"profile": {
-			"summary": "Student in the Professional Course in Computer Systems Management and Programming, with practical internship experience in software development and IT technologies."
+			"summary": "Full-stack software developer and higher-education student focused on Go backends, web applications, and native Android development. I build end-to-end systems, from data modeling and APIs to user interfaces, deployment, and live event operations."
 		},
 		"experience": {
 			"vitalis": {
@@ -51,8 +52,8 @@
 		},
 		"education": {
 			"ulo-tesp": {
-				"credential": "TesP student at Universidade de Leiria e Oeste (ULO)",
-				"detail": "Currently in the second year."
+				"credential": "Higher Professional Technical Course (CTeSP) student",
+				"detail": "Currently studying software and information technologies at higher-education level."
 			},
 			"raul-proenca": {
 				"credential": "Professional Course in Information Systems Programming (PSI)",
@@ -60,54 +61,57 @@
 			}
 		},
 		"projects": {
-			"personal-portfolio": {
-				"summary": "A bilingual personal portfolio built as a static Next.js App Router application, with English and Portuguese routes, validated content, and generated CV PDFs.",
-				"impact": "Brings internship experience, skills, and future work into one maintainable portfolio.",
-				"overview": "This portfolio is a focused home for my work, designed to make the story behind each project as clear as the final result. It is statically exported for dependable hosting while still providing a localized, app-like browsing experience.",
+			"cal-platform": {
+				"summary": "The platform I am building for Calisthenics Alliance, Portugal's national Endurance league. It handles registrations, divisions, 1v1 battles, judging, rankings, results, and the admin work around an event.",
+				"impact": "It is being used to support a real competition organization and make the event days easier to run for the organizers and judges.",
+				"organization": "Built for Calisthenics Alliance, a league created by Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha, together with clubs, athletes, and organizations from the Portuguese calisthenics community.",
+				"overview": "CAL is built around an Open CAL, four regular rounds, and a Grand Final. I am building the platform around that format, from registration and division assignment to battle generation, judging, rankings, and results. The services can run on the venue's local network, which keeps the setup practical on the day.",
 				"contributions": [
-					"Designed a content model that separates shared project data from translated editorial content.",
-					"Built locale-aware navigation and static routes for English and Portuguese visitors.",
-					"Added validation and automated CV generation to keep the published content consistent."
+					"Built the Go services around CAL's seasons, categories, divisions, athletes, battles, judging, rankings, and results.",
+					"Created the admin screens for registrations, division assignment, battle generation, and event setup.",
+					"Connected the platform to the venue's local network and set up the Docker services needed for an event.",
+					"Built the workflows that the organization and judges use during CAL events."
 				],
-				"media": {
-					"home": { "alt": "Mock desktop view of the portfolio home page.", "caption": "Mock home-page composition." },
-					"locales": { "alt": "Mock comparison of English and Portuguese portfolio routes.", "caption": "Mock localized route view." },
-					"cv": { "alt": "Mock generated CV document preview.", "caption": "Mock generated CV preview." }
-				}
+				"architecture": [
+					{
+						"title": "Go event service",
+						"description": "The main service is written in Go and owns the rules for registrations, divisions, battles, judging, rankings, and results."
+					},
+					{
+						"title": "PostgreSQL",
+						"description": "PostgreSQL is the main database. I keep the SQL and migrations explicit with pgx and sqlc."
+					},
+					{
+						"title": "Local network setup",
+						"description": "The services run on the venue's local network with Docker, so organizers and judges can access the system during an event."
+					},
+					{
+						"title": "Event operations",
+						"description": "The platform covers the workflows CAL uses for registration, battles, judging, rankings, and results."
+					}
+				],
+				"media": {}
 			},
-			"real-estate-platform": {
-				"summary": "An internship team project for a real-estate website with authentication, profiles, property listings, map and list views, and user-defined filters.",
-				"impact": "Applied ASP.NET Core MVC, Razor Pages, Bootstrap, session state, and Git to a domain-specific web application.",
-				"overview": "Built during an internship as part of a team, this project explored the real-estate journey from sign-in to discovery. The product brings listings, profiles, maps, and filters together so visitors can narrow a large catalogue into useful options.",
+			"cal-judge": {
+				"summary": "A native Android app I am building for Calisthenics Alliance judges. It connects to the CAL event platform and supports battles, routines, timers, and judging on site.",
+				"impact": "It gives the judges a focused tool for the competition day and keeps their work connected to the same event system used by the organization.",
+				"organization": "Built for Calisthenics Alliance, the Portuguese endurance league created by Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha with the wider calisthenics community.",
+				"overview": "The app covers the judging side of CAL, where athletes compete in 1v1 battles within categories and divisions under the same criteria from the National Judging Committee. I am keeping the workflow close to what judges need at the venue: select a battle, follow the routine, record each completed repetition, and adjust the count up or down when needed so they can keep track of the athlete's progress through the CAL API. A repetition is one complete execution of an exercise.",
 				"contributions": [
-					"Worked with ASP.NET Core MVC and Razor Pages in a collaborative, Git-based workflow.",
-					"Contributed to authenticated experiences, user profiles, and property-listing views.",
-					"Helped shape filtering and map/list exploration around practical real-estate search needs."
+					"Set up the Kotlin Multiplatform project, Android toolchain, build workflow, and emulator and release APK testing.",
+					"Built the screens for battle selection, judging, timers, set and repetition progress, and settings.",
+					"Connected the app to the API and the local Wi-Fi network used at the venue.",
+					"Kept the controls native to Android, including hardware volume-button input, while leaving room for a future native iOS app."
 				],
-				"media": {
-					"search": { "alt": "Mock real-estate search interface with filters and property cards.", "caption": "Mock search and filtering view." },
-					"filters": { "alt": "Animated GIF placeholder for a filtering interaction.", "caption": "Remote animated GIF fixture." },
-					"demo": { "alt": "Sample video fixture used to test video playback in the carousel.", "caption": "Remote video fixture with a local poster." }
-				}
-			},
-			"traffic-light-system": {
-				"summary": "A four-way traffic-light model designed in FreeCAD, 3D printed, wired with LEDs, and controlled with an Arduino Mega.",
-				"impact": "Combined modeling, printing, electronics, cable management, and programming in a functional physical prototype.",
-				"overview": "This physical prototype turns a four-way junction into a compact, working system. The project brought digital modelling, fabrication, electronics, and embedded programming into one build that could be tested in the real world.",
-				"contributions": [
-					"Modelled the traffic-light parts in FreeCAD and prepared them for 3D printing.",
-					"Wired LEDs and managed the physical connections around an Arduino Mega.",
-					"Programmed the light sequence and tested the system as a complete prototype."
-				],
-				"media": {
-					"model": { "alt": "Mock isometric view of a four-way traffic-light model.", "caption": "Mock 3D model view." },
-					"wiring": { "alt": "Mock wiring diagram linking an Arduino to six traffic-light units.", "caption": "Mock wiring diagram." }
-				}
+				"media": {}
 			}
 		},
 		"skills": {
-			"web-development": { "name": "Web development" },
-			"technical-practice": { "name": "Technical practice" },
+			"backend": { "name": "Backend & databases" },
+			"frontend": { "name": "Web & frontend" },
+			"mobile": { "name": "Mobile development" },
+			"devops": { "name": "Infrastructure & tooling" },
+			"technical-practice": { "name": "Hardware & technical practice" },
 			"languages": { "name": "Languages" }
 		}
 	}

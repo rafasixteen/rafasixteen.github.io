@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
-  <rect width="1200" height="675" fill="#f3efe7"/>
-  <rect x="70" y="58" width="1060" height="560" rx="22" fill="#fffaf2" stroke="#d8cdbb" stroke-width="2"/>
-  <path d="M90 180C250 120 328 270 480 208s210-120 370-28 200 22 260-52M88 374c160-80 248 24 400-44s222-160 392-84 160 48 230-12M140 590c22-180 152-220 276-340s220-98 302-160 176-128 318-16" stroke="#bfdbfe" stroke-width="18" stroke-linecap="round"/>
-  <g fill="#2563eb"><circle cx="314" cy="282" r="18"/><circle cx="564" cy="194" r="18"/><circle cx="734" cy="404" r="18"/><circle cx="926" cy="270" r="18"/></g>
-  <g fill="#eff6ff"><circle cx="314" cy="282" r="6"/><circle cx="564" cy="194" r="6"/><circle cx="734" cy="404" r="6"/><circle cx="926" cy="270" r="6"/></g>
-  <rect x="108" y="94" width="202" height="48" rx="12" fill="#e0f2fe"/><text x="136" y="125" fill="#1e3a8a" font-family="Arial, sans-serif" font-size="18">Map view mock</text>
-</svg>

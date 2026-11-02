@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
-  <rect width="1200" height="675" fill="#111827"/>
-  <rect x="442" y="190" width="316" height="300" rx="24" fill="#1f2937" stroke="#f59e0b" stroke-width="3"/>
-  <text x="504" y="252" fill="#f8fafc" font-family="Arial, sans-serif" font-size="28" font-weight="700">ARDUINO</text>
-  <g fill="#f59e0b"><circle cx="498" cy="312" r="10"/><circle cx="540" cy="312" r="10"/><circle cx="582" cy="312" r="10"/><circle cx="624" cy="312" r="10"/><circle cx="666" cy="312" r="10"/><circle cx="708" cy="312" r="10"/></g>
-  <g stroke-width="6" stroke-linecap="round"><path d="M498 312 218 142" stroke="#ef4444"/><path d="M540 312 190 337" stroke="#facc15"/><path d="M582 312 244 526" stroke="#22c55e"/><path d="M666 312 976 142" stroke="#ef4444"/><path d="M708 312 1010 337" stroke="#facc15"/><path d="M624 312 956 526" stroke="#22c55e"/></g>
-  <g fill="#475569" stroke="#94a3b8" stroke-width="3"><rect x="138" y="100" width="120" height="84" rx="16"/><rect x="138" y="294" width="120" height="84" rx="16"/><rect x="138" y="484" width="120" height="84" rx="16"/><rect x="942" y="100" width="120" height="84" rx="16"/><rect x="942" y="294" width="120" height="84" rx="16"/><rect x="942" y="484" width="120" height="84" rx="16"/></g>
-  <text x="76" y="100" fill="#f59e0b" font-family="Arial, sans-serif" font-size="20" letter-spacing="4">WIRING DIAGRAM MOCK</text>
-</svg>

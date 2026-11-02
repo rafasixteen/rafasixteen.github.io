@@ -27,9 +27,9 @@ function ProjectSidebar({ project, technologies, links, visit, viewRepository }:
 				<Separator />
 				<div className="pt-5">
 					<h2 className="text-sm font-semibold tracking-[0.18em] text-primary uppercase">{links}</h2>
-					<a className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary" href={project.url} target="_blank" rel="noreferrer">
+					{project.url ? <a className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary" href={project.url} target="_blank" rel="noreferrer">
 						{visit} <ArrowUpRight aria-hidden="true" className="size-4" />
-					</a>
+					</a> : null}
 					{project.repository ? (
 						<a className="mt-3 flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary" href={project.repository} target="_blank" rel="noreferrer">
 							<GitBranch aria-hidden="true" className="size-4" /> {viewRepository}
@@ -59,15 +59,14 @@ export async function ProjectPageLayout({ project, children, sidebar }: ProjectP
 					</Button>
 					<div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
 						<div>
-							<p className="mb-5 text-sm font-semibold tracking-[0.18em] text-primary uppercase">{t("projectDetail.caseStudy")}</p>
 							<h1 className="max-w-4xl text-4xl leading-[0.98] font-semibold tracking-[-0.04em] sm:text-6xl">{project.name}</h1>
 							<p className="mt-7 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">{project.summary}</p>
 							<div className="mt-9 flex flex-wrap gap-3">
-								<Button asChild>
+								{project.url ? <Button asChild>
 									<a href={project.url} target="_blank" rel="noreferrer">
 										{visit} <ArrowUpRight aria-hidden="true" />
 									</a>
-								</Button>
+								</Button> : null}
 								{project.repository ? (
 									<Button asChild variant="outline">
 										<a href={project.repository} target="_blank" rel="noreferrer">

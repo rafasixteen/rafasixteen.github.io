@@ -23,7 +23,7 @@ export function ExperienceTimeline({ locale, experience }: ExperienceTimelinePro
 							key={entry.translationKey}
 							className="grid gap-3 md:grid-cols-[minmax(9rem,.45fr)_minmax(0,1.5fr)] md:gap-6">
 							<div className="text-sm text-muted-foreground">
-								{formatDate(entry.start, locale)} —{" "}
+								{formatDate(entry.start, locale)} -{" "}
 								{entry.end ? formatDate(entry.end, locale) : t("label.present")}
 							</div>
 							<div>

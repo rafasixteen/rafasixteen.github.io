@@ -23,8 +23,9 @@
 		"language": "Idioma"
 	},
 	"projectDetail": {
-		"caseStudy": "Estudo de caso",
+		"organization": "Organização",
 		"overview": "Visão geral",
+		"architecture": "Arquitetura",
 		"contributions": "O que fiz",
 		"media": "Multimédia do projeto",
 		"technologies": "Tecnologias",
@@ -39,7 +40,7 @@
 	},
 	"portfolio": {
 		"profile": {
-			"summary": "Estudante do Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos, com experiência prática em estágios de desenvolvimento de software e tecnologias informáticas."
+			"summary": "Programador full-stack e estudante do ensino superior, focado em backends Go, aplicações web e desenvolvimento Android nativo. Desenvolvo sistemas de ponta a ponta, desde modelos de dados e APIs até interfaces, implementação e operações em eventos reais."
 		},
 		"experience": {
 			"vitalis": {
@@ -51,8 +52,8 @@
 		},
 		"education": {
 			"ulo-tesp": {
-				"credential": "Estudante de TesP na Universidade de Leiria e Oeste (ULO)",
-				"detail": "Atualmente no segundo ano."
+				"credential": "Estudante de Curso Técnico Superior Profissional (CTeSP)",
+				"detail": "A frequentar formação superior na área de software e tecnologias de informação."
 			},
 			"raul-proenca": {
 				"credential": "Curso Profissional de Programação de Sistemas de Informação (PSI)",
@@ -60,54 +61,57 @@
 			}
 		},
 		"projects": {
-			"personal-portfolio": {
-				"summary": "Um portfólio pessoal bilingue construído como aplicação estática Next.js App Router, com rotas em inglês e português, conteúdo validado e CVs em PDF gerados.",
-				"impact": "Reúne a experiência de estágios, competências e trabalho futuro num único portfólio fácil de manter.",
-				"overview": "Este portefólio é um espaço focado para o meu trabalho, pensado para tornar a história de cada projeto tão clara como o resultado final. É exportado estaticamente para um alojamento fiável, mantendo uma experiência de navegação localizada e semelhante a uma aplicação.",
+			"cal-platform": {
+				"summary": "A plataforma que estou a desenvolver para a Calisthenics Alliance, a liga portuguesa de Endurance. Trata das inscrições, divisões, battles 1v1, avaliação, rankings, resultados e da administração dos eventos.",
+				"impact": "Está a ser usada para apoiar uma organização de competições real e tornar o dia do evento mais simples para a organização e para os juízes.",
+				"organization": "Desenvolvida para a Calisthenics Alliance, uma liga criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha, em conjunto com clubes, atletas e organizações da comunidade portuguesa de calistenia.",
+				"overview": "A CAL está organizada em torno do Open CAL, quatro rounds regulares e uma Grand Final. Estou a desenvolver a plataforma para acompanhar esse formato, desde as inscrições e atribuição de divisões até à geração de battles, avaliação, rankings e resultados. Os serviços podem correr na rede local do recinto, o que torna a preparação do dia mais simples.",
 				"contributions": [
-					"Desenhei um modelo de conteúdo que separa dados partilhados dos conteúdos editoriais traduzidos.",
-					"Criei navegação adaptada ao idioma e rotas estáticas para visitantes em inglês e português.",
-					"Adicionei validação e geração automática de CV para manter o conteúdo publicado consistente."
+					"Desenvolvi os serviços Go à volta das épocas, categorias, divisões, atletas, battles, avaliação, rankings e resultados da CAL.",
+					"Criei os ecrãs de administração para inscrições, atribuição de divisões, geração de battles e configuração dos eventos.",
+					"Liguei a plataforma à rede local do recinto e preparei os serviços Docker necessários para um evento.",
+					"Desenvolvi os fluxos que a organização e os juízes usam durante os eventos da CAL."
 				],
-				"media": {
-					"home": { "alt": "Vista simulada da página inicial do portefólio num computador.", "caption": "Composição simulada da página inicial." },
-					"locales": { "alt": "Comparação simulada das rotas do portefólio em inglês e português.", "caption": "Vista simulada das rotas localizadas." },
-					"cv": { "alt": "Pré-visualização simulada de um documento de CV gerado.", "caption": "Pré-visualização simulada do CV gerado." }
-				}
+				"architecture": [
+					{
+						"title": "Serviço de eventos em Go",
+						"description": "O serviço principal é feito em Go e trata das regras das inscrições, divisões, battles, avaliação, rankings e resultados."
+					},
+					{
+						"title": "PostgreSQL",
+						"description": "O PostgreSQL é a base de dados principal. Mantenho as queries e as migrações explícitas com pgx e sqlc."
+					},
+					{
+						"title": "Rede local",
+						"description": "Os serviços correm na rede local do recinto com Docker, para que a organização e os juízes consigam aceder ao sistema durante o evento."
+					},
+					{
+						"title": "Operação dos eventos",
+						"description": "A plataforma reúne os fluxos que a CAL utiliza para inscrições, battles, avaliação, rankings e resultados."
+					}
+				],
+				"media": {}
 			},
-			"real-estate-platform": {
-				"summary": "Um projeto de equipa de estágio para um website imobiliário com autenticação, perfis, anúncios, vistas de mapa e lista e filtros definidos pelos utilizadores.",
-				"impact": "Aplicou ASP.NET Core MVC, Razor Pages, Bootstrap, estado de sessão e Git numa aplicação web específica do domínio.",
-				"overview": "Desenvolvido durante um estágio em equipa, este projeto explorou a jornada imobiliária desde a autenticação à descoberta. O produto reúne anúncios, perfis, mapas e filtros para ajudar os visitantes a reduzir um catálogo amplo a opções úteis.",
+			"cal-judge": {
+				"summary": "Uma aplicação Android nativa que estou a desenvolver para os juízes da Calisthenics Alliance, a liga portuguesa de Endurance. Liga-se à plataforma de eventos e suporta battles, rotinas, temporizadores e avaliação no local.",
+				"impact": "Dá aos juízes uma ferramenta simples para o dia da competição e mantém o trabalho de avaliação ligado ao mesmo sistema usado pela organização.",
+				"organization": "Desenvolvida para a Calisthenics Alliance, liga portuguesa de Endurance criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha com a comunidade de calistenia.",
+				"overview": "A aplicação trata do lado da avaliação na CAL, onde os atletas competem em battles 1v1 dentro de categorias e divisões com os mesmos critérios da Comitiva Nacional de Júris. Estou a mantê-la próxima do que os juízes precisam no recinto: selecionar uma battle, acompanhar a rotina, registar cada repetição concluída e aumentar ou diminuir a contagem quando necessário, para conseguirem acompanhar o progresso do atleta através da API da CAL. Uma repetição é a execução completa de um exercício.",
 				"contributions": [
-					"Trabalhei com ASP.NET Core MVC e Razor Pages num fluxo de trabalho colaborativo com Git.",
-					"Contribuí para experiências autenticadas, perfis de utilizador e vistas de anúncios de propriedades.",
-					"Ajudei a desenvolver filtros e a exploração por mapa/lista para necessidades reais de pesquisa imobiliária."
+					"Preparei o projeto Kotlin Multiplatform, as ferramentas Android e o processo de build e testes em emulador e APK de release.",
+					"Criei os ecrãs para seleção de battles, avaliação, temporizadores, progresso de séries e repetições e definições.",
+					"Liguei a aplicação à API e à rede Wi-Fi local usada no recinto.",
+					"Mantive os controlos nativos Android, incluindo os botões físicos de volume, deixando espaço para uma futura aplicação iOS nativa."
 				],
-				"media": {
-					"search": { "alt": "Interface simulada de pesquisa imobiliária com filtros e cartões de propriedades.", "caption": "Vista simulada de pesquisa e filtragem." },
-					"filters": { "alt": "Marcador GIF animado para uma interação de filtragem.", "caption": "Recurso GIF animado remoto de teste." },
-					"demo": { "alt": "Vídeo de teste usado para verificar a reprodução no carrossel.", "caption": "Recurso de vídeo remoto de teste com poster local." }
-				}
-			},
-			"traffic-light-system": {
-				"summary": "Um modelo de semáforos de quatro vias desenhado no FreeCAD, impresso em 3D, ligado com LEDs e controlado por um Arduino Mega.",
-				"impact": "Combinou modelação, impressão, eletrónica, gestão de cabos e programação num protótipo físico funcional.",
-				"overview": "Este protótipo físico transforma um cruzamento de quatro vias num sistema compacto e funcional. O projeto juntou modelação digital, fabrico, eletrónica e programação embarcada numa única construção testável no mundo real.",
-				"contributions": [
-					"Modelei as peças dos semáforos em FreeCAD e preparei-as para impressão 3D.",
-					"Liguei LEDs e organizei as ligações físicas em torno de um Arduino Mega.",
-					"Programei a sequência de luzes e testei o sistema como um protótipo completo."
-				],
-				"media": {
-					"model": { "alt": "Vista isométrica simulada de um modelo de semáforos de quatro vias.", "caption": "Vista simulada do modelo 3D." },
-					"wiring": { "alt": "Diagrama de ligações simulado entre um Arduino e seis unidades de semáforos.", "caption": "Diagrama de ligações simulado." }
-				}
+				"media": {}
 			}
 		},
 		"skills": {
-			"web-development": { "name": "Desenvolvimento web" },
-			"technical-practice": { "name": "Prática técnica" },
+			"backend": { "name": "Backend e bases de dados" },
+			"frontend": { "name": "Web e frontend" },
+			"mobile": { "name": "Desenvolvimento mobile" },
+			"devops": { "name": "Infraestrutura e ferramentas" },
+			"technical-practice": { "name": "Hardware e prática técnica" },
 			"languages": { "name": "Idiomas" }
 		}
 	}

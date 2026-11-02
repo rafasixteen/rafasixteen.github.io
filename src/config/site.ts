@@ -8,7 +8,7 @@ export const site = {
 	name: profile.name,
 	shortName: "RR",
 	// TODO: Set NEXT_PUBLIC_SITE_URL for the production deployment.
-	url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.github.io",
+	url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://rafasixteen.github.io/portfolio/",
 	author: {
 		name: profile.name,
 		email: profile.email,

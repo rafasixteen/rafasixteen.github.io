@@ -1,8 +1,9 @@
 import { navigation } from "@/config/navigation";
+import type { Locale } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./locale-switcher";
 
-export function Navbar() {
+export function Navbar({ locale }: { locale: Locale }) {
 	const t = useTranslations();
 
 	return (
@@ -12,7 +13,7 @@ export function Navbar() {
 					{navigation.map((link) => (
 						<a
 							className="text-sm text-muted-foreground no-underline transition-colors hover:text-primary"
-							href={link.href}
+							href={`/${locale}/${link.href}`}
 							key={link.href}>
 							{t(`nav.${link.key}`)}
 						</a>

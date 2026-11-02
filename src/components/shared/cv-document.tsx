@@ -261,9 +261,9 @@ export function createCvDocument(content: PortfolioContent, t: Translate): React
 						<CvEntry key={project.translationKey} date={project.technologies.slice(0, 2).map((technology) => technology.name).join(", ")}>
 							<Text style={styles.title}>{project.name}</Text>
 							<Text style={styles.body}>{project.summary}</Text>
-							<Link src={project.url} style={styles.link}>
-								{project.url}
-							</Link>
+							{project.url ? (
+								<Link src={project.url} style={styles.link}>{project.url}</Link>
+							) : null}
 						</CvEntry>
 					))}
 				</CvSection>

@@ -15,10 +15,10 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
 	return (
 		<>
 			<Hero locale={content.locale} profile={content.profile} />
+			<EducationTimeline locale={content.locale} education={content.education} />
 			<ExperienceTimeline locale={content.locale} experience={content.experience} />
 			<CardGrid projects={content.projects} />
 			<SkillGroups skills={content.skills} />
-			<EducationTimeline locale={content.locale} education={content.education} />
 		</>
 	);
 }

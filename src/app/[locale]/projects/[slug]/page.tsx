@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 	const { locale, project } = getProject(value, slug);
 
 	return {
-		title: `${project.name} — ${site.name}`,
+		title: `${project.name} - ${site.name}`,
 		description: project.summary,
 		alternates: localeAlternates(locale, `/projects/${slug}`),
 	};

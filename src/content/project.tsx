@@ -1,9 +1,7 @@
 import type { ReactElement, ReactNode } from "react";
-import { Atom, Braces, Database, FileCode2, GitBranch, Network, Server } from "lucide-react";
+import { Atom, Braces, Database, FileCode2, Network, Server } from "lucide-react";
 import { z } from "zod";
-import { PersonalPortfolioDetail } from "@/components/projects/personal-portfolio-detail";
-import { RealEstateDetail } from "@/components/projects/real-estate-detail";
-import { TrafficLightDetail } from "@/components/projects/traffic-light-detail";
+import { CalPlatformDetail, CalJudgeDetail } from "@/components/projects/cal-details";
 import { routing, type Locale } from "@/i18n/routing";
 
 const technologySchema = z.object({
@@ -35,7 +33,8 @@ const projectMediaSchema = projectMediaSharedSchema.and(projectMediaTranslationS
 export const projectSharedDataSchema = z.object({
 	translationKey: z.string().min(1),
 	name: z.string().min(1),
-	url: z.url(),
+	url: z.url().optional(),
+	organizationUrl: z.url().optional(),
 	repository: z.url().optional(),
 	technologies: z.array(technologySchema).min(1),
 	media: z.array(projectMediaSharedSchema).default([]),
@@ -45,8 +44,18 @@ export const projectSharedDataSchema = z.object({
 export const projectTranslationSchema = z.object({
 	summary: z.string().min(1),
 	impact: z.string().min(1),
+	organization: z.string().min(1),
 	overview: z.string().min(1),
 	contributions: z.array(z.string().min(1)).min(1),
+	architecture: z
+		.array(
+			z.object({
+				title: z.string().min(1),
+				description: z.string().min(1),
+			}),
+		)
+		.min(1)
+		.optional(),
 	media: z.record(z.string().min(1), projectMediaTranslationSchema),
 });
 
@@ -67,122 +76,30 @@ export type ProjectTranslations = Record<string, ProjectTranslation>;
 
 export const projects: ProjectSharedData[] = [
 	{
-		translationKey: "personal-portfolio",
-		name: "Personal Portfolio",
-		details: PersonalPortfolioDetail,
-		// TODO: Replace with Rafael's deployed portfolio URL.
-		url: "https://example.com/portfolio",
+		translationKey: "cal-platform",
+		name: "Calisthenics Alliance - Event Platform",
+		details: CalPlatformDetail,
+		organizationUrl: "https://calisthenicsalliance.com/",
 		technologies: [
-			{
-				name: "Next.js",
-				icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "TypeScript",
-				icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "next-intl",
-				icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
+			{ name: "Go", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ name: "PostgreSQL", icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ name: "Datastar", icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ name: "Docker", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 		],
-		media: [
-			{
-				translationKey: "home",
-				type: "image",
-				src: "/images/projects/portfolio-overview.svg",
-			},
-			{
-				translationKey: "locales",
-				type: "image",
-				src: "/images/projects/portfolio-locales.svg",
-			},
-			{
-				translationKey: "cv",
-				type: "image",
-				src: "/images/projects/portfolio-cv.svg",
-			},
-		],
+		media: [],
 	},
 	{
-		translationKey: "real-estate-platform",
-		name: "Real-estate web application",
-		details: RealEstateDetail,
-		// TODO: Replace with a public project URL if one is available.
-		url: "https://example.com/real-estate-platform",
+		translationKey: "cal-judge",
+		name: "CAL Judge - Native Judging App",
+		details: CalJudgeDetail,
+		organizationUrl: "https://calisthenicsalliance.com/",
 		technologies: [
-			{
-				name: "ASP.NET Core MVC",
-				icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Razor Pages",
-				icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Bootstrap",
-				icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Git",
-				icon: <GitBranch aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
+			{ name: "Kotlin Multiplatform", icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ name: "Android", icon: <Atom aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ name: "Gradle", icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ name: "Go API", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 		],
-		media: [
-			{
-				translationKey: "search",
-				type: "image",
-				src: "/images/projects/real-estate-search.svg",
-			},
-			{
-				translationKey: "filters",
-				type: "image",
-				src: "https://placehold.co/1280x720/0b1f20/7de7d1.gif?text=Animated+filter+mock",
-			},
-			{
-				translationKey: "demo",
-				type: "video",
-				src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-				poster: "/images/projects/real-estate-map.svg",
-			},
-		],
-	},
-	{
-		translationKey: "traffic-light-system",
-		name: "Arduino traffic-light system",
-		details: TrafficLightDetail,
-		// TODO: Replace with a public project URL if one is available.
-		url: "https://example.com/traffic-light-system",
-		technologies: [
-			{
-				name: "Arduino Mega",
-				icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "FreeCAD",
-				icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "3D printing",
-				icon: <Atom aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-			{
-				name: "Electronics",
-				icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} />,
-			},
-		],
-		media: [
-			{
-				translationKey: "model",
-				type: "image",
-				src: "/images/projects/traffic-light-model.svg",
-			},
-			{
-				translationKey: "wiring",
-				type: "image",
-				src: "/images/projects/traffic-light-wiring.svg",
-			},
-		],
+		media: [],
 	},
 ];
 
