@@ -2,12 +2,10 @@
 	"nav": {
 		"home": "Home",
 		"experience": "Experience",
-		"projects": "Projects",
-		"contact": "Contact"
+		"projects": "Projects"
 	},
 	"action": {
 		"downloadCv": "Download CV",
-		"email": "Email me",
 		"visit": "Visit project",
 		"viewDetails": "View details",
 		"backToProjects": "Back to projects",
@@ -18,8 +16,7 @@
 		"experience": "Experience",
 		"projects": "Selected projects",
 		"skills": "Skills",
-		"education": "Education",
-		"contact": "Contact"
+		"education": "Education"
 	},
 	"label": {
 		"present": "Present",
@@ -44,8 +41,7 @@
 	"portfolio": {
 		"profile": {
 			"role": "Software developer",
-			"summary": "Student in the Professional Course in Computer Systems Management and Programming, with practical internship experience in software development and IT technologies.",
-			"availability": "Open to thoughtful product and engineering collaborations."
+			"summary": "Student in the Professional Course in Computer Systems Management and Programming, with practical internship experience in software development and IT technologies."
 		},
 		"experience": {
 			"vitalis": {

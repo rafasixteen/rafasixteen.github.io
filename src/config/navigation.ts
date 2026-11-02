@@ -12,8 +12,4 @@ export const navigation: NavLink[] = [
 		href: "#projects",
 		key: "projects",
 	},
-	{
-		href: "#contact",
-		key: "contact",
-	},
 ];

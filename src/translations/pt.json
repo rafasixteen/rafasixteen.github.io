@@ -2,12 +2,10 @@
 	"nav": {
 		"home": "Início",
 		"experience": "Experiência",
-		"projects": "Projetos",
-		"contact": "Contacto"
+		"projects": "Projetos"
 	},
 	"action": {
 		"downloadCv": "Descarregar CV",
-		"email": "Enviar email",
 		"visit": "Ver projeto",
 		"viewDetails": "Ver detalhes",
 		"backToProjects": "Voltar aos projetos",
@@ -18,8 +16,7 @@
 		"experience": "Experiência",
 		"projects": "Projetos selecionados",
 		"skills": "Competências",
-		"education": "Educação",
-		"contact": "Contacto"
+		"education": "Educação"
 	},
 	"label": {
 		"present": "Atual",
@@ -44,8 +41,7 @@
 	"portfolio": {
 		"profile": {
 			"role": "Programador de software",
-			"summary": "Estudante do Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos, com experiência prática em estágios de desenvolvimento de software e tecnologias informáticas.",
-			"availability": "Disponível para colaborações ponderadas de produto e engenharia."
+			"summary": "Estudante do Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos, com experiência prática em estágios de desenvolvimento de software e tecnologias informáticas."
 		},
 		"experience": {
 			"vitalis": {
