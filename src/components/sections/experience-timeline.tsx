@@ -1,4 +1,5 @@
 import { SectionTitle } from "@/components/shared/section-title";
+import { TechnologyPill } from "@/components/shared/technology-pill";
 import type { Experience } from "@/content/experience";
 import { formatDate } from "@/lib/format";
 import type { Locale } from "@/i18n/routing";
@@ -26,15 +27,15 @@ export function ExperienceTimeline({ locale, experience }: ExperienceTimelinePro
 								{entry.end ? formatDate(entry.end, locale) : t("label.present")}
 							</div>
 							<div>
-								<h2 className="text-2xl">{entry.role}</h2>
+								<h2 className="text-2xl">{entry.company}</h2>
 								<p className="mt-2 text-sm text-muted-foreground">
 									{entry.company} · {entry.location}
 								</p>
 								<p className="mt-4 text-muted-foreground">{entry.summary}</p>
-								<ul className="mt-4 list-disc space-y-1 pl-5 text-muted-foreground">
-									{entry.highlights.map((item) => (
-										<li className="pl-1" key={item}>
-											{item}
+								<ul className="mt-5 flex flex-wrap gap-2">
+									{entry.technologies.map((technology) => (
+										<li key={technology.name}>
+											<TechnologyPill technology={technology} />
 										</li>
 									))}
 								</ul>

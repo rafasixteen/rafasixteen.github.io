@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 	const profile = portfolioContent[locale].profile;
 
 	return {
-		title: `${profile.name} — ${profile.role}`,
+		title: profile.name,
 		description: profile.summary,
 		metadataBase: new URL(site.url),
 		applicationName: site.name,
@@ -37,13 +37,13 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 			type: "website",
 			siteName: site.name,
 			locale: locale === "pt" ? "pt_PT" : "en_GB",
-			title: `${profile.name} — ${profile.role}`,
+			title: profile.name,
 			description: profile.summary,
 			url: `/${locale}/`,
 		},
 		twitter: {
 			card: "summary",
-			title: `${profile.name} — ${profile.role}`,
+			title: profile.name,
 			description: profile.summary,
 		},
 		robots: {
@@ -67,7 +67,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 		<html lang={value}>
 			<body>
 				<NextIntlClientProvider locale={value} messages={messages}>
-					<Navbar profile={content.profile} />
+					<Navbar />
 					<main>{children}</main>
 					<Footer profile={content.profile} />
 				</NextIntlClientProvider>

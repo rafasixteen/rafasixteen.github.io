@@ -1,6 +1,6 @@
 import { Link2 } from "lucide-react";
 import type { ComponentProps, ComponentType } from "react";
-import type { Profile } from "@/content/profile";
+import type { Link } from "@/content/link";
 import { cn } from "@/lib/utils";
 
 type SocialIcon = ComponentType<ComponentProps<"svg">>;
@@ -31,22 +31,26 @@ function InstagramIcon(props: ComponentProps<"svg">) {
 	);
 }
 
-const socialIcons: Record<string, SocialIcon> = {
+const linkIcons: Record<string, SocialIcon> = {
 	GitHub: GithubIcon,
 	LinkedIn: LinkedinIcon,
 	Instagram: InstagramIcon,
 };
 
-interface SocialLinksProps {
-	links: Profile["links"];
+export type LinkListItem = Link & {
+	icon?: SocialIcon;
+};
+
+interface LinkListProps {
+	links: readonly LinkListItem[];
 	className?: string;
 }
 
-export function SocialLinks({ links, className }: SocialLinksProps) {
+export function LinkList({ links, className }: LinkListProps) {
 	return (
 		<ul className={cn("flex flex-wrap items-center gap-x-5 gap-y-2", className)}>
 			{links.map((link) => {
-				const Icon = socialIcons[link.label] ?? Link2;
+				const Icon = link.icon ?? linkIcons[link.label] ?? Link2;
 
 				return (
 					<li key={link.url}>

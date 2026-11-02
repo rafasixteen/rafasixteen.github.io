@@ -17,5 +17,6 @@ export const site = {
 		github: profileLink("GitHub"),
 		linkedin: profileLink("LinkedIn"),
 		instagram: profileLink("Instagram"),
+		portfolio: profileLink("Portfolio"),
 	},
 } as const;

@@ -12,7 +12,6 @@
 		"viewRepository": "Ver repositório"
 	},
 	"section": {
-		"about": "Sobre",
 		"experience": "Experiência",
 		"projects": "Projetos selecionados",
 		"skills": "Competências",
@@ -40,28 +39,14 @@
 	},
 	"portfolio": {
 		"profile": {
-			"role": "Programador de software",
 			"summary": "Estudante do Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos, com experiência prática em estágios de desenvolvimento de software e tecnologias informáticas."
 		},
 		"experience": {
 			"vitalis": {
-				"role": "Estagiário",
-				"summary": "Concluí um estágio internacional de 300 horas em desenvolvimento web, redes, automação de casas inteligentes, modelação 3D, eletrónica e automação de bases de dados.",
-				"highlights": [
-					"Desenvolvi um website para documentar a experiência de estágio e reforcei bases de HTML e CSS.",
-					"Configurei redes, sistemas de casas inteligentes, segurança e iluminação, incluindo router e cablagem.",
-					"Modelei, imprimi, liguei e programei um projeto de semáforos controlado por Arduino.",
-					"Criei formulários no FileMaker Pro e automatizei fluxos de contactos, encomendas, stock, propostas e faturas."
-				]
+				"summary": "Concluí um estágio internacional de 300 horas em desenvolvimento web, redes, automação de casas inteligentes, modelação 3D, eletrónica e automação de bases de dados."
 			},
 			"janela-digital": {
-				"role": "Estagiário",
-				"summary": "Concluí um estágio de desenvolvimento de software de 300 horas, focado em aplicações web ASP.NET para casos de utilização imobiliários.",
-				"highlights": [
-					"Desenvolvi um projeto de aprendizagem ASP.NET para marcação de almoços.",
-					"Contribuí para uma aplicação web imobiliária com autenticação, perfis, anúncios, vistas de mapa e lista e filtros.",
-					"Utilizei ASP.NET Core MVC, Razor Pages, Bootstrap, HttpContext.Session e Git num contexto de equipa."
-				]
+				"summary": "Concluí um estágio de desenvolvimento de software de 300 horas, focado em aplicações web ASP.NET para casos de utilização imobiliários."
 			}
 		},
 		"education": {
@@ -122,7 +107,8 @@
 		},
 		"skills": {
 			"web-development": { "name": "Desenvolvimento web" },
-			"technical-practice": { "name": "Prática técnica" }
+			"technical-practice": { "name": "Prática técnica" },
+			"languages": { "name": "Idiomas" }
 		}
 	}
 }

@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { Braces, Database, FileCode2, GitBranch, Network, Server } from "lucide-react";
+import { Braces, Database, FileCode2, GitBranch, Languages, Network, Server } from "lucide-react";
 import { z } from "zod";
 
 const skillSchema = z.object({
@@ -66,6 +66,19 @@ export const skillGroups: SkillGroupSharedData[] = [
 			{
 				name: "FileMaker Pro",
 				icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} />,
+			},
+		],
+	},
+	{
+		translationKey: "languages",
+		skills: [
+			{
+				name: "Portuguese (native speaker)",
+				icon: <Languages aria-hidden="true" size={16} strokeWidth={1.8} />,
+			},
+			{
+				name: "English (proficient)",
+				icon: <Languages aria-hidden="true" size={16} strokeWidth={1.8} />,
 			},
 		],
 	},

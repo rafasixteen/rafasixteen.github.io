@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui";
-import { SocialLinks } from "@/components/shared/social-links";
+import { LinkList, type LinkListItem } from "@/components/shared/link-list";
 import type { Profile } from "@/content/profile";
 import type { Locale } from "@/i18n/routing";
+import { Mail } from "lucide-react";
 import { url } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -13,7 +14,17 @@ interface HeroProps {
 
 export function Hero({ locale, profile }: HeroProps) {
 	const t = useTranslations();
+
 	const { nameLines, accentIndex } = getHeroNameLayout(profile.name);
+
+	const contactLinks: LinkListItem[] = [
+		...profile.links.filter((link) => link.label !== "Portfolio"),
+		{
+			label: profile.email,
+			url: `mailto:${profile.email}`,
+			icon: Mail,
+		},
+	];
 
 	return (
 		<section className="relative isolate overflow-hidden bg-background text-foreground" id="home">
@@ -34,21 +45,13 @@ export function Hero({ locale, profile }: HeroProps) {
 							</span>
 						))}
 					</h1>
-					<p className="mt-8 max-w-sm text-sm font-semibold tracking-[0.12em] text-foreground/80 uppercase sm:text-base">
-						{t("portfolio.profile.role")}
-					</p>
-					<p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+					<p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 						{t("portfolio.profile.summary")}
 					</p>
 					<div className="mt-9 flex flex-wrap items-center gap-3">
 						<Button asChild className="bg-primary text-primary-foreground hover:bg-primary">
 							<a href={url(`/cv/cv-${locale}.pdf`)}>{t("action.downloadCv")}</a>
 						</Button>
-						<a
-							className="inline-flex h-10 items-center px-4 text-sm font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
-							href={`mailto:${profile.email}`}>
-							{profile.email}
-						</a>
 					</div>
 				</div>
 
@@ -67,7 +70,7 @@ export function Hero({ locale, profile }: HeroProps) {
 				</div>
 
 				<div className="col-span-full flex flex-wrap items-center justify-end gap-4 border-t border-foreground/15 pt-5 text-xs font-semibold tracking-[0.16em] text-muted-foreground uppercase">
-					<SocialLinks links={profile.links} className="text-foreground/70 [&_a:hover]:text-primary" />
+					<LinkList links={contactLinks} className="text-foreground/70 [&_a:hover]:text-primary" />
 				</div>
 			</div>
 		</section>
