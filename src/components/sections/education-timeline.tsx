@@ -1,6 +1,6 @@
 import { SectionTitle } from "@/components/shared/section-title";
 import type { Education } from "@/content/education";
-import type { Locale } from "@/i18n/routing";
+import type { Locale } from "@/lib/locales";
 import { formatDate } from "@/lib/format";
 import { useTranslations } from "next-intl";
 

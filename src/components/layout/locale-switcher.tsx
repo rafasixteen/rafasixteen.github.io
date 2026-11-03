@@ -1,8 +1,8 @@
 "use client";
 
 import { Link, usePathname } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
 import { buttonVariants } from "@/components/ui";
+import { locales } from "@/lib/locales";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -14,7 +14,7 @@ export function LocaleSwitcher() {
 
 	return (
 		<nav aria-label={t("label.language")} className="flex items-center gap-1">
-			{routing.locales.map((nextLocale) => (
+			{locales.map((nextLocale) => (
 				<Link
 					key={nextLocale}
 					href={pathname}

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { routing } from "@/i18n/routing";
+import { locales } from "@/lib/locales";
 import { educationSchema } from "./education";
 import { experienceSchema } from "./experience";
 import { profileSchema } from "./profile";
@@ -18,7 +18,7 @@ export const localizedProjectSchema = projectSharedDataSchema.extend({
 });
 
 export const portfolioContentSchema = z.object({
-	locale: z.enum(routing.locales),
+	locale: z.enum(locales),
 	profile: profileSchema,
 	experience: z.array(experienceSchema),
 	education: z.array(educationSchema),

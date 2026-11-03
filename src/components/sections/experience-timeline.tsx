@@ -2,7 +2,7 @@ import { SectionTitle } from "@/components/shared/section-title";
 import { TechnologyPill } from "@/components/shared/technology-pill";
 import type { Experience } from "@/content/experience";
 import { formatDate } from "@/lib/format";
-import type { Locale } from "@/i18n/routing";
+import type { Locale } from "@/lib/locales";
 import { useTranslations } from "next-intl";
 
 interface ExperienceTimelineProps {

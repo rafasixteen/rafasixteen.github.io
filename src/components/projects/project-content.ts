@@ -1,11 +1,11 @@
-import { routing } from "@/i18n/routing";
+import { locales } from "@/lib/locales";
 import { hasLocale } from "next-intl";
 import { getLocale } from "next-intl/server";
 
 export async function getProjectContent(projectKey: string) {
 	const locale = await getLocale();
 
-	if (!hasLocale(routing.locales, locale)) {
+	if (!hasLocale(locales, locale)) {
 		throw new Error(`Unsupported locale ${locale}`);
 	}
 

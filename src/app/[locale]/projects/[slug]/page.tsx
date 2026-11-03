@@ -1,7 +1,7 @@
 import { projectRouteParams, projectSlug } from "@/content/project";
 import { portfolioContent } from "@/content/validation";
 import { site } from "@/config/site";
-import { localeAlternates, routing } from "@/i18n/routing";
+import { localeAlternates, locales } from "@/lib/locales";
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -15,7 +15,7 @@ interface ProjectPageProps {
 }
 
 function getProject(locale: string, slug: string) {
-	if (!hasLocale(routing.locales, locale)) {
+	if (!hasLocale(locales, locale)) {
 		notFound();
 	}
 

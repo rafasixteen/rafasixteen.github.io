@@ -2,15 +2,15 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { renderToBuffer } from "@react-pdf/renderer";
 import { createTranslator } from "next-intl";
-import { createCvDocument } from "../src/components/shared/cv-document";
-import { portfolioContent } from "../src/content/validation";
-import { routing } from "../src/i18n/routing";
+import { createCvDocument } from "@/components/shared/cv-document";
+import { portfolioContent } from "@/content/validation";
+import { locales } from "@/lib/locales";
 
 const output = path.resolve("public/cv");
 
 await mkdir(output, { recursive: true });
 
-for (const locale of routing.locales) {
+for (const locale of locales) {
 	const messages = (await import(`../src/translations/${locale}.json`)).default;
 
 	const t = createTranslator({

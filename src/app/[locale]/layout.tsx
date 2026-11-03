@@ -8,7 +8,14 @@ import { notFound } from "next/navigation";
 import { Footer, Navbar } from "@/components/layout";
 import { site } from "@/config/site";
 import { portfolioContent } from "@/content/validation";
-import { localeAlternates, localeParams, routing, type LocaleProps } from "@/i18n/routing";
+import {
+	defaultLocale,
+	getOpenGraphLocale,
+	localeAlternates,
+	localeParams,
+	locales,
+	type LocaleProps,
+} from "@/lib/locales";
 
 export const dynamicParams = false;
 export const generateStaticParams = localeParams;
@@ -16,7 +23,7 @@ export const generateStaticParams = localeParams;
 export async function generateMetadata({ params }: LocaleProps): Promise<Metadata> {
 	const { locale: value } = await params;
 
-	const locale = hasLocale(routing.locales, value) ? value : routing.defaultLocale;
+	const locale = hasLocale(locales, value) ? value : defaultLocale;
 	const profile = portfolioContent[locale].profile;
 
 	return {
@@ -36,7 +43,7 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 		openGraph: {
 			type: "website",
 			siteName: site.name,
-			locale: locale === "pt" ? "pt_PT" : "en_GB",
+			locale: getOpenGraphLocale(locale),
 			title: profile.name,
 			description: profile.summary,
 			url: `/${locale}/`,
@@ -56,7 +63,7 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 export default async function LocaleLayout({ children, params }: { children: ReactNode } & LocaleProps) {
 	const { locale: value } = await params;
 
-	if (!hasLocale(routing.locales, value)) {
+	if (!hasLocale(locales, value)) {
 		notFound();
 	}
 
@@ -67,7 +74,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 		<html lang={value}>
 			<body>
 				<NextIntlClientProvider locale={value} messages={messages}>
-					<Navbar locale={value} />
+					<Navbar />
 					<main>{children}</main>
 					<Footer profile={content.profile} />
 				</NextIntlClientProvider>

@@ -1,8 +1,7 @@
-import type { Locale } from "@/i18n/routing";
-import { routing } from "@/i18n/routing";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { asRecord } from "@/lib/record";
+import { locales, type Locale } from "@/lib/locales";
 import { education, type EducationTranslations } from "./education";
 import { experience, type ExperienceTranslations } from "./experience";
 import { localizedProjectSchema, type PortfolioContent } from "./portfolio-content";
@@ -27,13 +26,13 @@ function loadLocalizedContent(): Record<Locale, PortfolioTranslations> {
 	const filesByLocale = new Map(translationFiles.map((file) => [file.replace(/\.json$/, ""), file]));
 
 	for (const locale of filesByLocale.keys()) {
-		if (!routing.locales.includes(locale as Locale)) {
+		if (!locales.includes(locale as Locale)) {
 			throw new Error(`Translation file ${locale}.json is not declared in i18n routing`);
 		}
 	}
 
 	return Object.fromEntries(
-		routing.locales.map((locale) => {
+		locales.map((locale) => {
 			const file = filesByLocale.get(locale);
 
 			if (!file) {

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui";
 import { LinkList, type LinkListItem } from "@/components/shared/link-list";
 import type { Profile } from "@/content/profile";
-import type { Locale } from "@/i18n/routing";
+import type { Locale } from "@/lib/locales";
 import { Mail } from "lucide-react";
 import { url } from "@/lib/url";
 import { cn } from "@/lib/utils";

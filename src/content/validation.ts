@@ -1,4 +1,4 @@
-import { routing, type Locale } from "@/i18n/routing";
+import { locales, type Locale } from "@/lib/locales";
 import { education } from "./education";
 import { experience } from "./experience";
 import { localizedContent, assembleContent } from "./portfolio";
@@ -59,7 +59,7 @@ export function assertMatchingShape(reference: unknown, candidate: unknown, path
 }
 
 export function validateContent(): Record<Locale, PortfolioContent> {
-	const [referenceLocale, ...otherLocales] = routing.locales;
+	const [referenceLocale, ...otherLocales] = locales;
 
 	for (const locale of otherLocales) {
 		assertMatchingShape(localizedContent[referenceLocale], localizedContent[locale]);
@@ -67,7 +67,7 @@ export function validateContent(): Record<Locale, PortfolioContent> {
 
 	const content = {} as Record<Locale, PortfolioContent>;
 
-	for (const locale of routing.locales) {
+	for (const locale of locales) {
 		const translations = localizedContent[locale];
 
 		assertTranslationKeys(locale, "experience", experience, translations.experience);

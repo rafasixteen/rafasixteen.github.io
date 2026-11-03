@@ -1,9 +1,9 @@
 import { navigation } from "@/config/navigation";
-import type { Locale } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./locale-switcher";
 
-export function Navbar({ locale }: { locale: Locale }) {
+export function Navbar() {
+	const locale = useLocale();
 	const t = useTranslations();
 
 	return (

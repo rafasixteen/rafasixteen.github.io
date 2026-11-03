@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from "react";
 import { Atom, Braces, Database, FileCode2, Network, Server } from "lucide-react";
 import { z } from "zod";
 import { CalPlatformDetail, CalJudgeDetail } from "@/components/projects/cal-details";
-import { routing, type Locale } from "@/i18n/routing";
+import { locales, type Locale } from "@/lib/locales";
 
 const technologySchema = z.object({
 	name: z.string().min(1),
@@ -71,7 +71,7 @@ export function projectSlug(project: Pick<ProjectSharedData, "translationKey">):
 }
 
 export function projectRouteParams(): Array<{ locale: Locale; slug: string }> {
-	return routing.locales.flatMap((locale) =>
+	return locales.flatMap((locale) =>
 		projects.map((project) => ({
 			locale: locale,
 			slug: projectSlug(project),

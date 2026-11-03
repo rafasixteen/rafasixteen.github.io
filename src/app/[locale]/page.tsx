@@ -4,12 +4,13 @@ import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { Hero } from "@/components/sections/hero";
 import { SkillGroups } from "@/components/sections/skill-groups";
 import { portfolioContent } from "@/content/validation";
-import { routing } from "@/i18n/routing";
+import { defaultLocale, locales } from "@/lib/locales";
 import { hasLocale } from "next-intl";
 
 export default async function PortfolioPage({ params }: { params: Promise<{ locale: string }> }) {
 	const { locale: value } = await params;
-	const locale = hasLocale(routing.locales, value) ? value : routing.defaultLocale;
+
+	const locale = hasLocale(locales, value) ? value : defaultLocale;
 	const content = portfolioContent[locale];
 
 	return (
