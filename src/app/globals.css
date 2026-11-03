@@ -54,17 +54,26 @@
 	* {
 		@apply border-border;
 	}
+
 	html {
 		scroll-behavior: smooth;
 		scroll-padding-top: 5rem;
 	}
+
 	body {
 		@apply bg-background text-foreground antialiased;
 		font-family: var(--font-sans);
 	}
+
+	::selection {
+		background-color: var(--primary);
+		color: var(--primary-foreground);
+	}
+
 	a {
 		@apply outline-none focus-visible:ring-3 focus-visible:ring-ring/60 focus-visible:ring-offset-4 focus-visible:ring-offset-background;
 	}
+
 	h1,
 	h2,
 	h3 {
@@ -76,6 +85,7 @@
 	html {
 		scroll-behavior: auto;
 	}
+
 	*,
 	*::before,
 	*::after {
