@@ -22,6 +22,9 @@
 		"technologies": "Technologies",
 		"language": "Language"
 	},
+	"footer": {
+		"lastUpdated": "Last updated {date}"
+	},
 	"projectDetail": {
 		"organization": "Organization",
 		"overview": "Overview",

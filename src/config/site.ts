@@ -4,6 +4,7 @@ export const site = {
 	name: profile.name,
 	shortName: "RR",
 	url: getSiteUrl(),
+	lastUpdatedAt: process.env.NEXT_PUBLIC_LAST_UPDATED ?? new Date().toISOString(),
 	author: {
 		name: profile.name,
 		email: profile.email,
