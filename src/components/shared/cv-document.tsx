@@ -1,5 +1,5 @@
 import React from "react";
-import { Document, Link, Page, Path, StyleSheet, Svg, Text, View, type DocumentProps } from "@react-pdf/renderer";
+import { Document, Font, Link, Page, Path, StyleSheet, Svg, Text, View, type DocumentProps } from "@react-pdf/renderer";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { PortfolioContent } from "@/content/portfolio-content";
 import { formatDate } from "@/lib/format";
@@ -139,6 +139,10 @@ function getCvName(name: string): string {
 	return words.length > 1 ? `${words[0]} ${words[words.length - 1]}` : (words[0] ?? name);
 }
 
+function keepWordsTogether(word: string): string[] {
+	return [word];
+}
+
 function CvSocialIcon({ icon }: { icon: IconDefinition }) {
 	const [width, height, , , path] = icon.icon;
 	const paths = Array.isArray(path) ? path : [path];
@@ -181,6 +185,8 @@ export function createCvDocument(
 	t: Translate,
 	projectT: ProjectTranslate,
 ): React.ReactElement<DocumentProps> {
+	Font.registerHyphenationCallback(keepWordsTogether);
+
 	return (
 		<Document
 			title={`${getCvName(content.profile.name)} CV`}
