@@ -31,3 +31,20 @@ export const profile: ProfileSharedData = {
 		{ label: "Portfolio", url: "https://rafasixteen.github.io/portfolio/" },
 	],
 };
+
+export function getFirstAndLastName(name: string): string {
+	const nameParts = name.trim().split(/\s+/).filter(Boolean);
+
+	if (nameParts.length < 2) {
+		return nameParts[0] ?? "";
+	}
+
+	return `${nameParts[0]} ${nameParts.at(-1)}`;
+}
+
+export function getInitials(name: string): string {
+	return getFirstAndLastName(name)
+		.split(" ")
+		.map((namePart) => namePart[0]?.toUpperCase() ?? "")
+		.join("");
+}

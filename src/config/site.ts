@@ -1,8 +1,8 @@
-import { profile } from "@/content/profile";
+import { getFirstAndLastName, getInitials, profile } from "@/content/profile";
 
 export const site = {
-	name: profile.name,
-	shortName: "RR",
+	name: `${getFirstAndLastName(profile.name)} - Portfolio`,
+	shortName: getInitials(profile.name),
 	url: getSiteUrl(),
 	lastUpdatedAt: process.env.NEXT_PUBLIC_LAST_UPDATED ?? new Date().toISOString(),
 	author: {

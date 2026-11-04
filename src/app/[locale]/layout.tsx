@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 	const profile = portfolioContent[locale].profile;
 
 	return {
-		title: profile.name,
+		title: site.name,
 		description: profile.summary,
 		metadataBase: new URL(site.url),
 		applicationName: site.name,
