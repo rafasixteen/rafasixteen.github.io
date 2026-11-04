@@ -1,7 +1,7 @@
 import React from "react";
 import { Document, Font, Link, Page, Path, StyleSheet, Svg, Text, View, type DocumentProps } from "@react-pdf/renderer";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import type { PortfolioContent } from "@/content/model";
+import type { PortfolioContent } from "@/content/portfolio";
 import { formatDate } from "@/lib/format";
 
 type Translate = (key: "cv.experience" | "cv.education" | "cv.skills" | "cv.projects" | "label.present") => string;
