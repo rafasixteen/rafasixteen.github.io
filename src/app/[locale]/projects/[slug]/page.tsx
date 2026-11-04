@@ -30,10 +30,11 @@ function getProject(locale: string, slug: string) {
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
 	const { locale: value, slug } = await params;
+
 	const { locale, project } = getProject(value, slug);
 
 	const t = await getTranslations({
-		locale,
+		locale: locale,
 		namespace: `portfolio.projects.${project.translationKey}`,
 	});
 
@@ -46,8 +47,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
 	const { locale: value, slug } = await params;
-	const { project } = getProject(value, slug);
-	const Details = project.details;
 
-	return <Details />;
+	const { project } = getProject(value, slug);
+
+	return <project.details />;
 }
