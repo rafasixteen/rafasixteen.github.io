@@ -65,6 +65,12 @@
 		},
 		"projects": {
 			"cal-platform": {
+				"technologies": [
+					{ "id": "go", "name": "Go" },
+					{ "id": "postgresql", "name": "PostgreSQL" },
+					{ "id": "datastar", "name": "Datastar" },
+					{ "id": "docker", "name": "Docker" }
+				],
 				"summary": "A plataforma que estou a desenvolver para a Calisthenics Alliance, a liga portuguesa de Endurance. Trata das inscrições, divisões, battles 1v1, avaliação, rankings, resultados e da administração dos eventos.",
 				"impact": "Está a ser usada para apoiar uma organização de competições real e tornar o dia do evento mais simples para a organização e para os júris.",
 				"organization": "Desenvolvida para a Calisthenics Alliance, uma liga criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha, em conjunto com clubes, atletas e organizações da comunidade portuguesa de calistenia.",
@@ -95,6 +101,12 @@
 				]
 			},
 			"cal-judge": {
+				"technologies": [
+					{ "id": "kotlin-multiplatform", "name": "Kotlin Multiplatform" },
+					{ "id": "android", "name": "Android" },
+					{ "id": "gradle", "name": "Gradle" },
+					{ "id": "go-api", "name": "Go API" }
+				],
 				"summary": "Uma aplicação Android nativa que estou a desenvolver para os júris da Calisthenics Alliance, a liga portuguesa de Endurance. Liga-se à plataforma de eventos e suporta battles, rotinas, temporizadores e avaliação no local.",
 				"impact": "Dá aos júris uma ferramenta simples para o dia da competição e mantém o trabalho de avaliação ligado ao mesmo sistema usado pela organização.",
 				"organization": "Desenvolvida para a Calisthenics Alliance, liga portuguesa de Endurance criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha com a comunidade de calistenia.",

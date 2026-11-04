@@ -1,7 +1,14 @@
+import type { ReactElement } from "react";
 import { Badge } from "@/components/ui";
-import type { Project } from "@/content/project";
 
-export function TechnologyPill({ technology }: { technology: Project["technologies"][number] }) {
+interface TechnologyPillProps {
+	technology: {
+		name: string;
+		icon: ReactElement;
+	};
+}
+
+export function TechnologyPill({ technology }: TechnologyPillProps) {
 	return (
 		<Badge variant="secondary">
 			{technology.icon}

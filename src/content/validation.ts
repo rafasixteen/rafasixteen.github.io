@@ -3,7 +3,7 @@ import { education } from "./education";
 import { experience } from "./experience";
 import { localizedContent, assembleContent } from "./portfolio";
 import { portfolioContentSchema, type PortfolioContent } from "./portfolio-content";
-import { projects } from "./project";
+import { projects, technologyTranslationSchema } from "./project";
 import { skillGroups } from "./skill-group";
 import { asRecord } from "@/lib/record";
 
@@ -98,7 +98,17 @@ export function validateContent(): Record<Locale, PortfolioContent> {
 
 		for (const project of projects) {
 			const projectTranslation = asRecord(translations.projects[project.translationKey]);
+			const technologyTranslations = technologyTranslationSchema
+				.array()
+				.parse(projectTranslation?.technologies);
 			const mediaTranslations = asRecord(projectTranslation?.media) ?? {};
+
+			assertTranslationIds(
+				locale,
+				`projects.${project.translationKey}.technologies`,
+				project.technologies,
+				technologyTranslations,
+			);
 
 			if (project.media.length > 0) {
 				assertTranslationKeys(

@@ -3,7 +3,7 @@ import { locales } from "@/lib/locales";
 import { educationSchema } from "./education";
 import { experienceSchema } from "./experience";
 import { profileSchema } from "./profile";
-import { projectMediaSharedSchema, projectSharedDataSchema } from "./project";
+import { projectMediaSharedSchema, projectSharedDataSchema, technologySchema } from "./project";
 import { skillGroupSchema } from "./skill-group";
 
 const localizedProjectMediaSchema = projectMediaSharedSchema.and(
@@ -14,6 +14,7 @@ const localizedProjectMediaSchema = projectMediaSharedSchema.and(
 );
 
 export const localizedProjectSchema = projectSharedDataSchema.extend({
+	technologies: z.array(technologySchema).min(1),
 	media: z.array(localizedProjectMediaSchema),
 });
 

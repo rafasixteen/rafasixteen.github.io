@@ -32,7 +32,7 @@ function ProjectSidebar({
 			<h2 className="text-sm font-semibold tracking-[0.18em] text-primary uppercase">{technologies}</h2>
 			<ul className="mt-5 flex flex-wrap gap-2" aria-label={technologies}>
 				{project.technologies.map((technology) => (
-					<li key={technology.name}>
+					<li key={technology.id}>
 						<TechnologyPill technology={technology} />
 					</li>
 				))}

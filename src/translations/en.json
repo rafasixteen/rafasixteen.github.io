@@ -65,6 +65,12 @@
 		},
 		"projects": {
 			"cal-platform": {
+				"technologies": [
+					{ "id": "go", "name": "Go" },
+					{ "id": "postgresql", "name": "PostgreSQL" },
+					{ "id": "datastar", "name": "Datastar" },
+					{ "id": "docker", "name": "Docker" }
+				],
 				"summary": "The platform I am building for Calisthenics Alliance, Portugal's national Endurance league. It handles registrations, divisions, 1v1 battles, judging, rankings, results, and the admin work around an event.",
 				"impact": "It is being used to support a real competition organization and make the event days easier to run for the organizers and judges.",
 				"organization": "Built for Calisthenics Alliance, a league created by Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha, together with clubs, athletes, and organizations from the Portuguese calisthenics community.",
@@ -95,6 +101,12 @@
 				]
 			},
 			"cal-judge": {
+				"technologies": [
+					{ "id": "kotlin-multiplatform", "name": "Kotlin Multiplatform" },
+					{ "id": "android", "name": "Android" },
+					{ "id": "gradle", "name": "Gradle" },
+					{ "id": "go-api", "name": "Go API" }
+				],
 				"summary": "A native Android app I am building for Calisthenics Alliance judges. It connects to the CAL event platform and supports battles, routines, timers, and judging on site.",
 				"impact": "It gives the judges a focused tool for the competition day and keeps their work connected to the same event system used by the organization.",
 				"organization": "Built for Calisthenics Alliance, the Portuguese endurance league created by Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha with the wider calisthenics community.",

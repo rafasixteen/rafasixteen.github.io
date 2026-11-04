@@ -47,7 +47,7 @@ function ProjectCard({ project }: { project: LocalizedProject }) {
 				<p>{projectT("summary")}</p>
 				<ul className="mt-5 flex flex-wrap gap-2" aria-label={t("label.technologies")}>
 					{project.technologies.map((technology) => (
-						<li key={technology.name}>
+						<li key={technology.id}>
 							<TechnologyPill technology={technology} />
 						</li>
 					))}

@@ -4,9 +4,18 @@ import { z } from "zod";
 import { CalPlatformDetail, CalJudgeDetail } from "@/components/projects/cal-details";
 import { locales, type Locale } from "@/lib/locales";
 
-const technologySchema = z.object({
-	name: z.string().min(1),
+const technologySharedSchema = z.object({
+	id: z.string().min(1),
 	icon: z.custom<ReactElement>(),
+});
+
+export const technologySchema = technologySharedSchema.extend({
+	name: z.string().min(1),
+});
+
+export const technologyTranslationSchema = z.object({
+	id: z.string().min(1),
+	name: z.string().min(1),
 });
 
 export const projectMediaSharedSchema = z.discriminatedUnion("type", [
@@ -28,16 +37,22 @@ export const projectSharedDataSchema = z.object({
 	name: z.string().min(1),
 	url: z.url().optional(),
 	repository: z.url().optional(),
-	technologies: z.array(technologySchema).min(1),
+	technologies: z.array(technologySharedSchema).min(1),
 	media: z.array(projectMediaSharedSchema).default([]),
 	details: z.custom<() => Promise<ReactNode>>((value) => typeof value === "function"),
 });
 
 export type ProjectSharedData = z.infer<typeof projectSharedDataSchema>;
 
+export type Technology = z.infer<typeof technologySchema>;
+
+export type TechnologyTranslation = z.infer<typeof technologyTranslationSchema>;
+
 export type ProjectMediaShared = z.infer<typeof projectMediaSharedSchema>;
 
-export type Project = ProjectSharedData;
+export type Project = Omit<ProjectSharedData, "technologies"> & {
+	technologies: Technology[];
+};
 
 export const projects: ProjectSharedData[] = [
 	{
@@ -45,10 +60,10 @@ export const projects: ProjectSharedData[] = [
 		name: "CAL Platform",
 		details: CalPlatformDetail,
 		technologies: [
-			{ name: "Go", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
-			{ name: "PostgreSQL", icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} /> },
-			{ name: "Datastar", icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} /> },
-			{ name: "Docker", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "go", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "postgresql", icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "datastar", icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "docker", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 		],
 		media: [],
 	},
@@ -57,10 +72,10 @@ export const projects: ProjectSharedData[] = [
 		name: "CAL Judge",
 		details: CalJudgeDetail,
 		technologies: [
-			{ name: "Kotlin Multiplatform", icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} /> },
-			{ name: "Android", icon: <Atom aria-hidden="true" size={16} strokeWidth={1.8} /> },
-			{ name: "Gradle", icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} /> },
-			{ name: "Go API", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "kotlin-multiplatform", icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "android", icon: <Atom aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "gradle", icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} /> },
+			{ id: "go-api", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 		],
 		media: [],
 	},

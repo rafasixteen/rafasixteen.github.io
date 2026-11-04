@@ -6,7 +6,7 @@ import { education, type EducationTranslations } from "./education";
 import { experience, type ExperienceTranslations } from "./experience";
 import { localizedProjectSchema, type PortfolioContent } from "./portfolio-content";
 import { profile, type ProfileTranslation } from "./profile";
-import { projects } from "./project";
+import { projects, technologyTranslationSchema } from "./project";
 import { skillGroups, type SkillGroupTranslations } from "./skill-group";
 
 type PortfolioTranslations = {
@@ -63,11 +63,31 @@ export function assembleContent(locale: Locale): PortfolioContent {
 		education: education.map((entry) => ({ ...entry, ...translations.education[entry.translationKey] })),
 		projects: projects.map((entry) => {
 			const translation = asRecord(translations.projects[entry.translationKey]) ?? {};
+
+			const { technologies: translatedTechnologies, ...projectTranslation } = translation;
+
+			const technologyTranslations = technologyTranslationSchema.array().parse(translatedTechnologies);
 			const mediaTranslations = asRecord(translation.media) ?? {};
 
 			return localizedProjectSchema.parse({
 				...entry,
-				media: entry.media.map((media) => ({ ...media, ...asRecord(mediaTranslations[media.translationKey]) })),
+				...projectTranslation,
+				technologies: entry.technologies.map((technology) => {
+					const translation = technologyTranslations.find(({ id }) => id === technology.id);
+
+					if (!translation) {
+						throw new Error(`Missing technology translation: ${entry.translationKey}.${technology.id}`);
+					}
+
+					return {
+						...technology,
+						name: translation.name,
+					};
+				}),
+				media: entry.media.map((media) => ({
+					...media,
+					...asRecord(mediaTranslations[media.translationKey]),
+				})),
 			});
 		}),
 		skills: skillGroups.map((entry) => {
