@@ -8,11 +8,11 @@
 	},
 	"scripts": {
 		"dev": "next dev",
-		"prebuild": "npm run generate:cv",
+		"prebuild": "npm run cv:gen",
 		"build": "next build",
 		"start": "npx serve out",
 		"test": "vitest run",
-		"generate:cv": "tsx scripts/generate-cv.ts"
+		"cv:gen": "tsx scripts/generate-cv.ts"
 	},
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^7.3.1",
