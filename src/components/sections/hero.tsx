@@ -64,7 +64,7 @@ export function Hero({ locale, profile }: HeroProps) {
 					<div aria-hidden="true" className="absolute top-[18%] right-0 h-px w-2/3 bg-primary/60" />
 					<img
 						className="relative z-10 max-h-[min(70vh,48rem)] w-full max-w-[34rem] object-contain object-bottom"
-						src={url("/images/avatar-cutout.png")}
+						src={url("/images/avatar-cutout.webp")}
 						alt={profile.name}
 					/>
 				</div>
