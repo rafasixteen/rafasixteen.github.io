@@ -13,7 +13,7 @@
 	},
 	"section": {
 		"experience": "Experiência",
-		"projects": "Projetos selecionados",
+		"projects": "Projetos",
 		"skills": "Competências",
 		"education": "Educação"
 	},
@@ -43,7 +43,7 @@
 	},
 	"portfolio": {
 		"profile": {
-			"summary": "Programador full-stack e estudante do ensino superior, focado em backends Go, aplicações web e desenvolvimento Android nativo. Desenvolvo sistemas de ponta a ponta, desde modelos de dados e APIs até interfaces, implementação e operações em eventos reais."
+			"summary": "Sou programador full-stack e estudante do ensino superior. Desenvolvo sistemas escaláveis e resilientes para aplicações web e mobile."
 		},
 		"experience": {
 			"vitalis": {
