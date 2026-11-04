@@ -1,38 +1,40 @@
 import { getTranslations } from "next-intl/server";
-import { ProjectCallout } from "./project-callout";
-import { ProjectHighlights } from "./project-highlights";
-import { ProjectPageLayout } from "./project-page-layout";
-import { ProjectSection } from "./project-section";
-import { getProjectContent } from "./project-content";
+import { ProjectCallout } from "../project-callout";
+import { ProjectHighlights } from "../project-highlights";
+import { ProjectPageLayout } from "../project-page-layout";
+import { ProjectSection } from "../project-section";
+import type { Project } from "@/content/project";
+import { commonProjectTranslationSchema } from "@/content/translations";
+import { z } from "zod";
 
-const organizationUrl = "https://calisthenicsalliance.com/";
+const text = z.string().trim().min(1);
 
-interface ArchitectureItem {
-	title: string;
-	description: string;
+export const calPlatformTranslationSchema = commonProjectTranslationSchema.extend({
+	impact: text,
+	organization: text.optional(),
+	overview: text.optional(),
+	contributions: z.array(text).default([]),
+	architecture: z.array(z.strictObject({ title: text, description: text })).default([]),
+});
+
+interface Props {
+	project: Project;
+	content: z.infer<typeof calPlatformTranslationSchema>;
 }
 
-async function CalDetail({ projectKey }: { projectKey: string }) {
-	const [project, t, projectT] = await Promise.all([
-		getProjectContent(projectKey),
-		getTranslations(),
-		getTranslations(`portfolio.projects.${projectKey}`),
-	]);
-
-	const organization = projectT("organization");
-	const overview = projectT("overview");
-	const contributions = projectT.raw("contributions") as string[];
-	const architecture = (projectT.has("architecture") ? projectT.raw("architecture") : []) as ArchitectureItem[];
+export async function CalPlatformDetail({ project, content }: Props) {
+	const t = await getTranslations();
+	const { organization, overview, contributions, architecture } = content;
 
 	return (
-		<ProjectPageLayout project={project} summary={projectT("summary")} impact={projectT("impact")}>
+		<ProjectPageLayout project={project} summary={project.summary} impact={content.impact}>
 			{organization ? (
 				<ProjectSection eyebrow={t("projectDetail.organization")}>
 					<ProjectCallout>
 						<p>{organization}</p>
 						<a
 							className="mt-3 inline-flex text-sm font-medium text-primary hover:underline"
-							href={organizationUrl}
+							href="https://calisthenicsalliance.com/"
 							target="_blank"
 							rel="noreferrer">
 							calisthenicsalliance.com
@@ -64,12 +66,4 @@ async function CalDetail({ projectKey }: { projectKey: string }) {
 			) : null}
 		</ProjectPageLayout>
 	);
-}
-
-export async function CalPlatformDetail() {
-	return <CalDetail projectKey="cal-platform" />;
-}
-
-export async function CalJudgeDetail() {
-	return <CalDetail projectKey="cal-judge" />;
 }

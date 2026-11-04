@@ -18,16 +18,16 @@ npm run build         # generates CVs, validates content, then exports to out/
 
 ## Edit content
 
-Each entity file in `src/content/` owns its shared data, schema, inferred types, and explicit translation keys. Locale JSON files contain only the fields that vary by language, keyed by those translation keys.
+Entity files in `src/content/` contain their types, type-checked shared data and explicit translation keys. Locale JSON files contain UI copy and translated portfolio fields; project technologies and skill names are keyed by their shared IDs. `src/content/translations.ts` validates common fields, project detail modules validate their own payloads, and `src/content/portfolio.ts` checks matching keys and assembles the final model.
 
-To add a project, add its shared URL, technologies, and `translationKey` in `src/content/project.ts`, then add matching translated `summary` and `impact` entries to both locale JSON files. Build-time validation stops the build if a key is missing, unused, or malformed.
+To add a project, create its detail component and strict translation schema, then add its shared data, parser adapter, technologies, and `translationKey` in `src/content/project.tsx`. Add the matching project text and keyed technology translations to every locale JSON file. Build-time validation stops the build if a key is missing, unused, or malformed.
 
 ## Add a locale
 
 1. Add the locale code to `src/i18n/routing.ts`.
 2. Add a JSON dictionary in `src/translations/` with every required translation key.
 
-The content loader discovers translation files automatically and rejects a missing configured locale or a file for an undeclared locale. The portfolio schema validates every locale during the build.
+The content loader discovers translation files automatically and rejects a missing configured locale or a file for an undeclared locale. The translation boundary validates every locale during the build.
 
 ## Theme
 

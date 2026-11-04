@@ -3,7 +3,7 @@ import path from "node:path";
 import { renderToBuffer } from "@react-pdf/renderer";
 import { createTranslator } from "next-intl";
 import { createCvDocument } from "@/components/shared/cv-document";
-import { portfolioContent } from "@/content/validation";
+import { portfolioContent } from "@/content/portfolio";
 import { locales } from "@/lib/locales";
 
 const output = path.resolve("public/cv");
@@ -18,13 +18,7 @@ for (const locale of locales) {
 		messages,
 	});
 
-	const projectT = createTranslator({
-		locale,
-		messages,
-		namespace: "portfolio.projects",
-	});
-
-	const document = createCvDocument(portfolioContent[locale], t, projectT);
+	const document = createCvDocument(portfolioContent[locale], t);
 	const pdf = await renderToBuffer(document);
 
 	await writeFile(path.join(output, `cv-${locale}.pdf`), pdf);

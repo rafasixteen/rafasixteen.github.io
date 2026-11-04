@@ -1,28 +1,24 @@
-import { z } from "zod";
-import { dateRangeSchema } from "./date-range";
+/** A complete localized education entry. */
+export interface Education {
+	translationKey: string;
+	institution: string;
+	location: string;
+	start: `${number}-${number}`;
+	end?: `${number}-${number}`;
+	credential: string;
+	detail: string;
+}
 
-export const educationSharedDataSchema = dateRangeSchema.extend({
-	translationKey: z.string().min(1),
-	institution: z.string().min(1),
-	location: z.string().min(1),
-});
+/** Education fields authored in TypeScript before credential and detail are translated. */
+export interface EducationDefinition {
+	translationKey: string;
+	institution: string;
+	location: string;
+	start: `${number}-${number}`;
+	end?: `${number}-${number}`;
+}
 
-export const educationTranslationSchema = z.object({
-	credential: z.string().min(1),
-	detail: z.string().min(1),
-});
-
-export const educationSchema = educationSharedDataSchema.extend(educationTranslationSchema.shape);
-
-export type EducationSharedData = z.infer<typeof educationSharedDataSchema>;
-
-export type EducationTranslation = z.infer<typeof educationTranslationSchema>;
-
-export type Education = z.infer<typeof educationSchema>;
-
-export type EducationTranslations = Record<string, EducationTranslation>;
-
-export const education: EducationSharedData[] = [
+export const education = [
 	{
 		translationKey: "ulo-tesp",
 		institution: "Universidade de Leiria e Oeste (ULO)",
@@ -36,4 +32,4 @@ export const education: EducationSharedData[] = [
 		start: "2022-09",
 		end: "2025-06",
 	},
-];
+] satisfies EducationDefinition[];

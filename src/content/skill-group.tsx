@@ -1,47 +1,20 @@
-import type { ReactElement } from "react";
 import { Braces, Database, FileCode2, GitBranch, Languages, Network, Server } from "lucide-react";
-import { z } from "zod";
+import type { IconItem, IconItemSource } from "./icon-item";
 
-const skillSharedSchema = z.object({
-	id: z.string().min(1),
-	icon: z.custom<ReactElement>(),
-});
+/** A complete localized group of skills. */
+export interface SkillGroup {
+	translationKey: string;
+	name: string;
+	skills: IconItem[];
+}
 
-const skillSchema = skillSharedSchema.extend({
-	name: z.string().min(1),
-});
+/** Skill-group IDs and icons authored in TypeScript before names are translated. */
+export interface SkillGroupDefinition {
+	translationKey: string;
+	skills: IconItemSource[];
+}
 
-const skillTranslationSchema = z.object({
-	id: z.string().min(1),
-	name: z.string().min(1),
-});
-
-export const skillGroupSharedDataSchema = z.object({
-	translationKey: z.string().min(1),
-	skills: z.array(skillSharedSchema).min(1),
-});
-
-export const skillGroupTranslationSchema = z.object({
-	id: z.string().min(1),
-	name: z.string().min(1),
-	skills: z.array(skillTranslationSchema).min(1),
-});
-
-export const skillGroupSchema = skillGroupSharedDataSchema.extend({
-	skills: z.array(skillSchema).min(1),
-	id: z.string().min(1),
-	name: z.string().min(1),
-});
-
-export type SkillGroupSharedData = z.infer<typeof skillGroupSharedDataSchema>;
-
-export type SkillGroupTranslation = z.infer<typeof skillGroupTranslationSchema>;
-
-export type SkillGroup = z.infer<typeof skillGroupSchema>;
-
-export type SkillGroupTranslations = SkillGroupTranslation[];
-
-export const skillGroups: SkillGroupSharedData[] = [
+export const skillGroups = [
 	{
 		translationKey: "backend",
 		skills: [
@@ -94,4 +67,4 @@ export const skillGroups: SkillGroupSharedData[] = [
 			{ id: "english", icon: <Languages size={16} /> },
 		],
 	},
-];
+] satisfies SkillGroupDefinition[];

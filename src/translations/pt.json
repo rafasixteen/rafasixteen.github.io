@@ -6,10 +6,8 @@
 	},
 	"action": {
 		"downloadCv": "Descarregar CV",
-		"visit": "Ver projeto",
 		"viewDetails": "Ver detalhes",
-		"backToProjects": "Voltar aos projetos",
-		"viewRepository": "Ver repositório"
+		"backToProjects": "Voltar aos projetos"
 	},
 	"section": {
 		"experience": "Experiência",
@@ -30,9 +28,7 @@
 		"overview": "Visão geral",
 		"architecture": "Arquitetura",
 		"contributions": "O que fiz",
-		"media": "Multimédia do projeto",
-		"technologies": "Tecnologias",
-		"links": "Ligações do projeto"
+		"technologies": "Tecnologias"
 	},
 	"cv": {
 		"experience": "Experiência",
@@ -47,10 +43,24 @@
 		},
 		"experience": {
 			"vitalis": {
-				"summary": "Concluí um estágio internacional de 300 horas em desenvolvimento web, redes, automação de casas inteligentes, modelação 3D, eletrónica e automação de bases de dados."
+				"summary": "Concluí um estágio internacional de 300 horas em desenvolvimento web, redes, automação de casas inteligentes, modelação 3D, eletrónica e automação de bases de dados.",
+				"technologies": {
+					"html-css": "HTML e CSS",
+					"networking": "Redes",
+					"smart-home-automation": "Automação de casas inteligentes",
+					"3d-modeling-printing": "Modelação e impressão 3D",
+					"electronics": "Eletrónica",
+					"filemaker-pro": "FileMaker Pro"
+				}
 			},
 			"janela-digital": {
-				"summary": "Concluí um estágio de desenvolvimento de software de 300 horas, focado em aplicações web ASP.NET para casos de utilização imobiliários."
+				"summary": "Concluí um estágio de desenvolvimento de software de 300 horas, focado em aplicações web ASP.NET para casos de utilização imobiliários.",
+				"technologies": {
+					"aspnet-core-mvc": "ASP.NET Core MVC",
+					"razor-pages": "Razor Pages",
+					"bootstrap": "Bootstrap",
+					"git": "Git"
+				}
 			}
 		},
 		"education": {
@@ -65,12 +75,13 @@
 		},
 		"projects": {
 			"cal-platform": {
-				"technologies": [
-					{ "id": "go", "name": "Go" },
-					{ "id": "postgresql", "name": "PostgreSQL" },
-					{ "id": "datastar", "name": "Datastar" },
-					{ "id": "docker", "name": "Docker" }
-				],
+				"name": "CAL Platform",
+				"technologies": {
+					"go": "Go",
+					"postgresql": "PostgreSQL",
+					"datastar": "Datastar",
+					"docker": "Docker"
+				},
 				"summary": "A plataforma que estou a desenvolver para a Calisthenics Alliance, a liga portuguesa de Endurance. Trata das inscrições, divisões, battles 1v1, avaliação, rankings, resultados e da administração dos eventos.",
 				"impact": "Está a ser usada para apoiar uma organização de competições real e tornar o dia do evento mais simples para a organização e para os júris.",
 				"organization": "Desenvolvida para a Calisthenics Alliance, uma liga criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha, em conjunto com clubes, atletas e organizações da comunidade portuguesa de calistenia.",
@@ -101,12 +112,13 @@
 				]
 			},
 			"cal-judge": {
-				"technologies": [
-					{ "id": "kotlin-multiplatform", "name": "Kotlin Multiplatform" },
-					{ "id": "android", "name": "Android" },
-					{ "id": "gradle", "name": "Gradle" },
-					{ "id": "go-api", "name": "Go API" }
-				],
+				"name": "CAL Judge",
+				"technologies": {
+					"kotlin-multiplatform": "Kotlin Multiplatform",
+					"android": "Android",
+					"gradle": "Gradle",
+					"go-api": "Go API"
+				},
 				"summary": "Uma aplicação Android nativa que estou a desenvolver para os júris da Calisthenics Alliance, a liga portuguesa de Endurance. Liga-se à plataforma de eventos e suporta battles, rotinas, temporizadores e avaliação no local.",
 				"impact": "Dá aos júris uma ferramenta simples para o dia da competição e mantém o trabalho de avaliação ligado ao mesmo sistema usado pela organização.",
 				"organization": "Desenvolvida para a Calisthenics Alliance, liga portuguesa de Endurance criada pela Associação B.W.C.R. - Clube de Calistenia das Caldas da Rainha com a comunidade de calistenia.",
@@ -119,65 +131,59 @@
 				]
 			}
 		},
-		"skills": [
-			{
-				"id": "backend",
+		"skills": {
+			"backend": {
 				"name": "Backend e bases de dados",
-				"skills": [
-					{ "id": "go", "name": "Go" },
-					{ "id": "rest-apis", "name": "REST APIs" },
-					{ "id": "postgresql", "name": "PostgreSQL" },
-					{ "id": "sqlite", "name": "SQLite" },
-					{ "id": "sql", "name": "SQL" },
-					{ "id": "aspnet-core-mvc", "name": "ASP.NET Core MVC" }
-				]
+				"skills": {
+					"go": "Go",
+					"rest-apis": "REST APIs",
+					"postgresql": "PostgreSQL",
+					"sqlite": "SQLite",
+					"sql": "SQL",
+					"aspnet-core-mvc": "ASP.NET Core MVC"
+				}
 			},
-			{
-				"id": "frontend",
+			"frontend": {
 				"name": "Web e frontend",
-				"skills": [
-					{ "id": "typescript", "name": "TypeScript" },
-					{ "id": "react-next", "name": "React / Next.js" },
-					{ "id": "html-css-tailwind", "name": "HTML / CSS / Tailwind CSS" },
-					{ "id": "go-templ-datastar", "name": "Go templ / Datastar" },
-					{ "id": "razor-pages", "name": "Razor Pages" }
-				]
+				"skills": {
+					"typescript": "TypeScript",
+					"react-next": "React / Next.js",
+					"html-css-tailwind": "HTML / CSS / Tailwind CSS",
+					"go-templ-datastar": "Go templ / Datastar",
+					"razor-pages": "Razor Pages"
+				}
 			},
-			{
-				"id": "mobile",
+			"mobile": {
 				"name": "Desenvolvimento mobile",
-				"skills": [
-					{ "id": "kotlin-multiplatform", "name": "Kotlin Multiplatform" },
-					{ "id": "android-development", "name": "Desenvolvimento Android" }
-				]
+				"skills": {
+					"kotlin-multiplatform": "Kotlin Multiplatform",
+					"android-development": "Desenvolvimento Android"
+				}
 			},
-			{
-				"id": "devops",
+			"devops": {
 				"name": "Infraestrutura e ferramentas",
-				"skills": [
-					{ "id": "linux", "name": "Linux" },
-					{ "id": "docker", "name": "Docker" },
-					{ "id": "networking", "name": "Redes" },
-					{ "id": "git-github-actions", "name": "Git / GitHub Actions" }
-				]
+				"skills": {
+					"linux": "Linux",
+					"docker": "Docker",
+					"networking": "Redes",
+					"git-github-actions": "Git / GitHub Actions"
+				}
 			},
-			{
-				"id": "technical-practice",
+			"technical-practice": {
 				"name": "Hardware e prática técnica",
-				"skills": [
-					{ "id": "electronics-arduino", "name": "Eletrónica / Arduino" },
-					{ "id": "3d-modeling-printing", "name": "Modelação / impressão 3D" },
-					{ "id": "smart-home-automation", "name": "Automação de casas inteligentes" }
-				]
+				"skills": {
+					"electronics-arduino": "Eletrónica / Arduino",
+					"3d-modeling-printing": "Modelação / impressão 3D",
+					"smart-home-automation": "Automação de casas inteligentes"
+				}
 			},
-			{
-				"id": "languages",
+			"languages": {
 				"name": "Idiomas",
-				"skills": [
-					{ "id": "portuguese", "name": "Português (nativo)" },
-					{ "id": "english", "name": "Inglês (proficiente)" }
-				]
+				"skills": {
+					"portuguese": "Português (nativo)",
+					"english": "Inglês (proficiente)"
+				}
 			}
-		]
+		}
 	}
 }

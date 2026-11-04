@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui";
 import { LinkList } from "@/components/shared/link-list";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import type { Link } from "@/content/link";
-import type { Profile } from "@/content/profile";
+import type { Link, Profile } from "@/content/profile";
 import type { Locale } from "@/lib/locales";
 import { url } from "@/lib/url";
 import { cn } from "@/lib/utils";
@@ -47,7 +46,7 @@ export function Hero({ locale, profile }: HeroProps) {
 						))}
 					</h1>
 					<p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-						{t("portfolio.profile.summary")}
+						{profile.summary}
 					</p>
 					<div className="mt-9 flex flex-wrap items-center gap-3">
 						<Button asChild className="bg-primary text-primary-foreground hover:bg-primary">

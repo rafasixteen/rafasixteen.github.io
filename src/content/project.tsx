@@ -1,87 +1,69 @@
-import type { ReactElement, ReactNode } from "react";
 import { Atom, Braces, Database, FileCode2, Network, Server } from "lucide-react";
-import { z } from "zod";
-import { CalPlatformDetail, CalJudgeDetail } from "@/components/projects/cal-details";
+import { CalPlatformDetail, calPlatformTranslationSchema } from "@/components/projects/details/cal-platform-details";
+import { CalJudgeDetail, calJudgeTranslationSchema } from "@/components/projects/details/cal-judge-details";
 import { locales, type Locale } from "@/lib/locales";
+import type { ReactNode } from "react";
+import type { z } from "zod";
+import type { IconItem, IconItemSource } from "./icon-item";
+import type { commonProjectTranslationSchema } from "./translations";
 
-const technologySharedSchema = z.object({
-	id: z.string().min(1),
-	icon: z.custom<ReactElement>(),
-});
+/** A fully assembled project consumed by routes and components. */
+export interface Project {
+	translationKey: string;
+	name: string;
+	technologies: IconItem[];
+	summary: string;
+	details: () => Promise<ReactNode>;
+}
 
-export const technologySchema = technologySharedSchema.extend({
-	name: z.string().min(1),
-});
-
-export const technologyTranslationSchema = z.object({
-	id: z.string().min(1),
-	name: z.string().min(1),
-});
-
-export const projectMediaSharedSchema = z.discriminatedUnion("type", [
-	z.object({
-		translationKey: z.string().min(1),
-		type: z.literal("image"),
-		src: z.string().min(1),
-	}),
-	z.object({
-		translationKey: z.string().min(1),
-		type: z.literal("video"),
-		src: z.string().min(1),
-		poster: z.string().min(1).optional(),
-	}),
-]);
-
-export const projectSharedDataSchema = z.object({
-	translationKey: z.string().min(1),
-	name: z.string().min(1),
-	url: z.url().optional(),
-	repository: z.url().optional(),
-	technologies: z.array(technologySharedSchema).min(1),
-	media: z.array(projectMediaSharedSchema).default([]),
-	details: z.custom<() => Promise<ReactNode>>((value) => typeof value === "function"),
-});
-
-export type ProjectSharedData = z.infer<typeof projectSharedDataSchema>;
-
-export type Technology = z.infer<typeof technologySchema>;
-
-export type TechnologyTranslation = z.infer<typeof technologyTranslationSchema>;
-
-export type ProjectMediaShared = z.infer<typeof projectMediaSharedSchema>;
-
-export type Project = Omit<ProjectSharedData, "technologies"> & {
-	technologies: Technology[];
+/** Parsed common project translations plus the renderer bound to project-specific content. */
+type ParsedProjectTranslation = z.infer<typeof commonProjectTranslationSchema> & {
+	render: (project: Project) => Promise<ReactNode>;
 };
 
-export const projects: ProjectSharedData[] = [
+/** Project data and parser used to create a localized project at build time. */
+interface ProjectDefinition {
+	translationKey: string;
+	technologies: IconItemSource[];
+	parse: (value: unknown) => ParsedProjectTranslation;
+}
+
+export const projects: ProjectDefinition[] = [
 	{
 		translationKey: "cal-platform",
-		name: "CAL Platform",
-		details: CalPlatformDetail,
+		parse: (value) => {
+			const content = calPlatformTranslationSchema.parse(value);
+			return {
+				...content,
+				render: async (project) => <CalPlatformDetail project={project} content={content} />,
+			};
+		},
 		technologies: [
 			{ id: "go", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 			{ id: "postgresql", icon: <Database aria-hidden="true" size={16} strokeWidth={1.8} /> },
 			{ id: "datastar", icon: <Network aria-hidden="true" size={16} strokeWidth={1.8} /> },
 			{ id: "docker", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 		],
-		media: [],
 	},
 	{
 		translationKey: "cal-judge",
-		name: "CAL Judge",
-		details: CalJudgeDetail,
+		parse: (value) => {
+			const content = calJudgeTranslationSchema.parse(value);
+			return {
+				...content,
+				render: async (project) => <CalJudgeDetail project={project} content={content} />,
+			};
+		},
 		technologies: [
 			{ id: "kotlin-multiplatform", icon: <FileCode2 aria-hidden="true" size={16} strokeWidth={1.8} /> },
 			{ id: "android", icon: <Atom aria-hidden="true" size={16} strokeWidth={1.8} /> },
 			{ id: "gradle", icon: <Braces aria-hidden="true" size={16} strokeWidth={1.8} /> },
 			{ id: "go-api", icon: <Server aria-hidden="true" size={16} strokeWidth={1.8} /> },
 		],
-		media: [],
 	},
-];
+] satisfies ProjectDefinition[];
 
-export function projectSlug(project: Pick<ProjectSharedData, "translationKey">): string {
+export function projectSlug(project: Pick<Project, "translationKey">): string {
 	return project.translationKey;
 }
 

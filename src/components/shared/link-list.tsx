@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { Link } from "@/content/link";
+import type { Link } from "@/content/profile";
 import { cn } from "@/lib/utils";
 
 interface LinkListProps {

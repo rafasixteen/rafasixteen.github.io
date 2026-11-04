@@ -1,11 +1,10 @@
 import React from "react";
 import { Document, Font, Link, Page, Path, StyleSheet, Svg, Text, View, type DocumentProps } from "@react-pdf/renderer";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import type { PortfolioContent } from "@/content/portfolio-content";
+import type { PortfolioContent } from "@/content/model";
 import { formatDate } from "@/lib/format";
 
 type Translate = (key: "cv.experience" | "cv.education" | "cv.skills" | "cv.projects" | "label.present") => string;
-type ProjectTranslate = (key: string) => string;
 
 const styles = StyleSheet.create({
 	page: {
@@ -115,10 +114,6 @@ const styles = StyleSheet.create({
 		fontSize: 9.5,
 		marginTop: 3,
 	},
-	link: {
-		color: "#111827",
-		textDecoration: "none",
-	},
 	skillList: {
 		fontSize: 9.5,
 	},
@@ -180,11 +175,7 @@ function CvSection({ title, children }: CvSectionProps) {
 	);
 }
 
-export function createCvDocument(
-	content: PortfolioContent,
-	t: Translate,
-	projectT: ProjectTranslate,
-): React.ReactElement<DocumentProps> {
+export function createCvDocument(content: PortfolioContent, t: Translate): React.ReactElement<DocumentProps> {
 	Font.registerHyphenationCallback(keepWordsTogether);
 
 	return (
@@ -250,12 +241,7 @@ export function createCvDocument(
 								.map((technology) => technology.name)
 								.join(", ")}>
 							<Text style={styles.title}>{project.name}</Text>
-							<Text style={styles.body}>{projectT(`${project.translationKey}.summary`)}</Text>
-							{project.url ? (
-								<Link src={project.url} style={styles.link}>
-									{project.url}
-								</Link>
-							) : null}
+							<Text style={styles.body}>{project.summary}</Text>
 						</CvEntry>
 					))}
 				</CvSection>

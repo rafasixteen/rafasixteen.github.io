@@ -3,7 +3,7 @@ import { EducationTimeline } from "@/components/sections/education-timeline";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { Hero } from "@/components/sections/hero";
 import { SkillGroups } from "@/components/sections/skill-groups";
-import { portfolioContent } from "@/content/validation";
+import { portfolioContent } from "@/content/portfolio";
 import { defaultLocale, locales } from "@/lib/locales";
 import { hasLocale } from "next-intl";
 

@@ -1,7 +1,7 @@
 import type { Profile } from "@/content/profile";
 import { LinkList } from "@/components/shared/link-list";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import type { Link } from "@/content/link";
+import type { Link } from "@/content/profile";
 import { site } from "@/config/site";
 import { formatDateTime } from "@/lib/format";
 import { useLocale, useTranslations } from "next-intl";

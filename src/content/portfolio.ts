@@ -1,117 +1,184 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
-import { asRecord } from "@/lib/record";
 import { locales, type Locale } from "@/lib/locales";
-import { education, type EducationTranslations } from "./education";
-import { experience, type ExperienceTranslations } from "./experience";
-import { localizedProjectSchema, type PortfolioContent } from "./portfolio-content";
-import { profile, type ProfileTranslation } from "./profile";
-import { projects, technologyTranslationSchema } from "./project";
-import { skillGroups, type SkillGroupTranslations } from "./skill-group";
+import { education } from "./education";
+import { experience } from "./experience";
+import { profile } from "./profile";
+import { projects } from "./project";
+import { skillGroups } from "./skill-group";
+import { parseTranslationFile, type TranslationFile } from "./translations";
+import type { Profile } from "./profile";
+import type { Experience } from "./experience";
+import type { Education } from "./education";
+import type { Project } from "./project";
+import type { SkillGroup } from "./skill-group";
 
-type PortfolioTranslations = {
-	profile: ProfileTranslation;
-	experience: ExperienceTranslations;
-	education: EducationTranslations;
-	projects: Record<string, unknown>;
-	skills: SkillGroupTranslations;
-};
+/** The complete localized portfolio model passed to pages, components, and the CV generator. */
+export interface PortfolioContent {
+	locale: Locale;
+	profile: Profile;
+	experience: Experience[];
+	education: Education[];
+	projects: Project[];
+	skills: SkillGroup[];
+}
 
-function loadLocalizedContent(): Record<Locale, PortfolioTranslations> {
-	const translationsDirectory = path.join(process.cwd(), "src/translations");
-	const translationFiles = readdirSync(translationsDirectory, { withFileTypes: true })
+export function assertExactKeys(
+	locale: string,
+	path: string,
+	keys: readonly string[],
+	translations: Record<string, unknown>,
+): void {
+	const expected = new Set<string>();
+	for (const key of keys) {
+		if (expected.has(key)) {
+			throw new Error(`Duplicate shared ID at ${path}.${key}`);
+		}
+
+		expected.add(key);
+
+		if (!Object.hasOwn(translations, key)) {
+			throw new Error(`Missing ${locale} translation at ${path}.${key}`);
+		}
+	}
+
+	for (const key of Object.keys(translations)) {
+		if (!expected.has(key)) {
+			throw new Error(`Unused ${locale} translation at ${path}.${key}`);
+		}
+	}
+}
+
+export function assembleContent(locale: Locale, file: TranslationFile): PortfolioContent {
+	const t = file.portfolio;
+
+	assertExactKeys(
+		locale,
+		"experience",
+		experience.map((x) => x.translationKey),
+		t.experience,
+	);
+
+	assertExactKeys(
+		locale,
+		"education",
+		education.map((x) => x.translationKey),
+		t.education,
+	);
+
+	assertExactKeys(
+		locale,
+		"projects",
+		projects.map((x) => x.translationKey),
+		t.projects,
+	);
+
+	assertExactKeys(
+		locale,
+		"skills",
+		skillGroups.map((x) => x.translationKey),
+		t.skills,
+	);
+
+	return {
+		locale,
+		profile: {
+			...profile,
+			...t.profile,
+		},
+		experience: experience.map((entry) => {
+			const translated = t.experience[entry.translationKey];
+
+			assertExactKeys(
+				locale,
+				`experience.${entry.translationKey}.technologies`,
+				entry.technologies.map((technology) => technology.id),
+				translated.technologies,
+			);
+
+			return {
+				...entry,
+				summary: translated.summary,
+				technologies: entry.technologies.map((technology) => ({
+					...technology,
+					name: translated.technologies[technology.id],
+				})),
+			};
+		}),
+
+		education: education.map((entry) => ({
+			...entry,
+			...t.education[entry.translationKey],
+		})),
+		projects: projects.map((entry) => {
+			const translated = entry.parse(t.projects[entry.translationKey]);
+			const base = `projects.${entry.translationKey}`;
+
+			assertExactKeys(
+				locale,
+				`${base}.technologies`,
+				entry.technologies.map((x) => x.id),
+				translated.technologies,
+			);
+
+			const project: import("./project").Project = {
+				translationKey: entry.translationKey,
+				name: translated.name,
+				summary: translated.summary,
+				details: () => translated.render(project),
+				technologies: entry.technologies.map((technology) => ({
+					...technology,
+					name: translated.technologies[technology.id],
+				})),
+			};
+
+			return project;
+		}),
+		skills: skillGroups.map((entry) => {
+			const translated = t.skills[entry.translationKey];
+
+			assertExactKeys(
+				locale,
+				`skills.${entry.translationKey}.skills`,
+				entry.skills.map((x) => x.id),
+				translated.skills,
+			);
+
+			return {
+				...entry,
+				name: translated.name,
+				skills: entry.skills.map((skill) => ({
+					...skill,
+					name: translated.skills[skill.id],
+				})),
+			};
+		}),
+	};
+}
+
+function loadContent(): Record<Locale, PortfolioContent> {
+	const directory = path.join(process.cwd(), "src/translations");
+	const files = readdirSync(directory, { withFileTypes: true })
 		.filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
 		.map((entry) => entry.name);
 
-	const filesByLocale = new Map(translationFiles.map((file) => [file.replace(/\.json$/, ""), file]));
-
-	for (const locale of filesByLocale.keys()) {
-		if (!locales.includes(locale as Locale)) {
-			throw new Error(`Translation file ${locale}.json is not declared in i18n routing`);
+	for (const file of files) {
+		if (!locales.some((locale) => `${locale}.json` === file)) {
+			throw new Error(`Translation file ${file} is not declared in i18n routing`);
 		}
 	}
 
 	return Object.fromEntries(
 		locales.map((locale) => {
-			const file = filesByLocale.get(locale);
-
-			if (!file) {
+			const file = `${locale}.json`;
+			if (!files.includes(file)) {
 				throw new Error(`Missing translation file for configured locale ${locale}`);
 			}
 
-			const messages = JSON.parse(readFileSync(path.join(translationsDirectory, file), "utf8")) as {
-				portfolio: PortfolioTranslations;
-			};
-
-			return [locale, messages.portfolio];
+			const value: unknown = JSON.parse(readFileSync(path.join(directory, file), "utf8"));
+			return [locale, assembleContent(locale, parseTranslationFile(value))];
 		}),
-	) as Record<Locale, PortfolioTranslations>;
+	) as Record<Locale, PortfolioContent>;
 }
 
-export const localizedContent = loadLocalizedContent();
-
-export function assembleContent(locale: Locale): PortfolioContent {
-	const translations = localizedContent[locale];
-
-	return {
-		locale: locale,
-		profile: {
-			...profile,
-			...translations.profile,
-		},
-		experience: experience.map((entry) => ({ ...entry, ...translations.experience[entry.translationKey] })),
-		education: education.map((entry) => ({ ...entry, ...translations.education[entry.translationKey] })),
-		projects: projects.map((entry) => {
-			const translation = asRecord(translations.projects[entry.translationKey]) ?? {};
-
-			const { technologies: translatedTechnologies, ...projectTranslation } = translation;
-
-			const technologyTranslations = technologyTranslationSchema.array().parse(translatedTechnologies);
-			const mediaTranslations = asRecord(translation.media) ?? {};
-
-			return localizedProjectSchema.parse({
-				...entry,
-				...projectTranslation,
-				technologies: entry.technologies.map((technology) => {
-					const translation = technologyTranslations.find(({ id }) => id === technology.id);
-
-					if (!translation) {
-						throw new Error(`Missing technology translation: ${entry.translationKey}.${technology.id}`);
-					}
-
-					return {
-						...technology,
-						name: translation.name,
-					};
-				}),
-				media: entry.media.map((media) => ({
-					...media,
-					...asRecord(mediaTranslations[media.translationKey]),
-				})),
-			});
-		}),
-		skills: skillGroups.map((entry) => {
-			const translation = translations.skills.find(({ id }) => id === entry.translationKey);
-
-			if (!translation) {
-				throw new Error(`Missing skill translation: ${entry.translationKey}`);
-			}
-
-			const skillTranslations = new Map(translation.skills.map((skill) => [skill.id, skill.name]));
-
-			return {
-				...entry,
-				...translation,
-				skills: entry.skills.map((skill) => {
-					const name = skillTranslations.get(skill.id);
-
-					if (!name) {
-						throw new Error(`Missing skill translation: ${entry.translationKey}.${skill.id}`);
-					}
-
-					return { ...skill, name };
-				}),
-			};
-		}),
-	};
-}
+export const portfolioContent = loadContent();

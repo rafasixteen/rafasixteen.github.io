@@ -1,28 +1,32 @@
 import { faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { z } from "zod";
-import { linkSchema } from "./link";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-export const profileSharedDataSchema = z.object({
-	name: z.string().min(1),
-	location: z.string().min(1),
-	email: z.email(),
-	links: z.array(linkSchema),
-});
+/** A profile link rendered with a Font Awesome icon. */
+export interface Link {
+	label: string;
+	url: string;
+	icon: IconDefinition;
+}
 
-export const profileTranslationSchema = z.object({
-	summary: z.string().min(1),
-});
+/** The profile fields authored in TypeScript before its summary is translated. */
+export interface ProfileSource {
+	name: string;
+	location: string;
+	email: string;
+	links: Link[];
+}
 
-export const profileSchema = profileSharedDataSchema.extend(profileTranslationSchema.shape);
+/** The complete localized profile consumed by the site. */
+export interface Profile {
+	name: string;
+	location: string;
+	email: string;
+	links: Link[];
+	summary: string;
+}
 
-export type ProfileSharedData = z.infer<typeof profileSharedDataSchema>;
-
-export type ProfileTranslation = z.infer<typeof profileTranslationSchema>;
-
-export type Profile = z.infer<typeof profileSchema>;
-
-export const profile: ProfileSharedData = {
+export const profile = {
 	name: "Rafael Da Silva Rego",
 	location: "Bombarral, Portugal",
 	email: "rafaelrego16@gmail.com",
@@ -32,7 +36,7 @@ export const profile: ProfileSharedData = {
 		{ label: "Instagram", url: "https://www.instagram.com/rafasixteen", icon: faInstagram },
 		{ label: "Portfolio", url: "https://rafasixteen.github.io/portfolio/", icon: faGlobe },
 	],
-};
+} satisfies ProfileSource;
 
 export function getFirstAndLastName(name: string): string {
 	const nameParts = name.trim().split(/\s+/).filter(Boolean);

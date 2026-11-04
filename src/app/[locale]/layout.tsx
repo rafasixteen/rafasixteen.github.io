@@ -7,7 +7,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Footer, Navbar } from "@/components/layout";
 import { site } from "@/config/site";
-import { portfolioContent } from "@/content/validation";
+import { portfolioContent } from "@/content/portfolio";
 import {
 	defaultLocale,
 	getOpenGraphLocale,
