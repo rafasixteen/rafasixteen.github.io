@@ -1,8 +1,9 @@
 import type { Profile } from "@/content/profile";
-import { LinkList, type LinkListItem } from "@/components/shared/link-list";
+import { LinkList } from "@/components/shared/link-list";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import type { Link } from "@/content/link";
 import { site } from "@/config/site";
 import { formatDateTime } from "@/lib/format";
-import { Mail } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 interface FooterProps {
@@ -13,11 +14,11 @@ export function Footer({ profile }: FooterProps) {
 	const locale = useLocale();
 	const t = useTranslations();
 
-	const contactLinks: LinkListItem[] = [
+	const contactLinks: Link[] = [
 		{
 			label: profile.email,
 			url: `mailto:${profile.email}`,
-			icon: Mail,
+			icon: faEnvelope,
 		},
 		...profile.links.filter((link) => link.label !== "Portfolio"),
 	];

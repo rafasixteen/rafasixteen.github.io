@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui";
-import { LinkList, type LinkListItem } from "@/components/shared/link-list";
+import { LinkList } from "@/components/shared/link-list";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import type { Link } from "@/content/link";
 import type { Profile } from "@/content/profile";
 import type { Locale } from "@/lib/locales";
-import { Mail } from "lucide-react";
 import { url } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -17,12 +18,12 @@ export function Hero({ locale, profile }: HeroProps) {
 
 	const { nameLines, accentIndex } = getHeroNameLayout(profile.name);
 
-	const contactLinks: LinkListItem[] = [
+	const contactLinks: Link[] = [
 		...profile.links.filter((link) => link.label !== "Portfolio"),
 		{
 			label: profile.email,
 			url: `mailto:${profile.email}`,
-			icon: Mail,
+			icon: faEnvelope,
 		},
 	];
 

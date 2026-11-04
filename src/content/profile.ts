@@ -1,3 +1,5 @@
+import { faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { z } from "zod";
 import { linkSchema } from "./link";
 
@@ -25,10 +27,10 @@ export const profile: ProfileSharedData = {
 	location: "Bombarral, Portugal",
 	email: "rafaelrego16@gmail.com",
 	links: [
-		{ label: "LinkedIn", url: "https://www.linkedin.com/in/rafasixteen" },
-		{ label: "GitHub", url: "https://github.com/rafasixteen" },
-		{ label: "Instagram", url: "https://www.instagram.com/rafasixteen" },
-		{ label: "Portfolio", url: "https://rafasixteen.github.io/portfolio/" },
+		{ label: "LinkedIn", url: "https://www.linkedin.com/in/rafasixteen", icon: faLinkedin },
+		{ label: "GitHub", url: "https://github.com/rafasixteen", icon: faGithub },
+		{ label: "Instagram", url: "https://www.instagram.com/rafasixteen", icon: faInstagram },
+		{ label: "Portfolio", url: "https://rafasixteen.github.io/portfolio/", icon: faGlobe },
 	],
 };
 
