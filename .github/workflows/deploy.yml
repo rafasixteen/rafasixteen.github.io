@@ -34,6 +34,9 @@ jobs:
               with:
                   path: out
     deploy:
+        concurrency:
+            group: pages-deploy
+            cancel-in-progress: true
         environment:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
