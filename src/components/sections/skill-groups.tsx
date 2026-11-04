@@ -24,7 +24,7 @@ export function SkillGroups({ skills }: SkillGroupsProps) {
 							<CardContent className="px-0">
 								<ul className="flex flex-wrap gap-2">
 									{group.skills.map((skill) => (
-										<li key={skill.name}>
+										<li key={skill.id}>
 											<SkillPill skill={skill} />
 										</li>
 									))}

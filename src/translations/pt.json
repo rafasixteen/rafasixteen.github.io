@@ -107,13 +107,65 @@
 				]
 			}
 		},
-		"skills": {
-			"backend": { "name": "Backend e bases de dados" },
-			"frontend": { "name": "Web e frontend" },
-			"mobile": { "name": "Desenvolvimento mobile" },
-			"devops": { "name": "Infraestrutura e ferramentas" },
-			"technical-practice": { "name": "Hardware e prática técnica" },
-			"languages": { "name": "Idiomas" }
-		}
+		"skills": [
+			{
+				"id": "backend",
+				"name": "Backend e bases de dados",
+				"skills": [
+					{ "id": "go", "name": "Go" },
+					{ "id": "rest-apis", "name": "REST APIs" },
+					{ "id": "postgresql", "name": "PostgreSQL" },
+					{ "id": "sqlite", "name": "SQLite" },
+					{ "id": "sql", "name": "SQL" },
+					{ "id": "aspnet-core-mvc", "name": "ASP.NET Core MVC" }
+				]
+			},
+			{
+				"id": "frontend",
+				"name": "Web e frontend",
+				"skills": [
+					{ "id": "typescript", "name": "TypeScript" },
+					{ "id": "react-next", "name": "React / Next.js" },
+					{ "id": "html-css-tailwind", "name": "HTML / CSS / Tailwind CSS" },
+					{ "id": "go-templ-datastar", "name": "Go templ / Datastar" },
+					{ "id": "razor-pages", "name": "Razor Pages" }
+				]
+			},
+			{
+				"id": "mobile",
+				"name": "Desenvolvimento mobile",
+				"skills": [
+					{ "id": "kotlin-multiplatform", "name": "Kotlin Multiplatform" },
+					{ "id": "android-development", "name": "Desenvolvimento Android" }
+				]
+			},
+			{
+				"id": "devops",
+				"name": "Infraestrutura e ferramentas",
+				"skills": [
+					{ "id": "linux", "name": "Linux" },
+					{ "id": "docker", "name": "Docker" },
+					{ "id": "networking", "name": "Redes" },
+					{ "id": "git-github-actions", "name": "Git / GitHub Actions" }
+				]
+			},
+			{
+				"id": "technical-practice",
+				"name": "Hardware e prática técnica",
+				"skills": [
+					{ "id": "electronics-arduino", "name": "Eletrónica / Arduino" },
+					{ "id": "3d-modeling-printing", "name": "Modelação / impressão 3D" },
+					{ "id": "smart-home-automation", "name": "Automação de casas inteligentes" }
+				]
+			},
+			{
+				"id": "languages",
+				"name": "Idiomas",
+				"skills": [
+					{ "id": "portuguese", "name": "Português (nativo)" },
+					{ "id": "english", "name": "Inglês (proficiente)" }
+				]
+			}
+		]
 	}
 }

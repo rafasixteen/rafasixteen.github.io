@@ -54,8 +54,11 @@ export function assembleContent(locale: Locale): PortfolioContent {
 	const translations = localizedContent[locale];
 
 	return {
-		locale,
-		profile: { ...profile, ...translations.profile },
+		locale: locale,
+		profile: {
+			...profile,
+			...translations.profile,
+		},
 		experience: experience.map((entry) => ({ ...entry, ...translations.experience[entry.translationKey] })),
 		education: education.map((entry) => ({ ...entry, ...translations.education[entry.translationKey] })),
 		projects: projects.map((entry) => {
@@ -67,6 +70,28 @@ export function assembleContent(locale: Locale): PortfolioContent {
 				media: entry.media.map((media) => ({ ...media, ...asRecord(mediaTranslations[media.translationKey]) })),
 			});
 		}),
-		skills: skillGroups.map((entry) => ({ ...entry, ...translations.skills[entry.translationKey] })),
+		skills: skillGroups.map((entry) => {
+			const translation = translations.skills.find(({ id }) => id === entry.translationKey);
+
+			if (!translation) {
+				throw new Error(`Missing skill translation: ${entry.translationKey}`);
+			}
+
+			const skillTranslations = new Map(translation.skills.map((skill) => [skill.id, skill.name]));
+
+			return {
+				...entry,
+				...translation,
+				skills: entry.skills.map((skill) => {
+					const name = skillTranslations.get(skill.id);
+
+					if (!name) {
+						throw new Error(`Missing skill translation: ${entry.translationKey}.${skill.id}`);
+					}
+
+					return { ...skill, name };
+				}),
+			};
+		}),
 	};
 }

@@ -2,21 +2,36 @@ import type { ReactElement } from "react";
 import { Braces, Database, FileCode2, GitBranch, Languages, Network, Server } from "lucide-react";
 import { z } from "zod";
 
-const skillSchema = z.object({
-	name: z.string().min(1),
+const skillSharedSchema = z.object({
+	id: z.string().min(1),
 	icon: z.custom<ReactElement>(),
+});
+
+const skillSchema = skillSharedSchema.extend({
+	name: z.string().min(1),
+});
+
+const skillTranslationSchema = z.object({
+	id: z.string().min(1),
+	name: z.string().min(1),
 });
 
 export const skillGroupSharedDataSchema = z.object({
 	translationKey: z.string().min(1),
-	skills: z.array(skillSchema).min(1),
+	skills: z.array(skillSharedSchema).min(1),
 });
 
 export const skillGroupTranslationSchema = z.object({
+	id: z.string().min(1),
 	name: z.string().min(1),
+	skills: z.array(skillTranslationSchema).min(1),
 });
 
-export const skillGroupSchema = skillGroupSharedDataSchema.extend(skillGroupTranslationSchema.shape);
+export const skillGroupSchema = skillGroupSharedDataSchema.extend({
+	skills: z.array(skillSchema).min(1),
+	id: z.string().min(1),
+	name: z.string().min(1),
+});
 
 export type SkillGroupSharedData = z.infer<typeof skillGroupSharedDataSchema>;
 
@@ -24,59 +39,59 @@ export type SkillGroupTranslation = z.infer<typeof skillGroupTranslationSchema>;
 
 export type SkillGroup = z.infer<typeof skillGroupSchema>;
 
-export type SkillGroupTranslations = Record<string, SkillGroupTranslation>;
+export type SkillGroupTranslations = SkillGroupTranslation[];
 
 export const skillGroups: SkillGroupSharedData[] = [
 	{
 		translationKey: "backend",
 		skills: [
-			{ name: "Go", icon: <Server size={16} /> },
-			{ name: "REST APIs", icon: <Network size={16} /> },
-			{ name: "PostgreSQL", icon: <Database size={16} /> },
-			{ name: "SQLite", icon: <Database size={16} /> },
-			{ name: "SQL", icon: <Database size={16} /> },
-			{ name: "ASP.NET Core MVC", icon: <Server size={16} /> },
+			{ id: "go", icon: <Server size={16} /> },
+			{ id: "rest-apis", icon: <Network size={16} /> },
+			{ id: "postgresql", icon: <Database size={16} /> },
+			{ id: "sqlite", icon: <Database size={16} /> },
+			{ id: "sql", icon: <Database size={16} /> },
+			{ id: "aspnet-core-mvc", icon: <Server size={16} /> },
 		],
 	},
 	{
 		translationKey: "frontend",
 		skills: [
-			{ name: "TypeScript", icon: <Braces size={16} /> },
-			{ name: "React / Next.js", icon: <FileCode2 size={16} /> },
-			{ name: "HTML / CSS / Tailwind CSS", icon: <Braces size={16} /> },
-			{ name: "Go templ / Datastar", icon: <FileCode2 size={16} /> },
-			{ name: "Razor Pages", icon: <FileCode2 size={16} /> },
+			{ id: "typescript", icon: <Braces size={16} /> },
+			{ id: "react-next", icon: <FileCode2 size={16} /> },
+			{ id: "html-css-tailwind", icon: <Braces size={16} /> },
+			{ id: "go-templ-datastar", icon: <FileCode2 size={16} /> },
+			{ id: "razor-pages", icon: <FileCode2 size={16} /> },
 		],
 	},
 	{
 		translationKey: "mobile",
 		skills: [
-			{ name: "Kotlin Multiplatform", icon: <FileCode2 size={16} /> },
-			{ name: "Android development", icon: <FileCode2 size={16} /> },
+			{ id: "kotlin-multiplatform", icon: <FileCode2 size={16} /> },
+			{ id: "android-development", icon: <FileCode2 size={16} /> },
 		],
 	},
 	{
 		translationKey: "devops",
 		skills: [
-			{ name: "Linux", icon: <Server size={16} /> },
-			{ name: "Docker", icon: <Server size={16} /> },
-			{ name: "Networking", icon: <Network size={16} /> },
-			{ name: "Git / GitHub Actions", icon: <GitBranch size={16} /> },
+			{ id: "linux", icon: <Server size={16} /> },
+			{ id: "docker", icon: <Server size={16} /> },
+			{ id: "networking", icon: <Network size={16} /> },
+			{ id: "git-github-actions", icon: <GitBranch size={16} /> },
 		],
 	},
 	{
 		translationKey: "technical-practice",
 		skills: [
-			{ name: "Electronics / Arduino", icon: <Database size={16} /> },
-			{ name: "3D modeling / printing", icon: <FileCode2 size={16} /> },
-			{ name: "Smart-home automation", icon: <Network size={16} /> },
+			{ id: "electronics-arduino", icon: <Database size={16} /> },
+			{ id: "3d-modeling-printing", icon: <FileCode2 size={16} /> },
+			{ id: "smart-home-automation", icon: <Network size={16} /> },
 		],
 	},
 	{
 		translationKey: "languages",
 		skills: [
-			{ name: "Portuguese (native)", icon: <Languages size={16} /> },
-			{ name: "English (proficient)", icon: <Languages size={16} /> },
+			{ id: "portuguese", icon: <Languages size={16} /> },
+			{ id: "english", icon: <Languages size={16} /> },
 		],
 	},
 ];

@@ -28,6 +28,28 @@ export function assertTranslationKeys(
 	}
 }
 
+export function assertTranslationIds(
+	locale: string,
+	entity: string,
+	entries: readonly ({ translationKey: string } | { id: string })[],
+	translations: readonly { id: string }[],
+): void {
+	const referencedIds = new Set(entries.map((entry) => ("translationKey" in entry ? entry.translationKey : entry.id)));
+	const translatedIds = new Set(translations.map((translation) => translation.id));
+
+	for (const id of referencedIds) {
+		if (!translatedIds.has(id)) {
+			throw new Error(`Missing ${locale} translation at ${entity}.${id}`);
+		}
+	}
+
+	for (const id of translatedIds) {
+		if (!referencedIds.has(id)) {
+			throw new Error(`Unused ${locale} translation at ${entity}.${id}`);
+		}
+	}
+}
+
 export function assertMatchingShape(reference: unknown, candidate: unknown, path = ""): void {
 	if (Array.isArray(reference)) {
 		if (!Array.isArray(candidate)) {
@@ -88,7 +110,17 @@ export function validateContent(): Record<Locale, PortfolioContent> {
 			}
 		}
 
-		assertTranslationKeys(locale, "skills", skillGroups, translations.skills);
+		assertTranslationIds(locale, "skills", skillGroups, translations.skills);
+
+		for (const group of skillGroups) {
+			const translation = translations.skills.find(({ id }) => id === group.translationKey);
+
+			if (!translation) {
+				throw new Error(`Missing ${locale} translation at skills.${group.translationKey}`);
+			}
+
+			assertTranslationIds(locale, `skills.${group.translationKey}.skills`, group.skills, translation.skills);
+		}
 
 		content[locale] = portfolioContentSchema.parse(assembleContent(locale));
 	}
