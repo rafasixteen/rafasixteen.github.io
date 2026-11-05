@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 
+import Script from "next/script";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -73,6 +74,11 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 	return (
 		<html lang={value}>
 			<body>
+				<Script
+					data-goatcounter="https://rafasixteen.goatcounter.com/count"
+					src="https://gc.zgo.at/count.js"
+					strategy="afterInteractive"
+				/>
 				<NextIntlClientProvider locale={value} messages={messages}>
 					<Navbar />
 					<main>{children}</main>
