@@ -1,5 +1,18 @@
 import React from "react";
-import { Document, Font, Link, Page, Path, StyleSheet, Svg, Text, View, type DocumentProps } from "@react-pdf/renderer";
+import path from "node:path";
+import {
+	Document,
+	Font,
+	Image,
+	Link,
+	Page,
+	Path,
+	StyleSheet,
+	Svg,
+	Text,
+	View,
+	type DocumentProps,
+} from "@react-pdf/renderer";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { PortfolioContent } from "@/content/portfolio";
 import { formatDate } from "@/lib/format";
@@ -18,36 +31,62 @@ const styles = StyleSheet.create({
 	header: {
 		display: "flex",
 		flexDirection: "row",
-		alignItems: "flex-start",
-		justifyContent: "space-between",
-		marginBottom: 28,
+		alignItems: "center",
+		paddingBottom: 14,
+		marginBottom: 22,
+		borderBottomWidth: 0.75,
+		borderBottomColor: "#e5e7eb",
+		borderBottomStyle: "solid",
+	},
+	headerAvatar: {
+		width: 104,
+		paddingRight: 16,
+		alignItems: "flex-end",
+	},
+	avatar: {
+		width: 72,
+		height: 72,
+		borderRadius: 36,
+		objectFit: "cover",
+		objectPosition: "50% 20%",
 	},
 	headerIdentity: {
 		flexGrow: 1,
-		paddingRight: 20,
-	},
-	headerContact: {
-		width: 190,
-		alignItems: "flex-end",
+		flexShrink: 1,
+		flexBasis: 0,
 	},
 	name: {
 		fontSize: 28,
-		fontFamily: "Helvetica",
+		fontFamily: "Helvetica-Bold",
 		color: "#111827",
 		lineHeight: 1.1,
 	},
+	accentBar: {
+		width: 28,
+		height: 2.5,
+		backgroundColor: "#f0524f",
+		marginTop: 8,
+		marginBottom: 8,
+	},
+	contactRow: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+	},
 	contactLine: {
-		fontSize: 8.5,
-		lineHeight: 1.55,
+		fontSize: 8.8,
 		color: "#6b7280",
-		textAlign: "right",
+		textDecoration: "none",
+	},
+	contactSeparator: {
+		fontSize: 8.8,
+		color: "#d1d5db",
+		marginHorizontal: 6,
 	},
 	socials: {
 		display: "flex",
 		flexDirection: "row",
-		flexWrap: "wrap",
-		justifyContent: "flex-end",
-		marginTop: 2,
+		marginTop: 7,
 	},
 	socialLink: {
 		display: "flex",
@@ -56,16 +95,16 @@ const styles = StyleSheet.create({
 		textDecoration: "none",
 	},
 	socialLinkSpaced: {
-		marginLeft: 10,
+		marginLeft: 14,
 	},
 	socialIcon: {
 		width: 9,
 		height: 9,
-		marginRight: 3,
+		marginRight: 4,
 		transform: "translateY(-1px)",
 	},
 	socialLabel: {
-		fontSize: 8.5,
+		fontSize: 8.8,
 		color: "#111827",
 	},
 	section: {
@@ -138,9 +177,11 @@ function keepWordsTogether(word: string): string[] {
 	return [word];
 }
 
+const avatarPath = path.resolve(process.cwd(), "public/images/avatar-face.png");
+
 function CvSocialIcon({ icon }: { icon: IconDefinition }) {
-	const [width, height, , , path] = icon.icon;
-	const paths = Array.isArray(path) ? path : [path];
+	const [width, height, , , d] = icon.icon;
+	const paths = Array.isArray(d) ? d : [d];
 
 	return (
 		<Svg viewBox={`0 0 ${width} ${height}`} style={styles.socialIcon}>
@@ -185,12 +226,19 @@ export function createCvDocument(content: PortfolioContent, t: Translate): React
 			language={content.locale}>
 			<Page size="A4" style={styles.page}>
 				<View style={styles.header} wrap={false}>
+					<View style={styles.headerAvatar}>
+						<Image src={avatarPath} style={styles.avatar} />
+					</View>
 					<View style={styles.headerIdentity}>
 						<Text style={styles.name}>{getCvName(content.profile.name)}</Text>
-					</View>
-					<View style={styles.headerContact}>
-						<Text style={styles.contactLine}>{content.profile.location}</Text>
-						<Text style={styles.contactLine}>{content.profile.email}</Text>
+						<View style={styles.accentBar} />
+						<View style={styles.contactRow}>
+							<Text style={styles.contactLine}>{content.profile.location}</Text>
+							<Text style={styles.contactSeparator}>•</Text>
+							<Link src={`mailto:${content.profile.email}`} style={styles.contactLine}>
+								{content.profile.email}
+							</Link>
+						</View>
 						<View style={styles.socials}>
 							{content.profile.links.map((link, index) => (
 								<Link
