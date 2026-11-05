@@ -17,7 +17,10 @@ export function LinkList({ links, className }: LinkListProps) {
 						href={link.url}
 						target="_blank"
 						rel="noreferrer"
-						aria-label={link.label}>
+						aria-label={link.label}
+						data-goatcounter-click={getContactEventName(link)}
+						data-goatcounter-title={`Contact via ${link.label}`}
+						data-goatcounter-no-session="1">
 						<FontAwesomeIcon className="size-4" icon={link.icon} />
 						<span>{link.label}</span>
 					</a>
@@ -25,4 +28,8 @@ export function LinkList({ links, className }: LinkListProps) {
 			))}
 		</ul>
 	);
+}
+
+function getContactEventName(link: Link): string {
+	return link.url.startsWith("mailto:") ? "contact-email" : `contact-${link.label.toLowerCase()}`;
 }

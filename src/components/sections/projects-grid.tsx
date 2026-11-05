@@ -20,7 +20,12 @@ function ProjectCard({ project }: { project: Project }) {
 		<Card className="group h-full gap-0 overflow-hidden py-0 transition-colors hover:border-primary/60">
 			<CardHeader className="gap-2 px-5 pt-5">
 				<CardTitle className="text-xl leading-tight">
-					<Link href={href} className="inline-flex items-center gap-2 hover:text-primary">
+					<Link
+						href={href}
+						className="inline-flex items-center gap-2 hover:text-primary"
+						data-goatcounter-click={`view-project-${projectSlug(project)}`}
+						data-goatcounter-title={`View ${project.name} project`}
+						data-goatcounter-no-session="1">
 						{project.name}
 						<ArrowUpRight
 							aria-hidden="true"
@@ -41,7 +46,11 @@ function ProjectCard({ project }: { project: Project }) {
 			</CardContent>
 			<CardFooter className="mt-auto px-5 pt-5 pb-5">
 				<Button asChild variant="link" className="px-0">
-					<Link href={href}>
+					<Link
+						href={href}
+						data-goatcounter-click={`view-project-${projectSlug(project)}`}
+						data-goatcounter-title={`View ${project.name} project`}
+						data-goatcounter-no-session="1">
 						{t("action.viewDetails")}
 						<span className="sr-only">: {project.name}</span> →
 					</Link>

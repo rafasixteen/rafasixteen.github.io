@@ -7,8 +7,10 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Footer, Navbar } from "@/components/layout";
+import { EngagementTracker } from "@/components/analytics/engagement-tracker";
 import { site } from "@/config/site";
 import { portfolioContent } from "@/content/portfolio";
+import { goatCounter } from "@/lib/goatcounter";
 import {
 	defaultLocale,
 	getOpenGraphLocale,
@@ -75,11 +77,13 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 		<html lang={value}>
 			<body>
 				<Script
-					data-goatcounter="https://rafasixteen.goatcounter.com/count"
-					src="https://gc.zgo.at/count.js"
+					data-goatcounter={goatCounter.endpoint}
+					data-goatcounter-settings={goatCounter.settings}
+					src={goatCounter.scriptUrl}
 					strategy="afterInteractive"
 				/>
 				<NextIntlClientProvider locale={value} messages={messages}>
+					<EngagementTracker />
 					<Navbar />
 					<main>{children}</main>
 					<Footer profile={content.profile} />

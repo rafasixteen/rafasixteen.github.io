@@ -50,7 +50,14 @@ export function Hero({ locale, profile }: HeroProps) {
 					</p>
 					<div className="mt-9 flex flex-wrap items-center gap-3">
 						<Button asChild className="bg-primary text-primary-foreground hover:bg-primary">
-							<a href={url(`/cv/cv-${locale}.pdf`)}>{t("action.downloadCv")}</a>
+							<a
+								href={url(`/cv/cv-${locale}.pdf`)}
+								data-analytics-target="cv-cta"
+								data-goatcounter-click="download-cv"
+								data-goatcounter-title="Download CV"
+								data-goatcounter-no-session="1">
+								{t("action.downloadCv")}
+							</a>
 						</Button>
 					</div>
 				</div>

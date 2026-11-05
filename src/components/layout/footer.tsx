@@ -24,7 +24,7 @@ export function Footer({ profile }: FooterProps) {
 	];
 
 	return (
-		<footer className="border-t border-border py-6 text-sm text-muted-foreground">
+		<footer className="border-t border-border py-6 text-sm text-muted-foreground" id="contact">
 			<div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 sm:flex-row sm:items-center sm:justify-between">
 				<LinkList links={contactLinks} className="gap-x-4 [&_a:hover]:text-primary" />
 				<p className="text-xs">

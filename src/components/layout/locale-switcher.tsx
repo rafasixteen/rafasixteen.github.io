@@ -23,6 +23,9 @@ export function LocaleSwitcher() {
 					scroll={false}
 					onClick={() => localStorage.setItem("portfolio-locale", nextLocale)}
 					aria-current={nextLocale === active ? "page" : undefined}
+					data-goatcounter-click={nextLocale === active ? undefined : `switch-language-${nextLocale}`}
+					data-goatcounter-title={nextLocale === active ? undefined : `Switch language to ${nextLocale.toUpperCase()}`}
+					data-goatcounter-no-session="1"
 					className={cn(
 						buttonVariants({ variant: nextLocale === active ? "secondary" : "ghost", size: "sm" }),
 						"h-8 px-2 text-xs no-underline",
