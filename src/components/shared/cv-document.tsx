@@ -16,8 +16,11 @@ import {
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { PortfolioContent } from "@/content/portfolio";
 import { formatDate } from "@/lib/format";
+import { getActivePrimaryColor } from "@/lib/theme";
 
 type Translate = (key: "cv.experience" | "cv.education" | "cv.skills" | "cv.projects" | "label.present") => string;
+
+const primaryColor = getActivePrimaryColor();
 
 const styles = StyleSheet.create({
 	page: {
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
 	accentBar: {
 		width: 28,
 		height: 2.5,
-		backgroundColor: "#f0524f",
+		backgroundColor: primaryColor,
 		marginTop: 8,
 		marginBottom: 8,
 	},
@@ -117,7 +120,7 @@ const styles = StyleSheet.create({
 	heading: {
 		fontSize: 13,
 		fontFamily: "Helvetica",
-		color: "#f0524f",
+		color: primaryColor,
 	},
 	entry: {
 		display: "flex",

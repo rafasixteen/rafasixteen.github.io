@@ -36,7 +36,7 @@ export async function ProjectPageLayout({ project, children, sidebar, summary, i
 	return (
 		<main className="border-t border-border">
 			<section className="relative overflow-hidden">
-				<div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,hsl(3_85%_62%_/_0.16),transparent_70%)]" />
+				<div className="theme-project-decoration pointer-events-none absolute inset-x-0 top-0 h-96" />
 				<div className="relative mx-auto w-full max-w-6xl px-5 py-12 sm:py-16">
 					<Button asChild variant="ghost" className="mb-12 -ml-3">
 						<a href={url(`/${locale}/#projects`)}>← {backToProjects}</a>
