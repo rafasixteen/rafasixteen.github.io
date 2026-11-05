@@ -34,7 +34,7 @@ export const profile = {
 		{ label: "LinkedIn", url: "https://www.linkedin.com/in/rafasixteen", icon: faLinkedin },
 		{ label: "GitHub", url: "https://github.com/rafasixteen", icon: faGithub },
 		{ label: "Instagram", url: "https://www.instagram.com/rafasixteen", icon: faInstagram },
-		{ label: "Portfolio", url: "https://rafasixteen.github.io/portfolio/", icon: faGlobe },
+		{ label: "Portfolio", url: "https://rafasixteen.github.io/", icon: faGlobe },
 	],
 } satisfies ProfileSource;
 
