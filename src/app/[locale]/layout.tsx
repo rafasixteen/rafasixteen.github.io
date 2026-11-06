@@ -32,9 +32,9 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 
 	const socialImage = {
 		url: url(site.socialImage),
-		width: 1254,
-		height: 1254,
-		alt: profile.name,
+		width: 1200,
+		height: 630,
+		alt: site.name,
 	};
 
 	return {
@@ -55,14 +55,14 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 			type: "website",
 			siteName: site.name,
 			locale: getOpenGraphLocale(locale),
-			title: profile.name,
+			title: site.name,
 			description: profile.summary,
 			url: `/${locale}/`,
 			images: [socialImage],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: profile.name,
+			title: site.name,
 			description: profile.summary,
 			images: [socialImage.url],
 		},

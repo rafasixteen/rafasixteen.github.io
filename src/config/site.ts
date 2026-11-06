@@ -3,7 +3,7 @@ import { getFirstAndLastName, getInitials, profile } from "@/content/profile";
 export const site = {
 	name: `${getFirstAndLastName(profile.name)} - Portfolio`,
 	shortName: getInitials(profile.name),
-	socialImage: "/images/avatar-cutout.webp",
+	socialImage: "/images/og-image.png",
 	url: getSiteUrl(),
 	lastUpdatedAt: process.env.NEXT_PUBLIC_LAST_UPDATED ?? new Date().toISOString(),
 	author: {

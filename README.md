@@ -41,4 +41,6 @@ npm test
 npm run build
 ```
 
-`npm run build` generates the localized CV PDFs and exports the static site to `out/`.
+`npm run build` runs `npm run assets`, regenerates the public images and localized CV PDFs, then exports the static site to `out/`.
+
+`npm run assets` regenerates the public images and localized CV PDFs from the source cutout in `assets/` and the active theme.
