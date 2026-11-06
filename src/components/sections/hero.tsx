@@ -28,8 +28,7 @@ export function Hero({ locale, profile }: HeroProps) {
 
 	return (
 		<section className="relative isolate overflow-hidden bg-background text-foreground" id="home">
-			<div className="theme-hero-decoration pointer-events-none absolute inset-0 -z-10" />
-			<div className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 h-px bg-primary/20" />
+			<div className="linear-decoration avatar-glow pointer-events-none absolute inset-0 -z-10" />
 			<div className="mx-auto grid min-h-[min(52rem,calc(100vh-4.5rem))] w-full max-w-7xl items-center gap-8 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(22rem,1.1fr)] lg:gap-4 lg:px-10 lg:py-16">
 				<div className="relative z-10 max-w-2xl">
 					<div className="mb-8 flex items-center gap-3 text-xs font-semibold tracking-[0.24em] text-primary uppercase sm:mb-10">
@@ -68,7 +67,6 @@ export function Hero({ locale, profile }: HeroProps) {
 						className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-[clamp(4.5rem,13vw,12rem)] leading-none font-black tracking-[-0.1em] text-primary/15 uppercase select-none">
 						Portfolio
 					</div>
-					<div aria-hidden="true" className="absolute top-[18%] right-0 h-px w-2/3 bg-primary/60" />
 					<img
 						className="relative z-10 max-h-[min(70vh,48rem)] w-full max-w-[34rem] object-contain object-bottom"
 						src={url("/images/avatar-cutout.webp")}

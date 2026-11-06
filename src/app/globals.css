@@ -81,18 +81,30 @@
 }
 
 @layer components {
-	.theme-hero-decoration {
-		background-image:
-			radial-gradient(circle at 72% 42%, color-mix(in srgb, var(--primary) 20%, transparent), transparent 30%),
-			linear-gradient(
-				120deg,
-				transparent 38%,
-				color-mix(in srgb, var(--primary) 8%, transparent) 38%,
-				transparent 67%
-			);
+	.linear-decoration {
+		background-image: linear-gradient(
+			120deg,
+			transparent 38%,
+			color-mix(in srgb, var(--primary) 8%, transparent) 38%,
+			transparent 67%
+		);
 	}
 
-	.theme-project-decoration {
+	.avatar-glow {
+		&::before {
+			position: absolute;
+			inset: 0;
+			content: "";
+			background-image: radial-gradient(
+				circle at 72% 42%,
+				color-mix(in srgb, var(--primary) 20%, transparent),
+				transparent 30%
+			);
+			pointer-events: none;
+		}
+	}
+
+	.project-decoration {
 		background-image: radial-gradient(
 			ellipse at top,
 			color-mix(in srgb, var(--primary) 16%, transparent),
