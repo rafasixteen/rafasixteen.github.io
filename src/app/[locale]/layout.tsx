@@ -11,6 +11,7 @@ import { EngagementTracker } from "@/components/analytics/engagement-tracker";
 import { site } from "@/config/site";
 import { portfolioContent } from "@/content/portfolio";
 import { goatCounter } from "@/lib/goatcounter";
+import { url } from "@/lib/url";
 import {
 	defaultLocale,
 	getOpenGraphLocale,
@@ -28,6 +29,13 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 
 	const locale = hasLocale(locales, value) ? value : defaultLocale;
 	const profile = portfolioContent[locale].profile;
+
+	const socialImage = {
+		url: url(site.socialImage),
+		width: 1254,
+		height: 1254,
+		alt: profile.name,
+	};
 
 	return {
 		title: site.name,
@@ -50,11 +58,13 @@ export async function generateMetadata({ params }: LocaleProps): Promise<Metadat
 			title: profile.name,
 			description: profile.summary,
 			url: `/${locale}/`,
+			images: [socialImage],
 		},
 		twitter: {
-			card: "summary",
+			card: "summary_large_image",
 			title: profile.name,
 			description: profile.summary,
+			images: [socialImage.url],
 		},
 		robots: {
 			index: true,
