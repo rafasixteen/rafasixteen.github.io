@@ -42,6 +42,7 @@ const messages = z.strictObject({
 		architecture: text,
 		contributions: text,
 		technologies: text,
+		references: text,
 	}),
 	cv: z.strictObject({
 		experience: text,

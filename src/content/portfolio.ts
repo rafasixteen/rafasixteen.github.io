@@ -105,7 +105,6 @@ export function assembleContent(locale: Locale, file: TranslationFile): Portfoli
 				})),
 			};
 		}),
-
 		education: education.map((entry) => ({
 			...entry,
 			...t.education[entry.translationKey],

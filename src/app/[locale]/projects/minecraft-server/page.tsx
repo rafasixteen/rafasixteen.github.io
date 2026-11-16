@@ -1,5 +1,17 @@
 import { getTranslations } from "next-intl/server";
-import { ProjectPageLayout } from "@/components/projects/project-page-layout";
+import {
+	ProjectLinks,
+	ProjectPageColumns,
+	ProjectPageContent,
+	ProjectPageHero,
+	ProjectPageImpact,
+	ProjectPageLayout,
+	ProjectPageMain,
+	ProjectPageSummary,
+	ProjectPageTitle,
+	ProjectSidebar,
+	TechnologyStack,
+} from "@/components/projects";
 import { ProjectSection } from "@/components/projects/project-section";
 import {
 	getProjectMetadata,
@@ -28,19 +40,46 @@ function DetailCards({ items }: { items: readonly { title: string; description: 
 export default async function MinecraftServerPage({ params }: ProjectPageProps) {
 	const { project } = await getProjectPage("minecraft-server", params);
 
-	const content = minecraftServerTranslationSchema.parse(await getProjectTranslation("minecraft-server"));
+	const projectT = await getProjectTranslation("minecraft-server");
+	const content = minecraftServerTranslationSchema.parse(projectT);
+
 	const t = await getTranslations();
 
 	return (
-		<ProjectPageLayout project={project} summary={project.summary} impact={content.impact}>
-			<ProjectSection eyebrow={t("projectDetail.overview")}>
-				<p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">{content.overview}</p>
-			</ProjectSection>
+		<ProjectPageLayout>
+			<ProjectPageHero>
+				<ProjectPageTitle project={project}>
+					<ProjectPageSummary>{project.summary}</ProjectPageSummary>
+				</ProjectPageTitle>
+				<ProjectPageImpact>{content.impact}</ProjectPageImpact>
+			</ProjectPageHero>
 
-			<ProjectSection eyebrow={t("projectDetail.architecture")}>
-				<MinecraftServerArchitecture labels={content.diagram} />
-				<DetailCards items={content.architecture} />
-			</ProjectSection>
+			<ProjectPageContent>
+				<ProjectPageColumns>
+					<ProjectPageMain>
+						<ProjectSection eyebrow={t("projectDetail.overview")}>
+							<p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+								{content.overview}
+							</p>
+						</ProjectSection>
+
+						<ProjectSection eyebrow={t("projectDetail.architecture")}>
+							<MinecraftServerArchitecture labels={content.diagram} />
+							<DetailCards items={content.architecture} />
+						</ProjectSection>
+					</ProjectPageMain>
+					<ProjectSidebar>
+						<TechnologyStack project={project} />
+						<ProjectLinks
+							links={[
+								{ label: "Crafty Controller", href: "https://craftycontrol.com/" },
+								{ label: "Tailscale", href: "https://tailscale.com/" },
+								{ label: "Playit.gg", href: "https://playit.gg/" },
+							]}
+						/>
+					</ProjectSidebar>
+				</ProjectPageColumns>
+			</ProjectPageContent>
 		</ProjectPageLayout>
 	);
 }
