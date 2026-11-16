@@ -141,7 +141,7 @@
 					"crafty-controller": "Crafty Controller"
 				},
 				"summary": "Criei uma infraestrutura de servidor Minecraft autoalojada com Docker Compose, Tailscale e Playit.gg. Suporta acessos por LAN, VPN e túnel.",
-				"impact": "Este projeto mostra o lado de infraestrutura do meu trabalho: configurar os percursos de rede, manter a administração privada e tornar o servidor fácil de executar e atualizar.",
+				"impact": "Permite que eu e os meus amigos joguemos juntos de forma fiável, tanto na mesma LAN como através de uma VPN ou de um túnel, mantendo o servidor fácil de administrar.",
 				"overview": "Queria uma forma prática de jogar Minecraft para mim e os meus amigos. O Crafty Controller trata da administração dos servidores, o Docker Compose liga a rede, o armazenamento e o ciclo de vida dos serviços.",
 				"architecture": [
 					{

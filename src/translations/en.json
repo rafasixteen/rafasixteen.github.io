@@ -141,7 +141,7 @@
 					"crafty-controller": "Crafty Controller"
 				},
 				"summary": "I built a self-hosted Minecraft server setup with Docker Compose, Tailscale, and Playit.gg. It supports LAN, VPN, and tunnel access.",
-				"impact": "This project shows the infrastructure side of my work: setting up the network paths, keeping administration private, and making the server easy to run and update.",
+				"impact": "It gives me and my friends a reliable way to play together, whether we are on the same LAN, connecting through a VPN, or joining remotely through a tunnel, while keeping the server easy to manage.",
 				"overview": "I wanted a practical way to run Minecraft for me and my friends. Crafty Controller handles server administration, Docker Compose ties together the networking, storage and service lifecycle.",
 				"architecture": [
 					{
