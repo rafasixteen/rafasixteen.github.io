@@ -124,8 +124,6 @@
 	}
 
 	.minecraft-flow .react-flow__attribution {
-		border: 1px solid color-mix(in srgb, var(--primary) 45%, transparent) !important;
-		border-radius: 0.25rem !important;
 		background: var(--xy-attribution-background-color) !important;
 		color: var(--foreground) !important;
 		font-size: 11px !important;

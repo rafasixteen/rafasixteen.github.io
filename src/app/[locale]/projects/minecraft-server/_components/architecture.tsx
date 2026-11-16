@@ -31,54 +31,58 @@ const nodeTypes = { architecture: ArchitectureNode };
 const arrow = { type: MarkerType.ArrowClosed, color: "var(--primary)" };
 const mutedArrow = { type: MarkerType.ArrowClosed, color: "var(--muted-foreground)" };
 
-function Handles() {
+function Handles({ nodeId, kind }: { nodeId: string; kind: NodeKind }) {
 	return (
 		<>
-			<Handle className="!pointer-events-none !opacity-0" id="top" position={Position.Top} type="target" />
+			<Handle className="pointer-events-none! opacity-0!" id="top" position={Position.Top} type="target" />
+			{nodeId === "crafty" || kind === "service" ? (
+				<>
+					<Handle
+						className="pointer-events-none! opacity-0!"
+						id="top-far-left"
+						position={Position.Top}
+						style={{ left: "15%" }}
+						type="target"
+					/>
+					<Handle
+						className="pointer-events-none! opacity-0!"
+						id="top-left"
+						position={Position.Top}
+						style={{ left: "30%" }}
+						type="target"
+					/>
+					<Handle
+						className="pointer-events-none! opacity-0!"
+						id="top-right"
+						position={Position.Top}
+						style={{ left: "70%" }}
+						type="target"
+					/>
+					<Handle
+						className="pointer-events-none! opacity-0!"
+						id="top-far-right"
+						position={Position.Top}
+						style={{ left: "85%" }}
+						type="target"
+					/>
+				</>
+			) : null}
+			<Handle className="pointer-events-none! opacity-0!" id="bottom" position={Position.Bottom} type="source" />
 			<Handle
-				className="!pointer-events-none !opacity-0"
-				id="top-far-left"
-				position={Position.Top}
-				style={{ left: "15%" }}
-				type="target"
-			/>
-			<Handle
-				className="!pointer-events-none !opacity-0"
-				id="top-left"
-				position={Position.Top}
-				style={{ left: "30%" }}
-				type="target"
-			/>
-			<Handle
-				className="!pointer-events-none !opacity-0"
-				id="top-right"
-				position={Position.Top}
-				style={{ left: "70%" }}
-				type="target"
-			/>
-			<Handle
-				className="!pointer-events-none !opacity-0"
-				id="top-far-right"
-				position={Position.Top}
-				style={{ left: "85%" }}
-				type="target"
-			/>
-			<Handle className="!pointer-events-none !opacity-0" id="bottom" position={Position.Bottom} type="source" />
-			<Handle
-				className="!pointer-events-none !opacity-0"
+				className="pointer-events-none! opacity-0!"
 				id="bottom-right"
 				position={Position.Bottom}
 				style={{ left: "65%" }}
 				type="source"
 			/>
 			<Handle
-				className="!pointer-events-none !opacity-0"
+				className="pointer-events-none! opacity-0!"
 				id="left-target"
 				position={Position.Left}
 				type="target"
 			/>
 			<Handle
-				className="!pointer-events-none !opacity-0"
+				className="pointer-events-none! opacity-0!"
 				id="right-source"
 				position={Position.Right}
 				type="source"
@@ -87,7 +91,7 @@ function Handles() {
 	);
 }
 
-function ArchitectureNode({ data }: NodeProps<DiagramNode>) {
+function ArchitectureNode({ id, data }: NodeProps<DiagramNode>) {
 	const tone =
 		data.kind === "access"
 			? "border-primary/60 bg-card/95"
@@ -100,7 +104,7 @@ function ArchitectureNode({ data }: NodeProps<DiagramNode>) {
 			aria-label={data.ariaLabel}
 			className={`relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl border px-4 py-3 text-center transition-colors ${tone}`}
 			role="group">
-			<Handles />
+			<Handles nodeId={id} kind={data.kind} />
 			<p className="text-sm leading-tight font-semibold text-foreground">{data.title}</p>
 		</div>
 	);
@@ -159,7 +163,7 @@ function createNodes(labels: MinecraftServerArchitectureLabels): DiagramNode[] {
 	];
 }
 
-function createEdges(): Edge[] {
+export function createEdges(): Edge[] {
 	const access = { stroke: "var(--primary)", strokeWidth: 2 };
 	const internal = { stroke: "var(--muted-foreground)", strokeWidth: 1.8 };
 	const administration = { ...internal, strokeDasharray: "6 4" };
@@ -183,12 +187,12 @@ function createEdges(): Edge[] {
 	});
 
 	return [
-		edge("access-localhost", "access-paths", "localhost", "bottom", "top-far-left", access, arrow),
-		edge("access-tailscale", "access-paths", "tailscale", "bottom", "top-left", access, arrow),
-		edge("access-lan", "access-paths", "lan", "bottom", "top-right", access, arrow),
-		edge("access-public", "access-paths", "public", "bottom", "top-far-right", access, arrow),
-		edge("localhost-crafty", "localhost", "crafty", "bottom", "top", administration, mutedArrow),
-		edge("tailscale-crafty", "tailscale", "crafty", "bottom", "top", administration, mutedArrow),
+		edge("access-localhost", "access-paths", "localhost", "bottom", "top", access, arrow),
+		edge("access-tailscale", "access-paths", "tailscale", "bottom", "top", access, arrow),
+		edge("access-lan", "access-paths", "lan", "bottom", "top", access, arrow),
+		edge("access-public", "access-paths", "public", "bottom", "top", access, arrow),
+		edge("localhost-crafty", "localhost", "crafty", "bottom", "top-left", administration, mutedArrow),
+		edge("tailscale-crafty", "tailscale", "crafty", "bottom", "top-right", administration, mutedArrow),
 		edge("localhost-minecraft", "localhost", "minecraft", "bottom-right", "top-far-left", access, arrow),
 		edge("tailscale-minecraft", "tailscale", "minecraft", "bottom-right", "top-left", access, arrow),
 		edge("lan-minecraft", "lan", "minecraft", "bottom", "top-right", access, arrow),
