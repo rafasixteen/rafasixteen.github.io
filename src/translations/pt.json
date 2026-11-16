@@ -129,6 +129,47 @@
 					"Liguei a aplicação à API e à rede Wi-Fi local usada no recinto.",
 					"Mantive os controlos nativos Android, incluindo os botões físicos de volume, deixando espaço para uma futura aplicação iOS nativa."
 				]
+			},
+			"minecraft-server": {
+				"name": "Infraestrutura de Servidor Minecraft Autoalojado",
+				"technologies": {
+					"docker": "Docker",
+					"linux": "Linux",
+					"tailscale": "Tailscale",
+					"playit": "Playit.gg",
+					"crafty-controller": "Crafty Controller"
+				},
+				"summary": "Criei uma infraestrutura de servidor Minecraft autoalojada com Docker Compose, Tailscale e Playit.gg. Suporta acessos por LAN, VPN e túnel.",
+				"impact": "Este projeto mostra o lado de infraestrutura do meu trabalho: configurar os percursos de rede, manter a administração privada e tornar o servidor fácil de executar e atualizar.",
+				"overview": "Queria uma forma prática de jogar Minecraft para mim e os meus amigos. O Crafty Controller trata da administração dos servidores, o Docker Compose liga a rede, o armazenamento e o ciclo de vida dos serviços.",
+				"architecture": [
+					{
+						"title": "Localhost",
+						"description": "A máquina anfitriã permite o acesso local ao Crafty para administração e ao servidor Minecraft para jogar."
+					},
+					{
+						"title": "LAN",
+						"description": "Os jogadores locais ligam-se diretamente através da rede."
+					},
+					{
+						"title": "VPN Tailscale",
+						"description": "A VPN permite que jogadores remotos de confiança acedam ao servidor Minecraft e mantém a administração do Crafty privada."
+					},
+					{
+						"title": "Túnel Playit",
+						"description": "O túnel permite que jogadores externos acedam ao servidor Minecraft sem expor o Crafty ou o resto da rede."
+					}
+				],
+				"diagram": {
+					"ariaLabel": "Diagrama da arquitetura com percursos de acesso locais e remotos. O Localhost e a VPN privada permitem administrar o Crafty Controller, enquanto o Localhost, a VPN, a LAN e o túnel permitem aceder ao servidor Minecraft.",
+					"accessPaths": "Percursos de acesso",
+					"localhost": "Localhost",
+					"lan": "LAN",
+					"privateVpn": "VPN",
+					"publicTunnel": "Túnel",
+					"crafty": "Crafty Controller",
+					"minecraft": "Servidor Minecraft"
+				}
 			}
 		},
 		"skills": {
@@ -166,6 +207,7 @@
 					"linux": "Linux",
 					"docker": "Docker",
 					"networking": "Redes",
+					"tailscale": "Tailscale",
 					"git-github-actions": "Git / GitHub Actions"
 				}
 			},

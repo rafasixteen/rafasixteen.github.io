@@ -129,6 +129,47 @@
 					"Connected the app to the API and the local Wi-Fi network used at the venue.",
 					"Kept the controls native to Android, including hardware volume-button input, while leaving room for a future native iOS app."
 				]
+			},
+			"minecraft-server": {
+				"name": "Self-Hosted Minecraft Server Infrastructure",
+				"technologies": {
+					"docker": "Docker",
+					"linux": "Linux",
+					"tailscale": "Tailscale",
+					"playit": "Playit.gg",
+					"crafty-controller": "Crafty Controller"
+				},
+				"summary": "I built a self-hosted Minecraft server setup with Docker Compose, Tailscale, and Playit.gg. It supports LAN, VPN, and tunnel access.",
+				"impact": "This project shows the infrastructure side of my work: setting up the network paths, keeping administration private, and making the server easy to run and update.",
+				"overview": "I wanted a practical way to run Minecraft for me and my friends. Crafty Controller handles server administration, Docker Compose ties together the networking, storage and service lifecycle.",
+				"architecture": [
+					{
+						"title": "Localhost",
+						"description": "The host machine provides local access to Crafty for administration and to the Minecraft server for gameplay."
+					},
+					{
+						"title": "LAN",
+						"description": "Local players connect directly over the home network."
+					},
+					{
+						"title": "Tailscale VPN",
+						"description": "The VPN lets trusted remote players reach the Minecraft server and keeps Crafty administration private."
+					},
+					{
+						"title": "Playit tunnel",
+						"description": "The tunnel gives external players access to the Minecraft server without exposing Crafty or the wider home network."
+					}
+				],
+				"diagram": {
+					"ariaLabel": "Architecture diagram showing local and remote access paths. Localhost and the VPN provide Crafty Controller administration, while Localhost, the VPN, LAN, and the tunnel provide access to the Minecraft server.",
+					"accessPaths": "Access paths",
+					"localhost": "Localhost",
+					"lan": "LAN",
+					"privateVpn": "VPN",
+					"publicTunnel": "Tunnel",
+					"crafty": "Crafty Controller",
+					"minecraft": "Minecraft server"
+				}
 			}
 		},
 		"skills": {
@@ -166,6 +207,7 @@
 					"linux": "Linux",
 					"docker": "Docker",
 					"networking": "Networking",
+					"tailscale": "Tailscale",
 					"git-github-actions": "Git / GitHub Actions"
 				}
 			},

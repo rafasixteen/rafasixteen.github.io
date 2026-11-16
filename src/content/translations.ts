@@ -4,7 +4,8 @@ const text = z.string().trim().min(1);
 
 const names = z.record(text, text);
 
-export const commonProjectTranslationSchema = z.strictObject({
+/** Shared project fields; project detail routes validate their own additional fields. */
+export const commonProjectTranslationSchema = z.looseObject({
 	name: text,
 	summary: text,
 	technologies: names,

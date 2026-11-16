@@ -1,5 +1,5 @@
 import { Braces, Database, FileCode2, GitBranch, Languages, Network, Server } from "lucide-react";
-import type { IconItem, IconItemSource } from "./icon-item";
+import type { IconItem, IconItemSource } from "@/content/icon-item";
 
 /** A complete localized group of skills. */
 export interface SkillGroup {
@@ -49,6 +49,7 @@ export const skillGroups = [
 			{ id: "linux", icon: <Server size={16} /> },
 			{ id: "docker", icon: <Server size={16} /> },
 			{ id: "networking", icon: <Network size={16} /> },
+			{ id: "tailscale", icon: <Network size={16} /> },
 			{ id: "git-github-actions", icon: <GitBranch size={16} /> },
 		],
 	},

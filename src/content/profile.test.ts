@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { getFirstAndLastName, getInitials } from "./profile";
+import { getFirstAndLastName, getInitials } from "@/content/profile";
 
 test("returns a profile's first and last name", () => {
 	expect(getFirstAndLastName("Rafael Da Silva Rego")).toBe("Rafael Rego");

@@ -1,5 +1,5 @@
 import { Braces, Database, FileCode2, GitBranch, Network, Server } from "lucide-react";
-import type { IconItem, IconItemSource } from "./icon-item";
+import type { IconItem, IconItemSource } from "@/content/icon-item";
 
 /** A complete localized work-experience entry. */
 export interface Experience {

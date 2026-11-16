@@ -1,17 +1,17 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { locales, type Locale } from "@/lib/locales";
-import { education } from "./education";
-import { experience } from "./experience";
-import { profile } from "./profile";
-import { projects } from "./project";
-import { skillGroups } from "./skill-group";
-import { parseTranslationFile, type TranslationFile } from "./translations";
-import type { Education } from "./education";
-import type { Experience } from "./experience";
-import type { Profile } from "./profile";
-import type { Project } from "./project";
-import type { SkillGroup } from "./skill-group";
+import { education } from "@/content/education";
+import { experience } from "@/content/experience";
+import { profile } from "@/content/profile";
+import { projects } from "@/content/project";
+import { skillGroups } from "@/content/skill-group";
+import { commonProjectTranslationSchema, parseTranslationFile, type TranslationFile } from "@/content/translations";
+import type { Education } from "@/content/education";
+import type { Experience } from "@/content/experience";
+import type { Profile } from "@/content/profile";
+import type { Project } from "@/content/project";
+import type { SkillGroup } from "@/content/skill-group";
 
 /** The complete localized portfolio model passed to pages, components, and the CV generator. */
 export interface PortfolioContent {
@@ -111,7 +111,7 @@ export function assembleContent(locale: Locale, file: TranslationFile): Portfoli
 			...t.education[entry.translationKey],
 		})),
 		projects: projects.map((entry) => {
-			const translated = entry.parse(t.projects[entry.translationKey]);
+			const translated = commonProjectTranslationSchema.parse(t.projects[entry.translationKey]);
 			const base = `projects.${entry.translationKey}`;
 
 			assertExactKeys(
@@ -125,7 +125,6 @@ export function assembleContent(locale: Locale, file: TranslationFile): Portfoli
 				translationKey: entry.translationKey,
 				name: translated.name,
 				summary: translated.summary,
-				details: () => translated.render(project),
 				technologies: entry.technologies.map((technology) => ({
 					...technology,
 					name: translated.technologies[technology.id],

@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { url } from "./url";
+import { url } from "@/lib/url";
 
 function withBasePath(basePath: string | undefined, callback: () => void): void {
 	const previousBasePath = process.env.NEXT_PUBLIC_BASE_PATH;

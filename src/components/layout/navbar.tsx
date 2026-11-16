@@ -1,6 +1,6 @@
 import { navigation } from "@/config/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { LocaleSwitcher } from "./locale-switcher";
+import { LocaleSwitcher } from "@/components/layout/locale-switcher";
 
 export function Navbar() {
 	const locale = useLocale();

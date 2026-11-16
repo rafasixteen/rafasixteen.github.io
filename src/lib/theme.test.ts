@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parsePrimaryColor } from "./theme";
+import { parsePrimaryColor } from "@/lib/theme";
 
 describe("parsePrimaryColor", () => {
 	it("converts an HSL primary token to a PDF-compatible hex color", () => {
